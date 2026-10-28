@@ -1,0 +1,21 @@
+{
+  // Centrum voor Emotionele Basisbehoeften: site + editor op Cloudflare Workers.
+  "name": "emotionelebasisbehoeften",
+  "main": "src/index.js",
+  "compatibility_date": "2026-10-01",
+  "assets": {
+    "directory": "./public",
+    "binding": "ASSETS",
+    "run_worker_first": true
+  },
+  "rules": [{ "type": "Text", "globs": ["**/*.html"], "fallthrough": true }],
+  "kv_namespaces": [{ "binding": "CONTENT", "id": "994c01f3b3874991bdf2c8e7406c8ba6" }],
+  "vars": {
+    // Wie mag inloggen op /admin (komma-gescheiden Google-accounts).
+    "ADMIN_EMAILS": "jd.vanbrouwershaven@gmail.com,emotionelebasisbehoeften@gmail.com",
+    // Client-ID uit Google Cloud Console (OAuth, type Webapplicatie). Niet geheim.
+    // Dezelfde client als het Groeikwartier; dit domein moet daar als toegestane oorsprong staan.
+    "GOOGLE_CLIENT_ID": "857704209749-lmm6p5m53d7m5ei8j7l134iqo0fh9npq.apps.googleusercontent.com"
+  },
+  "observability": { "enabled": true }
+}

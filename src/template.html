@@ -1,0 +1,446 @@
+<!doctype html>
+<html lang="nl">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Centrum voor Emotionele Basisbehoeften</title>
+<meta name="description" content="Wat elk kind emotioneel nodig heeft. Kennis over de zeven emotionele basisbehoeften voor ouders en iedereen rond een kind.">
+<style>
+:root{--c-donker:#1F2622;--c-creme:#F1EEE6;--c-accent:#6E5232;--c-goud:#D2BE97;--c-tekst-zacht:#3A4536;--c-tekst-licht:#B9BDB1;--c-tekst-licht-sterk:#E1DED5;--c-lijn:#8C7A5E;--c-bosgroen:#2A3F2E;--c-agenda:#2C3530;--c-zijvlak:#E7E5DC;--c-salie:#A9AE96;--c-salie-licht:#D9DACF;--c-accent-licht:#A88B67;--font-kop:'Cormorant Garamond',Georgia,serif;--font-tekst:'Mulish',system-ui,sans-serif}
+[data-k]{zoom:var(--fs,1)}
+.eb-agenda-item:last-child{border-bottom:1px solid var(--c-agenda-lijn,#4A554D)}
+.zp-detail[hidden]{display:none}
+html[data-admin] .eb-sticky{top:var(--gk-bar-h,56px)}
+html[data-admin] .eb-bottomnav{display:none}
+
+/* Optie B: zijvlak links met grote bocht (zoals het inspiratiebeeld), rechts zeven bogen die openschuiven */
+.zp{background-image:linear-gradient(color-mix(in srgb, var(--c-creme) 12%, transparent),color-mix(in srgb, var(--c-creme) 12%, transparent)),url(/hero-aquarel.jpg)!important;background-size:cover!important;background-position:center 40%!important}
+.zp-grid{display:grid;grid-template-columns:minmax(0,5fr) minmax(0,7fr);grid-template-areas:'head .' 'side row';column-gap:56px;row-gap:0;padding-right:max(48px,calc((100% - 1104px)/2))}
+.zp-head{grid-area:head;background:var(--c-zijvlak) url(/papier.png);border-radius:0 220px 0 0;padding:64px 56px 0 max(48px,calc((100vw - 1104px)/2))}
+.zp-head .eb-h2{font-size:50px}
+.zp-row{grid-area:row}
+.zp-side{grid-area:side;background:var(--c-zijvlak) url(/papier.png);border-radius:0 0 28px 0;padding:0 72px 48px max(48px,calc((100vw - 1104px)/2));display:flex;flex-direction:column;gap:14px}
+.zp-rule{height:1px;background:#B7AE9B;margin:28px 0 22px;width:64px}
+.zp-tris{display:block;margin:0 0 6px;width:140px;height:13px}
+.zp-tris path{opacity:.28;transition:opacity .3s}.zp-tris path:nth-child(odd){fill:var(--c-accent)}.zp-tris path:nth-child(even){fill:var(--c-accent-licht)}
+.zp-tris.f1 path:nth-child(1){opacity:1}.zp-tris.f2 path:nth-child(2){opacity:1}.zp-tris.f3 path:nth-child(3){opacity:1}.zp-tris.f4 path:nth-child(4){opacity:1}.zp-tris.f5 path:nth-child(5){opacity:1}.zp-tris.f6 path:nth-child(6){opacity:1}.zp-tris.f7 path:nth-child(7){opacity:1}
+.zp-side .zv-name{font-family:var(--font-kop);font-weight:500;font-size:40px;line-height:1.05;margin:0}
+.zp-side .zv-text{margin:0;font-size:17px;line-height:1.7;color:var(--c-tekst-zacht);max-width:44ch}
+.zp-side .zv-sub{margin:12px 0 0;font-size:12px;font-weight:700;letter-spacing:.18em;text-transform:uppercase;color:var(--c-accent)}
+.zp-side .zv-adult{margin:0;font-size:17px;line-height:1.65;max-width:44ch}
+.zp-side .zv-note{margin:4px 0 0;font-size:13px;line-height:1.55;color:#4F574B}
+.zp-side .zv-src{margin:auto 0 0;padding-top:20px;font-size:12px;line-height:1.55;color:#5F665A}
+.zp-row{display:flex;flex-direction:column;gap:12px;align-self:start;padding:0}
+.zp-a{position:relative;display:flex;align-items:center;gap:22px;height:66px;padding:0 30px;border:1px solid color-mix(in srgb, var(--c-creme) 85%, transparent);border-radius:999px;background:color-mix(in srgb, var(--c-creme) 22%, transparent);-webkit-backdrop-filter:blur(6px);backdrop-filter:blur(6px);color:var(--c-donker);font:inherit;text-align:left;cursor:pointer;transition:background .45s,border-color .45s}
+.zp-a:hover{background:color-mix(in srgb, var(--c-creme) 45%, transparent)}
+.zp-a.is-on{background:color-mix(in srgb, var(--c-creme) 94%, transparent);border-color:var(--c-creme)}
+.zp-a:focus-visible{outline:2px solid var(--c-donker);outline-offset:3px}
+.zp-n{font-family:var(--font-kop);font-size:28px;line-height:1;color:var(--c-donker);width:22px;text-align:center}
+.zp-a.is-on .zp-n{color:var(--c-accent)}
+.zp-v{font-size:12px;font-weight:700;letter-spacing:.22em;text-transform:uppercase;color:var(--c-donker)}
+@media (prefers-reduced-motion: reduce){.zp-a{transition:none}}
+@container eb (max-width: 900px){
+ .zp-grid{grid-template-columns:minmax(0,1fr);grid-template-areas:'head' 'row' 'side';row-gap:24px;padding:0 20px}
+ .zp-head{background:none;padding:0;border-radius:0}
+ .zp-head .eb-h2{font-size:40px}
+ .zp-rule{display:none}
+ .zp-side{border-radius:24px 120px 24px 24px;padding:40px 26px 32px}
+ .zp-row{flex-direction:column;height:auto;gap:8px}
+ .zp-a{gap:16px;height:56px;padding:0 22px}
+ .zp-row{padding:0}
+ .zp-a.is-on{height:76px;justify-content:flex-start}
+ .zp-n{font-size:24px;width:22px}
+ .zp-a.is-on .zp-n{font-size:34px}
+ .zp-a.is-on .zp-v{font-family:var(--font-kop);font-size:22px;font-weight:600;letter-spacing:0;text-transform:none}
+}
+</style>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,500;0,600;1,500&amp;family=Mulish:wght@400;600;700&amp;display=swap">
+<style>
+body{margin:0;background:var(--c-donker);color:var(--c-donker)}
+.eb{container-type:inline-size;container-name:eb;position:relative}
+.eb *{box-sizing:border-box}
+.eb a{color:inherit}
+.eb-serif{font-family:var(--font-kop)}
+.eb-wrap{max-width:1200px;margin:0 auto;padding:0 48px}
+.eb-label{font-size:13px;font-weight:700;letter-spacing:.18em;text-transform:uppercase;margin:0 0 16px}
+.eb-h2{font-family:var(--font-kop);font-weight:500;font-size:60px;line-height:1.02;margin:0}
+.eb-lead{font-size:19px;line-height:1.65;margin:0}
+.eb-topnav{position:absolute;top:0;left:0;right:0;z-index:3;display:flex;align-items:center;justify-content:space-between;gap:24px;padding:28px 48px}
+.eb-topnav nav{display:flex;gap:32px;align-items:center;flex-wrap:wrap}
+.eb-topnav nav a{text-decoration:none;font-size:15px;letter-spacing:.05em}
+.eb-topnav nav a:hover{text-decoration:underline;text-underline-offset:6px}
+.eb-hero{position:relative;background:var(--c-salie) url(/hero-aquarel.jpg) center/cover no-repeat;height:980px;overflow:hidden;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:28px;padding:96px 20px 220px}
+.eb-logo{height:520px;width:auto;display:block;position:relative;filter:drop-shadow(0 10px 30px rgba(60,70,55,.22))}
+.eb-btn{display:inline-flex;align-items:center;justify-content:center;min-height:52px;padding:0 28px;border-radius:999px;font-size:16px;font-weight:700;text-decoration:none;letter-spacing:.02em}
+.eb-btn:hover{filter:brightness(1.08)}
+.eb-panel{position:relative;z-index:2}
+.eb-panel+.eb-panel{margin-top:-180px}
+.eb-first{margin-top:-180px}
+.eb-sub{font-size:28px}
+.eb-sec{padding:128px 0 308px}
+.eb-grid2{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:72px}
+.eb-grid3{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:24px}
+/* De zeven: lichte aquarelovalen met de dubbele lijn van het logo */
+.eb-card,.eb-detail{--c:var(--c-lijn);--t:color-mix(in srgb, var(--c-creme) 0%, transparent)}
+.eb-stage{position:relative}
+.eb-track{position:relative;display:grid;grid-template-columns:repeat(7,minmax(0,1fr));gap:14px;padding:12px 0 36px}
+.eb-slide{display:flex;justify-content:center}
+.eb-tri{display:none;position:absolute;top:calc(50% - 30px);z-index:2;width:48px;height:48px;border:0;background:transparent;color:var(--c-bosgroen);align-items:center;justify-content:center;cursor:pointer;border-radius:999px}
+.eb-tri:hover{background:color-mix(in srgb, var(--c-creme) 50%, transparent)}
+.eb-tri:focus-visible{outline:3px solid var(--c-bosgroen);outline-offset:2px}
+.eb-tri-l{left:0}.eb-tri-r{right:0}
+.eb-card{position:relative;width:100%;height:290px;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;gap:8px;padding:30px 14px;border-radius:999px;border:1px solid var(--c);background-color:var(--c-creme);background-image:linear-gradient(var(--t),var(--t)),linear-gradient(color-mix(in srgb, var(--c-creme) 0%, transparent),color-mix(in srgb, var(--c-creme) 0%, transparent)),url(/hero-aquarel.jpg);background-size:auto,auto,1500px auto;color:var(--c-donker);font:inherit;cursor:pointer;transition:transform .25s,box-shadow .25s}
+.eb-card{background:var(--c-creme);border:1px solid var(--c-lijn);box-shadow:0 10px 30px rgba(40,52,40,.16)}
+.eb-card::before{content:"";position:absolute;inset:6px;border-radius:999px;border:1px solid var(--c-lijn);pointer-events:none}
+.eb-card>*{position:relative;z-index:1}
+.eb-card.is-on{background:var(--c-bosgroen);color:var(--c-creme);border-color:var(--c-bosgroen)}
+.eb-card.is-on::before{border-color:color-mix(in srgb, var(--c-goud) 70%, transparent)}
+.eb-card.is-on .eb-cnum{color:var(--c-goud)}
+.eb-card.is-on .eb-tris path:nth-child(odd){fill:var(--c-goud)}.eb-card.is-on .eb-tris path:nth-child(even){fill:var(--c-creme)}
+/* De aquarel van de opening komt terug als ondergrond van de zeven */
+.eb-aquarel{background-image:linear-gradient(color-mix(in srgb, var(--c-creme) 18%, transparent),color-mix(in srgb, var(--c-creme) 18%, transparent)),url(/hero-aquarel.jpg);background-size:cover;background-position:center 40%}
+.eb-tri{background:transparent;color:var(--c-creme)}
+.eb-tri:hover{background:transparent;opacity:.8}
+.eb-card:hover{transform:translateY(-4px)}
+.eb-card:focus-visible{outline:3px solid var(--c-accent);outline-offset:4px}
+.eb-cnum{font-family:var(--font-kop);font-size:46px;line-height:1;font-weight:500;color:var(--c-accent)}
+.eb-cname{font-family:var(--font-kop);font-size:clamp(14px,1.15vw,17px);font-weight:600;line-height:1.15;min-height:2.3em;display:flex;align-items:center;justify-content:center}
+.eb-slide{min-width:0}
+.eb-card{min-width:0}
+.eb-cshort{display:none;font-size:15px;line-height:1.55;color:var(--c-tekst-zacht)}
+.eb-ctri{margin-top:6px;width:84px;height:8px}
+.eb-tris path{opacity:.3}.eb-tris path:nth-child(odd){fill:var(--c-accent)}.eb-tris path:nth-child(even){fill:var(--c-accent-licht)}
+.f1 path:nth-child(1){opacity:1}.f2 path:nth-child(2){opacity:1}.f3 path:nth-child(3){opacity:1}.f4 path:nth-child(4){opacity:1}.f5 path:nth-child(5){opacity:1}.f6 path:nth-child(6){opacity:1}.f7 path:nth-child(7){opacity:1}
+.eb-detail{background-color:var(--c-creme)}
+.eb-dl{color:var(--c-accent)}
+.eb-narrow{display:none}
+/* Merknaam uitgeschreven, zoals de boogtekst in het logo */
+.eb-name{display:flex;flex-direction:column;text-decoration:none;font-family:var(--font-tekst);font-weight:700;text-transform:uppercase;letter-spacing:.18em;line-height:1.5;font-size:12px}
+.eb-name span:first-child{font-weight:400}
+/* Vaste menubalk op desktop die verschijnt zodra je voorbij de opening scrolt */
+.eb-sticky{position:fixed;top:0;left:0;right:0;z-index:20;display:flex;justify-content:space-between;align-items:center;gap:24px;padding:12px 48px;background:color-mix(in srgb, var(--c-creme) 55%, transparent);-webkit-backdrop-filter:blur(14px) saturate(1.1);backdrop-filter:blur(14px) saturate(1.1);color:var(--c-donker);transform:translateY(-110%);transition:transform .3s}
+.eb-sticky.is-in{transform:none}
+.eb-sticky nav{display:flex;gap:28px;align-items:center}
+.eb-sticky nav a{text-decoration:none;font-size:15px;padding:10px 0;border-bottom:2px solid transparent}
+.eb-sticky nav a:hover{border-bottom-color:#A9AE9F}
+.eb-sticky nav a.is-act{border-bottom-color:var(--c-bosgroen);font-weight:700}
+.eb-sticky nav a.eb-btn{border:1px solid var(--c-donker);padding:0 20px;min-height:42px}
+@media (prefers-reduced-motion: reduce){.eb-sticky{transition:none}}
+@container eb (max-width: 1100px){
+ .eb-stage{max-width:400px;margin:0 auto}
+ .eb-track{display:flex;overflow-x:auto;scroll-snap-type:x mandatory;gap:0;padding:12px 0 28px;scrollbar-width:none}
+ .eb-track::-webkit-scrollbar{display:none}
+ .eb-slide{flex:0 0 100%;scroll-snap-align:center}
+ .eb-tri{display:flex}
+ .eb-card{width:236px;height:380px;padding:44px 28px;gap:12px}
+ .eb-card.is-on{background:var(--c-creme);color:var(--c-donker);border-color:var(--c-lijn)}.eb-card.is-on::before{border-color:var(--c-lijn)}.eb-card.is-on .eb-cnum{color:var(--c-accent)}.eb-card.is-on .eb-tris path:nth-child(odd){fill:var(--c-accent)}.eb-card.is-on .eb-tris path:nth-child(even){fill:var(--c-accent-licht)}
+ .eb-cnum{font-size:64px}.eb-cname{font-size:26px}.eb-cshort{display:block}.eb-ctri{width:104px;height:10px}
+ .eb-wide{display:none}.eb-narrow{display:inline}
+ .eb-aquarel{background-image:linear-gradient(color-mix(in srgb, var(--c-creme) 18%, transparent),color-mix(in srgb, var(--c-creme) 18%, transparent)),url(/hero-aquarel-mobiel.jpg);background-position:center top}
+}
+.eb-paper{background-image:url(/papier.png);background-repeat:repeat}
+.eb-dbl{position:relative;background-color:var(--c-creme);border:1px solid var(--c-lijn);border-radius:28px}
+.eb-dbl::after{content:"";position:absolute;inset:6px;border:1px solid var(--c-lijn);border-radius:22px;pointer-events:none}
+.eb-wash{background-image:linear-gradient(color-mix(in srgb, var(--c-donker) 72%, transparent),color-mix(in srgb, var(--c-donker) 72%, transparent)),url(/hero-aquarel.jpg);background-size:cover;background-position:center 70%}
+.eb-wash-soft{background-image:linear-gradient(color-mix(in srgb, var(--c-donker) 88%, transparent),color-mix(in srgb, var(--c-donker) 88%, transparent)),url(/hero-aquarel.jpg);background-size:cover;background-position:center bottom}
+.eb-arrows{display:flex;gap:12px}
+.eb-arrow{width:52px;height:52px;border-radius:999px;border:1px solid var(--c-donker);background:transparent;color:var(--c-donker);display:flex;align-items:center;justify-content:center;cursor:pointer}
+.eb-arrow:hover{background:var(--c-donker);color:var(--c-creme)}
+.eb-agenda-item{display:grid;grid-template-columns:104px minmax(0,1fr) auto;gap:32px;align-items:center;padding:32px 0;border-top:1px solid #4A554D}
+.eb-foot{display:grid;grid-template-columns:1.4fr 1fr 1fr 1.3fr;gap:48px}
+.eb-bottomnav{display:none}
+@media (prefers-reduced-motion: reduce){.eb-card{transition:none}.eb-card:hover{transform:none}}
+@container eb (max-width: 760px){
+ .eb-sticky{display:none}
+ .eb-wrap{padding:0 20px}
+ .eb-topnav{display:none}
+ .eb-hero{height:720px;padding:48px 20px 96px;gap:22px;background-image:url(/hero-aquarel-mobiel.jpg)}
+ .eb-logo{height:390px;filter:none}
+ .eb-h2{font-size:40px}
+ .eb-lead{font-size:17px}
+ .eb-sec{padding:80px 0 136px}
+ .eb-panel+.eb-panel{margin-top:-56px}
+ .eb-first{margin-top:-56px}
+ .eb-sub{font-size:23px}
+ .eb-grid2,.eb-grid3{grid-template-columns:minmax(0,1fr);gap:32px}
+ .eb-arrows{display:none}
+ .eb-agenda-item{grid-template-columns:64px minmax(0,1fr);gap:20px}
+ .eb-agenda-tag{grid-column:2}
+ .eb-foot{grid-template-columns:minmax(0,1fr);gap:36px}
+ .eb-round-l{border-top-left-radius:56px!important}
+ .eb-round-r{border-top-right-radius:56px!important}
+ .eb-detail{padding:32px 24px!important}
+ .eb-photo{height:420px!important}
+ .eb-bottomnav{display:flex;position:sticky;bottom:0;z-index:10;justify-content:space-around;background:var(--c-donker);border-top:1px solid var(--c-tekst-zacht);padding:8px 4px 12px}
+}
+</style>
+</head>
+<body>
+<div class="eb" style="font-family: var(--font-tekst); color: var(--c-donker); background: var(--c-salie); width: 100%">
+
+<div class="eb-sticky" id="sticky">
+<a href="#home" class="eb-name" style="font-size: 11px">
+<span>Centrum voor</span><span>Emotionele Basisbehoeften</span></a>
+<nav aria-label="Menu tijdens scrollen">
+<a href="#behoeften" class="" data-nav="behoeften">Basisbehoeften</a>
+<a href="#aanbod" class="" data-nav="aanbod">Aanbod</a>
+<a href="#agenda" class="" data-nav="agenda">Agenda</a>
+<a href="#over" class="" data-nav="over">Over</a>
+<a href="#contact" class="eb-btn">Contact</a>
+</nav>
+</div>
+
+<!-- ============ HERO ============ -->
+<header id="home" class="eb-hero">
+
+<div class="eb-topnav" style="color: var(--c-donker)">
+<a href="#home" class="eb-name"><span>Centrum voor</span><span>Emotionele Basisbehoeften</span></a>
+<nav aria-label="Hoofdmenu">
+<a href="#behoeften">Basisbehoeften</a>
+<a href="#aanbod">Aanbod</a>
+<a href="#agenda">Agenda</a>
+<a href="#over">Over</a>
+<a href="#contact" class="eb-btn" style="min-height: 44px; padding: 0 22px; border: 1px solid var(--c-donker); font-weight: 600">Contact</a>
+</nav>
+</div>
+
+<img class="eb-logo" data-img="logo" src="/logo-badge.webp" alt="Logo Centrum voor Emotionele Basisbehoeften: een boom met wortels in een ovaal kader, met daaronder CEBB">
+<p data-k="hero-1" class="eb-serif eb-sub" style="position: relative; margin: 0; font-style: italic; color: var(--c-donker); text-align: center; line-height: 1.3">Wat elk kind emotioneel nodig heeft</p>
+<div style="position: relative; display: flex; gap: 12px; flex-wrap: wrap; justify-content: center">
+<a data-k="hero-2" href="#behoeften" class="eb-btn" style="background: var(--c-donker); color: var(--c-creme)">Ontdek de zeven</a>
+<a data-k="hero-3" href="#agenda" class="eb-btn" style="border: 1px solid var(--c-donker); color: var(--c-donker); background: color-mix(in srgb, var(--c-creme) 80%, transparent)">Agenda</a>
+</div>
+</header>
+
+<!-- ============ KERNBOODSCHAP ============ -->
+<section class="eb-panel eb-sec eb-round-l eb-first eb-paper" aria-labelledby="kern-titel" style="background-color: var(--c-creme); border-top-left-radius: 180px">
+<div class="eb-wrap eb-grid2" style="align-items: start">
+<div>
+<p data-k="fundament-1" class="eb-label" style="color: var(--c-accent)">Het fundament</p>
+<h2 data-k="fundament-2" id="kern-titel" class="eb-h2">Wat een kind meemaakt, wordt hoe het naar de wereld kijkt</h2>
+</div>
+<div style="display: flex; flex-direction: column; gap: 22px; padding-top: 8px">
+<p data-k="fundament-3" class="eb-lead" style="color: var(--c-tekst-zacht)">Ieder kind heeft zeven emotionele basisbehoeften. Wat het daarin ervaart, vormt hoe het later naar zichzelf, naar anderen en naar de wereld kijkt. Een tekort laat sporen na. Een teveel ook.</p>
+<p data-k="fundament-4" class="eb-lead" style="color: var(--c-tekst-zacht)">Die verantwoordelijkheid ligt niet alleen bij ouders. Grootouders, leerkrachten, trainers en buren doen er net zo goed toe. Het Centrum voor Emotionele Basisbehoeften maakt kennis uit de schematherapie bereikbaar voor iedereen rond een kind: preventief, onderbouwd en in gewone taal.</p>
+<p data-k="fundament-5" class="eb-serif" style="margin: 12px 0 0; font-size: 34px; font-style: italic; line-height: 1.2; color: var(--c-accent)">It takes a village to raise a child.</p>
+</div>
+</div>
+</section>
+
+<!-- ============ DE ZEVEN (CAROUSEL) ============ -->
+<section id="behoeften" class="eb-panel eb-sec eb-round-r zp" aria-labelledby="zeven-titel" style="background-color: var(--c-salie); border-top-right-radius: 180px">
+<div class="zp-grid">
+<div class="zp-head" data-anchor="1">
+<p data-k="behoeften-1" class="eb-label" style="color: var(--c-accent)">De zeven</p>
+<h2 data-k="behoeften-2" id="zeven-titel" class="eb-h2">Zeven emotionele basisbehoeften</h2>
+<div class="zp-rule"></div>
+</div>
+<div class="zp-side" aria-live="polite">
+<svg class="zp-tris f1" id="zp-tris" role="img" aria-label="Behoefte 1 van 7" width="110" height="10" viewBox="0 0 100 9"><path d="M0 9L5 0L10 9Z"></path><path d="M15 0L20 9L25 0Z"></path><path d="M30 9L35 0L40 9Z"></path><path d="M45 0L50 9L55 0Z"></path><path d="M60 9L65 0L70 9Z"></path><path d="M75 0L80 9L85 0Z"></path><path d="M90 9L95 0L100 9Z"></path></svg>
+<div class="zp-detail" data-detail="1">
+<h3 class="zv-name" data-k="behoefte-1-naam">Veiligheid en verbinding</h3>
+<p class="zv-text" data-k="behoefte-1-tekst">Een kind heeft minstens één volwassene nodig op wie het kan bouwen: voorspelbaar, beschikbaar en warm. Vanuit die veilige plek ervaart het dat het erbij hoort en gewaardeerd wordt. Dit is de basis onder alle andere behoeften.</p>
+<p class="zv-sub" data-k="behoefte-1-sub">Wat volwassenen kunnen doen</p>
+<p class="zv-adult" data-k="behoefte-1-volwassenen">Voorspelbaar en beschikbaar zijn, troosten, en laten merken dat het kind erbij hoort.</p>
+</div>
+<div class="zp-detail" data-detail="2" hidden>
+<h3 class="zv-name" data-k="behoefte-2-naam">Autonomie en competentie</h3>
+<p class="zv-text" data-k="behoefte-2-tekst">Een kind wil de wereld verkennen, zelf kiezen en ervaren wat het kan. Zelfvertrouwen groeit uit eigen ervaring, binnen een omgeving die veilig genoeg is om iets te proberen.</p>
+<p class="zv-sub" data-k="behoefte-2-sub">Wat volwassenen kunnen doen</p>
+<p class="zv-adult" data-k="behoefte-2-volwassenen">Steeds een stukje meer loslaten, het kind laten proberen, en erin geloven dat het lukt.</p>
+</div>
+<div class="zp-detail" data-detail="3" hidden>
+<h3 class="zv-name" data-k="behoefte-3-naam">Realistische grenzen</h3>
+<p class="zv-text" data-k="behoefte-3-tekst">Grenzen maken de wereld voorspelbaar. Een kind leert er rekening te houden met anderen, frustratie te verdragen en zijn emoties te reguleren. Warmte en stevigheid gaan hier samen.</p>
+<p class="zv-sub" data-k="behoefte-3-sub">Wat volwassenen kunnen doen</p>
+<p class="zv-adult" data-k="behoefte-3-volwassenen">Grenzen stellen met warmte en stevigheid, afgestemd op wat dit kind aankan.</p>
+</div>
+<div class="zp-detail" data-detail="4" hidden>
+<h3 class="zv-name" data-k="behoefte-4-naam">Vrijheid van expressie</h3>
+<p class="zv-text" data-k="behoefte-4-tekst">Een kind mag voelen wat het voelt en zeggen wat het denkt, zonder angst voor afwijzing of straf. Wie zich mag uiten, leert dat hij mag zijn wie hij is.</p>
+<p class="zv-sub" data-k="behoefte-4-sub">Wat volwassenen kunnen doen</p>
+<p class="zv-adult" data-k="behoefte-4-volwassenen">Nieuwsgierig luisteren, ook naar boosheid en verdriet, zonder het gevoel weg te praten.</p>
+</div>
+<div class="zp-detail" data-detail="5" hidden>
+<h3 class="zv-name" data-k="behoefte-5-naam">Spontaniteit en spel</h3>
+<p class="zv-text" data-k="behoefte-5-tekst">In spel ontdekt, oefent en verwondert een kind zich, en leert het genieten. Spelen is een manier van leren, en blijft een leven lang belangrijk.</p>
+<p class="zv-sub" data-k="behoefte-5-sub">Wat volwassenen kunnen doen</p>
+<p class="zv-adult" data-k="behoefte-5-volwassenen">Zelf speels durven zijn, en vrije tijd niet volplannen.</p>
+</div>
+<div class="zp-detail" data-detail="6" hidden>
+<h3 class="zv-name" data-k="behoefte-6-naam">Rechtvaardigheid</h3>
+<p class="zv-text" data-k="behoefte-6-tekst">Een kind wil de wereld leren kennen in een eerlijke sfeer: regels worden uitgelegd en onrecht wordt waar het kan rechtgezet. Dat geeft vertrouwen in anderen en in de wereld.</p>
+<p class="zv-sub" data-k="behoefte-6-sub">Wat volwassenen kunnen doen</p>
+<p class="zv-adult" data-k="behoefte-6-volwassenen">Uitleggen waarom, toegeven als je ongelijk hebt, en onrecht rechtzetten.</p>
+<p class="zv-note" data-k="behoefte-6-noot">Deze behoefte is theoretisch voorgesteld (Arntz e.a., 2021) en nog niet empirisch getoetst.</p>
+</div>
+<div class="zp-detail" data-detail="7" hidden>
+<h3 class="zv-name" data-k="behoefte-7-naam">Zelfcoherentie</h3>
+<p class="zv-text" data-k="behoefte-7-tekst">Het verlangen jezelf als samenhangend geheel te zien, je psychisch gezond te voelen en een zinvol leven te leiden. Deze behoefte wordt vervuld als de andere zes goed in elkaar grijpen.</p>
+<p class="zv-sub" data-k="behoefte-7-sub">Wat volwassenen kunnen doen</p>
+<p class="zv-adult" data-k="behoefte-7-volwassenen">De andere zes behoeften zo goed mogelijk samen laten komen. Deze behoefte groeit mee.</p>
+<p class="zv-note" data-k="behoefte-7-noot">Deze behoefte is theoretisch voorgesteld (Arntz e.a., 2021) en nog niet empirisch getoetst.</p>
+</div>
+<p class="zv-src" data-k="behoeften-bron">De zeven basisbehoeften zoals de Vereniging voor Schematherapie die hanteert, gebaseerd op Young e.a. (2003) en Arntz e.a. (2021).</p>
+</div>
+<div class="zp-row" role="group" aria-label="Kies een basisbehoefte">
+<button type="button" class="zp-a is-on" data-need="0" aria-pressed="true">
+<span class="zp-n">1</span><span class="zp-v">Veiligheid en verbinding</span>
+</button><button type="button" class="zp-a" data-need="1" aria-pressed="false">
+<span class="zp-n">2</span><span class="zp-v">Autonomie en competentie</span>
+</button><button type="button" class="zp-a" data-need="2" aria-pressed="false">
+<span class="zp-n">3</span><span class="zp-v">Realistische grenzen</span>
+</button><button type="button" class="zp-a" data-need="3" aria-pressed="false">
+<span class="zp-n">4</span><span class="zp-v">Vrijheid van expressie</span>
+</button><button type="button" class="zp-a" data-need="4" aria-pressed="false">
+<span class="zp-n">5</span><span class="zp-v">Spontaniteit en spel</span>
+</button><button type="button" class="zp-a" data-need="5" aria-pressed="false">
+<span class="zp-n">6</span><span class="zp-v">Rechtvaardigheid</span>
+</button><button type="button" class="zp-a" data-need="6" aria-pressed="false">
+<span class="zp-n">7</span><span class="zp-v">Zelfcoherentie</span>
+</button>
+</div>
+</div>
+</section>
+
+<!-- ============ AANBOD ============ -->
+<section id="aanbod" class="eb-panel eb-sec eb-round-l eb-paper" aria-labelledby="aanbod-titel" style="background-color: var(--c-creme); border-top-left-radius: 180px">
+<div class="eb-wrap">
+<div style="max-width: 640px; margin-bottom: 48px">
+<p data-k="aanbod-1" class="eb-label" data-anchor="1" style="color: var(--c-accent)">Aanbod</p>
+<h2 data-k="aanbod-2" id="aanbod-titel" class="eb-h2">Van inzicht naar wat je morgen anders doet</h2>
+</div>
+<div class="eb-grid2" style="gap: 24px">
+<article class="eb-dbl" style="display: flex; flex-direction: column; gap: 16px; padding: 40px 36px">
+<div style="display: flex; justify-content: space-between; align-items: center">
+<svg aria-hidden="true" width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" style="color: var(--c-accent)" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"><path d="M4 6.5c2.5-1.3 5-1.3 8 .5 3-1.8 5.5-1.8 8-.5V18c-2.5-1.3-5-1.3-8 .5-3-1.8-5.5-1.8-8-.5Z"></path><path d="M12 7v11.5"></path></svg>
+<span data-k="aanbod-3" style="font-size: 12px; font-weight: 700; letter-spacing: .12em; text-transform: uppercase; background: var(--c-salie-licht); color: var(--c-donker); padding: 6px 12px; border-radius: 999px">Binnenkort</span>
+</div>
+<h3 data-k="aanbod-4" class="eb-serif" style="margin: 0; font-size: 30px; font-weight: 600">Cursussen</h3>
+<p data-k="aanbod-5" style="margin: 0; font-size: 16px; line-height: 1.65; color: var(--c-tekst-zacht); flex-grow: 1">Verschillende cursussen voor ouders en andere volwassenen rond een kind. Je leert de zeven basisbehoeften herkennen en vertaalt dat naar wat je doet: thuis, in de klas of op het sportveld.</p>
+<a data-k="aanbod-6" href="#agenda" style="font-weight: 700; color: var(--c-accent); text-underline-offset: 5px">Bekijk de agenda</a>
+</article>
+<article class="eb-dbl" style="display: flex; flex-direction: column; gap: 16px; padding: 40px 36px">
+<svg aria-hidden="true" width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" style="color: var(--c-accent)" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3v4"></path><path d="M5 9h14v8H5z"></path><path d="M9 21l3-4 3 4"></path></svg>
+<h3 data-k="aanbod-7" class="eb-serif" style="margin: 0; font-size: 30px; font-weight: 600">Lezingen en voorlichting</h3>
+<p data-k="aanbod-8" style="margin: 0; font-size: 16px; line-height: 1.65; color: var(--c-tekst-zacht); flex-grow: 1">Voor scholen, kinderopvang, sportclubs en organisaties: een heldere introductie in wat kinderen emotioneel nodig hebben.</p>
+<a data-k="aanbod-9" href="#contact" style="font-weight: 700; color: var(--c-accent); text-underline-offset: 5px">Vraag een lezing aan</a>
+</article>
+</div>
+<div style="margin-top: 24px; display: flex; flex-wrap: wrap; gap: 16px 32px; align-items: center; justify-content: space-between; background-color: var(--c-donker); color: var(--c-creme); border-radius: 28px; padding: 28px 36px" class="eb-wash">
+<p data-k="aanbod-10" style="margin: 0; font-size: 17px; line-height: 1.55; max-width: 640px"><strong>In de maak:</strong> een gids over wat een kind nou echt nodig heeft. Volg mee op Substack en hoor het als eerste.</p>
+<a data-k="aanbod-11" data-l="link-substack" href="#substack-link-volgt" class="eb-btn" style="background: var(--c-creme); color: var(--c-donker)">Lees mee op Substack</a>
+</div>
+</div>
+</section>
+
+<!-- ============ AGENDA ============ -->
+<section id="agenda" class="eb-panel eb-sec eb-round-r" aria-labelledby="agenda-titel" style="background-color: var(--c-agenda); color: var(--c-creme); border-top-right-radius: 180px">
+<div class="eb-wrap">
+<div style="max-width: 640px; margin-bottom: 40px">
+<p data-k="agenda-1" class="eb-label" data-anchor="1" style="color: var(--c-goud)">Agenda</p>
+<h2 data-k="agenda-2" id="agenda-titel" class="eb-h2">Kom kennismaken</h2>
+</div>
+
+<div data-agenda></div>
+</div>
+</section>
+
+<!-- ============ OVER ============ -->
+<section id="over" class="eb-panel eb-sec eb-round-l eb-paper" aria-labelledby="over-titel" style="background-color: var(--c-creme); border-top-left-radius: 180px">
+<div data-anchor="1" class="eb-wrap eb-grid2" style="align-items: center">
+<div class="eb-photo" data-img="foto-josta" data-ph style="height: 560px; border-radius: 999px; background-color: #C9CBC3; background-image: linear-gradient(color-mix(in srgb, var(--c-creme) 45%, transparent),color-mix(in srgb, var(--c-creme) 45%, transparent)), url(/hero-aquarel.jpg); background-size: auto, 1400px auto; background-position: 0 0, 30% 85%; border: 1px solid var(--c-lijn); display: flex; align-items: center; justify-content: center; max-width: 380px; width: 100%; justify-self: center">
+<p style="margin: 0; font-size: 14px; color: var(--c-tekst-zacht)">[Foto van Josta]</p>
+</div>
+<div style="display: flex; flex-direction: column; gap: 20px">
+<p data-k="over-1" class="eb-label" style="color: var(--c-accent); margin: 0">Over</p>
+<h2 data-k="over-2" id="over-titel" class="eb-h2">Josta van Brouwershaven</h2>
+<p data-k="over-3" class="eb-lead" style="color: var(--c-tekst-zacht)">Schemacoach in Amersfoort en oprichter van het Centrum voor Emotionele Basisbehoeften.</p>
+<p data-k="over-4" class="eb-lead" style="color: var(--c-tekst-zacht)">[Twee of drie zinnen in je eigen woorden: waarom dit werk, en wat je wilt dat iedereen rond een kind weet.]</p>
+<div><a data-k="over-5" href="#contact" class="eb-btn" style="background: var(--c-donker); color: var(--c-creme)">Neem contact op</a></div>
+</div>
+</div>
+</section>
+
+<!-- ============ FOOTER ============ -->
+<footer id="contact" class="eb-panel eb-round-r eb-wash-soft" style="background-color: var(--c-donker); color: var(--c-creme); border-top-right-radius: 180px; padding-top: 112px; padding-bottom: 48px">
+<div class="eb-wrap">
+<div class="eb-foot" data-anchor="1">
+<div style="display: flex; flex-direction: column; gap: 14px">
+<p class="eb-name" style="margin: 0; font-size: 14px"><span data-k="contact-1">Centrum voor</span><span data-k="contact-2">Emotionele Basisbehoeften</span></p>
+<p data-k="contact-3" style="margin: 0; font-size: 15px; line-height: 1.6; color: var(--c-tekst-licht)">Amersfoort</p>
+</div>
+<div style="display: flex; flex-direction: column; gap: 12px">
+<p data-k="contact-4" class="eb-label" style="color: var(--c-goud); margin: 0 0 4px">Contact</p>
+<a data-k="contact-5" data-l="link-mail" href="mailto:emotionelebasisbehoeften@gmail.com" style="font-size: 16px; text-underline-offset: 5px">emotionelebasisbehoeften@gmail.com</a>
+<p data-k="contact-6" style="margin: 0; font-size: 16px">[telefoonnummer]</p>
+<a data-k="contact-7" data-l="link-website" href="https://emotionelebasisbehoeften.nl" style="font-size: 16px; text-underline-offset: 5px">emotionelebasisbehoeften.nl</a>
+</div>
+<div style="display: flex; flex-direction: column; gap: 12px">
+<p data-k="contact-8" class="eb-label" style="color: var(--c-goud); margin: 0 0 4px">Volg</p>
+<a data-k="contact-9" data-l="link-instagram" href="https://www.instagram.com/emotionelebasisbehoeften/" style="font-size: 16px; text-underline-offset: 5px">Instagram</a>
+<a data-k="contact-10" data-l="link-linkedin" href="#linkedin-link-volgt" style="font-size: 16px; text-underline-offset: 5px">LinkedIn</a>
+<p data-k="contact-11" style="margin: 0; font-size: 14px; color: var(--c-tekst-licht)">@emotionelebasisbehoeften</p>
+</div>
+<div style="display: flex; flex-direction: column; gap: 16px; background: var(--c-agenda); border-radius: 24px; padding: 28px">
+<p data-k="contact-12" class="eb-label" style="color: var(--c-goud); margin: 0">Substack</p>
+<p data-k="contact-13" style="margin: 0; font-size: 16px; line-height: 1.6; color: var(--c-tekst-licht-sterk)">Korte stukken over wat kinderen emotioneel nodig hebben, rechtstreeks in je inbox.</p>
+<div><a data-k="contact-14" data-l="link-substack" href="#substack-link-volgt" class="eb-btn" style="background: var(--c-creme); color: var(--c-donker)">Abonneer gratis</a></div>
+</div>
+</div>
+<div style="margin-top: 72px; padding-top: 24px; border-top: 1px solid var(--c-tekst-zacht); display: flex; flex-wrap: wrap; gap: 8px 24px; justify-content: space-between; font-size: 13px; color: var(--c-tekst-licht)">
+<span data-k="contact-15">© 2026 Centrum voor Emotionele Basisbehoeften · KvK [nummer]</span>
+<a data-k="contact-16" data-l="link-privacy" href="#privacy-link-volgt" style="color: var(--c-tekst-licht)">Privacyverklaring</a>
+</div>
+</div>
+</footer>
+
+<!-- ============ MOBIEL MENU ONDERIN ============ -->
+<nav class="eb-bottomnav" aria-label="Menu">
+<a href="#home" style="display: flex; flex-direction: column; align-items: center; gap: 4px; min-width: 64px; min-height: 52px; justify-content: center; text-decoration: none; color: var(--c-creme); font-size: 11px; font-weight: 600"><svg aria-hidden="true" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M4 11l8-6.5 8 6.5"></path><path d="M6 9.5V20h12V9.5"></path></svg>Home</a>
+<a href="#behoeften" style="display: flex; flex-direction: column; align-items: center; gap: 4px; min-width: 64px; min-height: 52px; justify-content: center; text-decoration: none; color: var(--c-creme); font-size: 11px; font-weight: 600"><svg aria-hidden="true" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M12 21V11"></path><path d="M12 11C12 6 15 3.5 19.5 3.5 19.5 8 17 11 12 11Z"></path><path d="M12 14C12 10 9.5 8 5 8 5 12 7.5 14 12 14Z"></path></svg>Behoeften</a>
+<a href="#aanbod" style="display: flex; flex-direction: column; align-items: center; gap: 4px; min-width: 64px; min-height: 52px; justify-content: center; text-decoration: none; color: var(--c-creme); font-size: 11px; font-weight: 600"><svg aria-hidden="true" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><rect x="4" y="4" width="7" height="7" rx="1.5"></rect><rect x="13" y="4" width="7" height="7" rx="1.5"></rect><rect x="4" y="13" width="7" height="7" rx="1.5"></rect><rect x="13" y="13" width="7" height="7" rx="1.5"></rect></svg>Aanbod</a>
+<a href="#agenda" style="display: flex; flex-direction: column; align-items: center; gap: 4px; min-width: 64px; min-height: 52px; justify-content: center; text-decoration: none; color: var(--c-creme); font-size: 11px; font-weight: 600"><svg aria-hidden="true" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><rect x="4" y="5.5" width="16" height="14.5" rx="2"></rect><path d="M4 10h16"></path><path d="M8.5 3.5v4"></path><path d="M15.5 3.5v4"></path></svg>Agenda</a>
+<a href="#contact" style="display: flex; flex-direction: column; align-items: center; gap: 4px; min-width: 64px; min-height: 52px; justify-content: center; text-decoration: none; color: var(--c-creme); font-size: 11px; font-weight: 600"><svg aria-hidden="true" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><rect x="3.5" y="5.5" width="17" height="13" rx="2"></rect><path d="M4 7l8 6 8-6"></path></svg>Contact</a>
+</nav>
+
+</div>
+<script>
+(function(){
+var sel=0;
+var items=Array.prototype.slice.call(document.querySelectorAll('[data-need]'));
+var details=Array.prototype.slice.call(document.querySelectorAll('[data-detail]'));
+function naam(n){var el=document.querySelector('[data-k="behoefte-'+n+'-naam"]');return el?el.textContent.trim():'';}
+function labels(){items.forEach(function(b,i){var v=b.querySelector('.zp-v'); if(v) v.textContent=naam(i+1);});}
+function select(i){
+  sel=(i+7)%7;
+  items.forEach(function(b){var on=+b.getAttribute('data-need')===sel; b.classList.toggle('is-on',on); b.setAttribute('aria-pressed',on?'true':'false');});
+  details.forEach(function(d){d.hidden=+d.getAttribute('data-detail')!==sel+1;});
+  var t=document.getElementById('zp-tris'); if(t){t.setAttribute('class','zp-tris f'+(sel+1)); t.setAttribute('aria-label','Behoefte '+(sel+1)+' van 7');}
+}
+items.forEach(function(b){b.addEventListener('click',function(){select(+b.getAttribute('data-need'));});});
+labels(); select(0);
+document.addEventListener('input',function(e){if(e.target.closest&&e.target.closest('.zv-name')) labels();});
+/* menu: naar het kopje van een onderdeel, met ruimte voor de menubalk */
+document.addEventListener('click',function(e){
+  var a=e.target.closest&&e.target.closest('a[href^="#"]'); if(!a) return;
+  var id=a.getAttribute('href').slice(1); var el=id&&document.getElementById(id);
+  e.preventDefault(); if(!el) return;
+  if(id==='home'){window.scrollTo({top:0,behavior:'smooth'});return;}
+  var t=el.querySelector('[data-anchor]')||el, narrow=window.innerWidth<=760;
+  window.scrollTo({top:Math.max(0,t.getBoundingClientRect().top+window.scrollY-(narrow?16:96)),behavior:'smooth'});
+});
+/* vaste menubalk en actief onderdeel */
+var bar=document.getElementById('sticky'), links=Array.prototype.slice.call(document.querySelectorAll('[data-nav]'));
+function onWin(){
+  bar.classList.toggle('is-in',window.scrollY>560);
+  var act='';
+  ['behoeften','aanbod','agenda','over','contact'].forEach(function(id){var el=document.getElementById(id); if(el&&el.getBoundingClientRect().top<160) act=id;});
+  links.forEach(function(l){l.classList.toggle('is-act',l.getAttribute('data-nav')===act);});
+}
+window.addEventListener('scroll',onWin,{passive:true}); onWin();
+})();
+</script>
+</body>
+</html>
