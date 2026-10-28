@@ -39,9 +39,10 @@ async function route(request, env, ctx) {
   const path = url.pathname;
   const method = request.method;
 
-  // Altijd naar het hoofddomein zonder www.
-  if (url.hostname === 'www.emotionelebasisbehoeften.nl') {
-    url.hostname = 'emotionelebasisbehoeften.nl';
+  // Altijd via https en naar het hoofddomein zonder www.
+  if (url.hostname === 'www.emotionelebasisbehoeften.nl' || (url.protocol === 'http:' && url.hostname !== 'localhost')) {
+    url.hostname = url.hostname.replace(/^www\./, '');
+    url.protocol = 'https:';
     return Response.redirect(url.toString(), 301);
   }
 
@@ -169,6 +170,9 @@ function withSecurity(res, url, admin = false) {
   const r = new Response(res.body, res);
   r.headers.set('x-content-type-options', 'nosniff');
   r.headers.set('referrer-policy', 'strict-origin-when-cross-origin');
+  // Laat de browser alles via https laden, ook een plaatje of link die per ongeluk met http:// is ingevuld.
+  r.headers.set('content-security-policy', 'upgrade-insecure-requests');
+  if (url.hostname === 'emotionelebasisbehoeften.nl') r.headers.set('strict-transport-security', 'max-age=86400');
   if (admin) {
     r.headers.set('x-frame-options', 'DENY');
     r.headers.set('cross-origin-opener-policy', 'same-origin-allow-popups');
