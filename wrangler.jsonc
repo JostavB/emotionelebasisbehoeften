@@ -14,8 +14,8 @@
     // Wie mag inloggen op /admin (komma-gescheiden Google-accounts).
     "ADMIN_EMAILS": "jd.vanbrouwershaven@gmail.com,emotionelebasisbehoeften@gmail.com",
     // Client-ID uit Google Cloud Console (OAuth, type Webapplicatie). Niet geheim.
-    // Dezelfde client als het Groeikwartier; dit domein moet daar als toegestane oorsprong staan.
-    "GOOGLE_CLIENT_ID": "857704209749-lmm6p5m53d7m5ei8j7l134iqo0fh9npq.apps.googleusercontent.com"
+    // Project "Basisbehoeften website" onder jd.vanbrouwershaven@gmail.com.
+    "GOOGLE_CLIENT_ID": "542018349659-q5pioera0pmlsr23d7l0fkndm3vmj5dg.apps.googleusercontent.com"
   },
   "observability": { "enabled": true }
 }
