@@ -71,6 +71,12 @@ body{margin:0;background:var(--c-donker);color:var(--c-donker)}
 .eb-logo{height:min(520px,calc(100svh - 310px));min-height:260px;width:auto;display:block;position:relative;filter:drop-shadow(0 10px 30px rgba(60,70,55,.22))}
 .eb-btn{display:inline-flex;align-items:center;justify-content:center;min-height:52px;padding:0 28px;border-radius:999px;font-size:16px;font-weight:700;text-decoration:none;letter-spacing:.02em}
 .eb-btn:hover{filter:brightness(1.08)}
+.eb-btn-hero{border:0;transition:background-color .2s,transform .2s,box-shadow .2s,filter .2s}
+.eb-btn-groen{background:#4F6B52}
+.eb-btn-agenda{background:color-mix(in srgb, var(--c-creme) 80%, transparent)}
+.eb-btn-hero:hover{transform:translateY(-2px);box-shadow:0 6px 18px color-mix(in srgb, var(--c-donker) 28%, transparent);filter:none}
+.eb-btn-groen:hover{background:#5E7C61}
+.eb-btn-agenda:hover{background:color-mix(in srgb, var(--c-creme) 97%, transparent)}
 .eb-panel{position:relative;z-index:2}
 .eb-panel+.eb-panel{margin-top:-180px}
 .eb-first{margin-top:-180px}
@@ -275,8 +281,8 @@ body{margin:0;background:var(--c-donker);color:var(--c-donker)}
 <img class="eb-logo" data-img="logo" src="/logo-badge.webp?v=3" alt="Logo Centrum voor Emotionele Basisbehoeften: een boom met wortels in een ovaal kader, met daaronder CEBB">
 <p data-k="hero-1" class="eb-serif eb-sub" style="position: relative; margin: 0; color: var(--c-creme); text-shadow: 0 1px 3px color-mix(in srgb, var(--c-donker) 75%, transparent), 0 0 14px color-mix(in srgb, var(--c-donker) 55%, transparent); text-align: center; line-height: 1.3">Ontdek de emotionele basisbehoeften van een kind</p>
 <div style="position: relative; display: flex; gap: 12px; flex-wrap: wrap; justify-content: center">
-<a data-k="hero-2" href="#behoeften" class="eb-btn" style="background: var(--c-donker); color: var(--c-creme)">Ontdek de zeven</a>
-<a data-k="hero-3" href="#agenda" class="eb-btn" style="border: 1px solid var(--c-donker); color: var(--c-donker); background: color-mix(in srgb, var(--c-creme) 80%, transparent)">Agenda</a>
+<a data-k="hero-2" href="#behoeften" class="eb-btn eb-btn-hero eb-btn-groen" style="color: var(--c-creme)">Ontdek de zeven</a>
+<a data-k="hero-3" href="#agenda" class="eb-btn eb-btn-hero eb-btn-agenda" style="color: var(--c-donker)">Agenda</a>
 </div>
 </header>
 
