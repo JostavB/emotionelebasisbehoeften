@@ -15,11 +15,11 @@ html[data-admin] .eb-bottomnav{display:none}
 
 /* Optie B: zijvlak links met grote bocht (zoals het inspiratiebeeld), rechts zeven bogen die openschuiven */
 .zp{background-image:linear-gradient(color-mix(in srgb, var(--c-creme) 12%, transparent),color-mix(in srgb, var(--c-creme) 12%, transparent)),url(/hero-aquarel.jpg)!important;background-size:cover!important;background-position:center 40%!important}
-.zp-grid{display:grid;grid-template-columns:minmax(0,5fr) minmax(0,7fr);grid-template-areas:'head .' 'side row';column-gap:56px;row-gap:0;padding-right:max(48px,calc((100% - 1104px)/2))}
-.zp-head{grid-area:head;background:var(--c-zijvlak) url(/papier.png);border-radius:0 220px 0 0;padding:64px 56px 0 max(48px,calc((100vw - 1104px)/2))}
+.zp-grid{--pl:max(48px,calc((100cqw - 1104px)/2));--zw:clamp(300px,30cqw,420px);display:grid;grid-template-columns:calc(var(--pl) + var(--zw) + 72px) minmax(0,1fr);grid-template-areas:'head .' 'side row';column-gap:56px;row-gap:0;padding-right:var(--pl)}
+.zp-head{grid-area:head;background:var(--c-zijvlak) url(/papier.png);border-radius:0 220px 0 0;padding:64px 56px 0 var(--pl)}
 .zp-head .eb-h2{font-size:50px}
 .zp-row{grid-area:row}
-.zp-side{grid-area:side;background:var(--c-zijvlak) url(/papier.png);border-radius:0 0 28px 0;padding:0 72px 48px max(48px,calc((100vw - 1104px)/2));display:flex;flex-direction:column;gap:14px}
+.zp-side{grid-area:side;background:var(--c-zijvlak) url(/papier.png);border-radius:0 0 28px 0;padding:0 72px 48px var(--pl);display:flex;flex-direction:column;gap:14px}
 .zp-rule{height:1px;background:#B7AE9B;margin:28px 0 22px;width:64px}
 .zp-tris{display:block;margin:0 0 6px;width:140px;height:13px}
 .zp-tris path{opacity:.28;transition:opacity .3s}.zp-tris path:nth-child(odd){fill:var(--c-accent)}.zp-tris path:nth-child(even){fill:var(--c-accent-licht)}
@@ -202,6 +202,9 @@ body{margin:0;background:var(--c-donker);color:var(--c-donker)}
  .eb .eb-h2{font-size:32px}
  .eb .eb-name{font-size:18px!important}
  .eb .zp-side .zv-name{font-size:18px}
+}
+@container eb (min-width: 901px){
+ .eb .zp-head .eb-h2{font-size:clamp(34px,3.4cqw,40px)}
 }
 @container eb (max-width: 900px){
  .zp-head .eb-h2{font-size:32px}
