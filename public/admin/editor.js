@@ -409,8 +409,8 @@ function applyColors() {
 
 function applyFonts() {
   const root = document.documentElement.style;
-  root.setProperty('--font-kop', FONTS_KOP[content.fonts.kop] || FONTS_KOP['Cormorant Garamond']);
-  root.setProperty('--font-tekst', FONTS_TEKST[content.fonts.tekst] || FONTS_TEKST.Avenir);
+  root.setProperty('--font-kop', FONTS_KOP[content.fonts.kop] || FONTS_KOP[STANDAARD_KOP]);
+  root.setProperty('--font-tekst', FONTS_TEKST[content.fonts.tekst] || FONTS_TEKST[STANDAARD_TEKST]);
   const link = fontLink([content.fonts.kop, content.fonts.tekst]);
   if (link) {
     const tmp = h('div'); tmp.innerHTML = link;

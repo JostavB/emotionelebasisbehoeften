@@ -2,6 +2,7 @@
 // lettertypen, kleuren en het opbouwen van agenda-items.
 
 export const FONTS_KOP = {
+  'Asap Condensed': "'Asap Condensed', 'Avenir Next Condensed', system-ui, sans-serif",
   'Cormorant Garamond': "'Cormorant Garamond', Georgia, serif",
   'Playfair Display': "'Playfair Display', Georgia, serif",
   'Lora': "'Lora', Georgia, serif",
@@ -10,6 +11,7 @@ export const FONTS_KOP = {
 };
 
 export const FONTS_TEKST = {
+  'Montserrat': "'Montserrat', system-ui, sans-serif",
   'Mulish': "'Mulish', system-ui, sans-serif",
   'Nunito Sans': "'Nunito Sans', system-ui, sans-serif",
   'Source Sans 3': "'Source Sans 3', system-ui, sans-serif",
@@ -18,11 +20,11 @@ export const FONTS_TEKST = {
   'Avenir': "'Avenir Next', 'Avenir', 'Nunito Sans', sans-serif",
 };
 
-export const STANDAARD_KOP = 'Cormorant Garamond';
-export const STANDAARD_TEKST = 'Mulish';
+export const STANDAARD_KOP = 'Playfair Display';
+export const STANDAARD_TEKST = 'Montserrat';
 
 // Al geladen door het sjabloon zelf.
-const PRELOADED = new Set(['Cormorant Garamond', 'Mulish', 'Avenir']);
+const PRELOADED = new Set(['Playfair Display', 'Montserrat', 'Cormorant Garamond', 'Mulish', 'Avenir']);
 
 export function fontLink(names) {
   const fams = names.filter((n) => n && !PRELOADED.has(n));

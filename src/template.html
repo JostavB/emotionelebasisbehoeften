@@ -6,7 +6,7 @@
 <title>Centrum voor Emotionele Basisbehoeften</title>
 <meta name="description" content="Wat elk kind emotioneel nodig heeft. Kennis over de zeven emotionele basisbehoeften voor ouders en iedereen rond een kind.">
 <style>
-:root{--c-donker:#1F2622;--c-creme:#F1EEE6;--c-accent:#6E5232;--c-goud:#D2BE97;--c-tekst-zacht:#3A4536;--c-tekst-licht:#B9BDB1;--c-tekst-licht-sterk:#E1DED5;--c-lijn:#8C7A5E;--c-bosgroen:#2A3F2E;--c-agenda:#2C3530;--c-zijvlak:#E7E5DC;--c-salie:#A9AE96;--c-salie-licht:#D9DACF;--c-accent-licht:#A88B67;--font-kop:'Cormorant Garamond',Georgia,serif;--font-tekst:'Mulish',system-ui,sans-serif}
+:root{--c-donker:#1F2622;--c-creme:#F1EEE6;--c-accent:#6E5232;--c-goud:#D2BE97;--c-tekst-zacht:#3A4536;--c-tekst-licht:#B9BDB1;--c-tekst-licht-sterk:#E1DED5;--c-lijn:#8C7A5E;--c-bosgroen:#2A3F2E;--c-agenda:#2C3530;--c-zijvlak:#E7E5DC;--c-salie:#A9AE96;--c-salie-licht:#D9DACF;--c-accent-licht:#A88B67;--font-kop:'Playfair Display',Georgia,serif;--font-tekst:'Montserrat',system-ui,sans-serif}
 [data-k]{zoom:var(--fs,1)}
 .eb-agenda-item:last-child{border-bottom:1px solid var(--c-agenda-lijn,#4A554D)}
 .zp-detail[hidden]{display:none}
@@ -55,7 +55,7 @@ html[data-admin] .eb-bottomnav{display:none}
 }
 </style>
 <link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,500;0,600;1,500&amp;family=Mulish:wght@400;600;700&amp;display=swap">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,500;0,600;1,500&amp;family=Mulish:wght@400;600;700&amp;family=Montserrat:wght@400;500;600;700&amp;family=Playfair+Display:ital,wght@0,400;0,500;0,600;1,400&amp;display=swap">
 <style>
 body{margin:0;background:var(--c-donker);color:var(--c-donker)}
 .eb{container-type:inline-size;container-name:eb;position:relative}
@@ -173,6 +173,40 @@ body{margin:0;background:var(--c-donker);color:var(--c-donker)}
  .eb-detail{padding:32px 24px!important}
  .eb-photo{height:420px!important}
  .eb-bottomnav{display:flex;position:sticky;bottom:0;z-index:10;justify-content:space-around;background:var(--c-donker);border-top:1px solid var(--c-tekst-zacht);padding:8px 4px 12px}
+}
+
+/* ===== Huisstijl-typografie: sierlijke kopletter + Montserrat (tekst) ===== */
+.eb{font-synthesis:none;font-variant-numeric:lining-nums}
+/* Koppen: grote koppen gewoon geschreven, kleinere koppen in hoofdletters */
+.eb .eb-h2,.eb .zv-name,.eb h3.eb-serif,.eb .eb-sub,.eb .eb-cname{font-weight:400;letter-spacing:0;line-height:1.2;text-transform:none}
+.eb h3.eb-serif,.eb .eb-cname{text-transform:uppercase;letter-spacing:.06em}
+/* De uitgelichte basisbehoefte blijft in Montserrat */
+.eb .zp-side .zv-name{font-family:var(--font-tekst)!important;font-weight:500;text-transform:uppercase;letter-spacing:.12em;line-height:1.35}
+.eb .eb-h2{font-size:40px}
+.zp-head .eb-h2{font-size:40px}
+.eb .zp-side .zv-name{font-size:20px}
+/* Merknaam bovenaan voluit, zelfde ruimte als voorheen */
+.eb .eb-name{font-family:var(--font-kop);font-weight:400;text-transform:none;letter-spacing:.01em;line-height:1.15;font-size:20px!important}
+.eb .eb-name span:first-child{font-weight:400}
+.eb .eb-sticky .eb-name{font-size:17px!important}
+.eb p.eb-name{font-size:20px!important}
+/* Kleine kopjes boven de koppen: Montserrat Medium 12px, hoofdletters, 20% letterafstand */
+.eb .eb-label,.eb .zp-side .zv-sub,.eb .zp-v{font-family:var(--font-tekst);font-size:12px;font-weight:500;letter-spacing:.2em;text-transform:uppercase}
+/* Lopende tekst: Montserrat 16px, regelhoogte 36px */
+.eb .eb-lead,.eb .zp-side .zv-text,.eb .zp-side .zv-adult,.eb .eb-cshort,
+.eb p[style*="font-size: 16px"],.eb p[style*="font-size: 17px"],.eb p[style*="font-size: 15px"]{font-size:16px!important;line-height:36px!important}
+/* Knoppen: Montserrat Medium 13px, hoofdletters */
+.eb .eb-foot p[style*="font-size"]{line-height:1.7!important}
+.eb .eb-btn{font-family:var(--font-tekst);font-size:13px;font-weight:500;letter-spacing:.15em;text-transform:uppercase}
+.eb .eb-topnav nav a,.eb .eb-sticky nav a{font-size:14px}
+@container eb (max-width: 760px){
+ .eb .eb-h2{font-size:32px}
+ .eb .eb-name{font-size:18px!important}
+ .eb .zp-side .zv-name{font-size:18px}
+}
+@container eb (max-width: 900px){
+ .zp-head .eb-h2{font-size:32px}
+ .zp-a.is-on .zp-v{font-family:var(--font-tekst);font-size:14px;font-weight:600;letter-spacing:.14em;text-transform:uppercase}
 }
 </style>
 </head>
