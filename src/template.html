@@ -146,12 +146,13 @@ body{margin:0;background:var(--c-donker);color:var(--c-donker)}
 .eb-foot{display:grid;grid-template-columns:1.4fr 1fr 1fr 1.3fr;gap:48px}
 .eb-bottomnav{display:none}
 @media (prefers-reduced-motion: reduce){.eb-card{transition:none}.eb-card:hover{transform:none}}
+.eb{overflow-x:clip}
 @container eb (max-width: 760px){
  .eb-sticky{display:none}
  .eb-wrap{padding:0 20px}
  .eb-topnav{display:none}
- .eb-hero{height:720px;padding:48px 20px 96px;gap:22px;background-image:url(/hero-aquarel-mobiel.jpg)}
- .eb-logo{height:390px;filter:none}
+ .eb-hero{height:calc(100svh - 52px);min-height:560px;max-height:760px;padding:28px 20px 24px;gap:18px;background-image:url(/hero-aquarel-mobiel.jpg)}
+ .eb-logo{height:min(390px,calc(100svh - 330px));min-height:220px;filter:none}
  .eb-h2{font-size:40px}
  .eb-lead{font-size:17px}
  .eb-sec{padding:80px 0 136px}
@@ -167,7 +168,8 @@ body{margin:0;background:var(--c-donker);color:var(--c-donker)}
  .eb-round-r{border-top-right-radius:56px!important}
  .eb-detail{padding:32px 24px!important}
  .eb-photo{height:420px!important}
- .eb-bottomnav{display:flex;position:sticky;bottom:0;z-index:10;justify-content:space-around;background:var(--c-donker);border-top:1px solid var(--c-tekst-zacht);padding:8px 4px 12px}
+ .eb-bottomnav{display:flex;position:sticky;bottom:0;z-index:10;justify-content:space-around;background:var(--c-donker);border-top:1px solid var(--c-tekst-zacht);padding:4px 4px 2px}
+ .eb-bottomnav a{min-height:44px!important;gap:2px!important}
 }
 
 /* ===== Huisstijl-typografie: sierlijke kopletter + Montserrat (tekst) ===== */
