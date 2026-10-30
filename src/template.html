@@ -75,8 +75,6 @@ body{margin:0;background:var(--c-donker);color:var(--c-donker)}
 .eb-panel+.eb-panel{margin-top:-180px}
 .eb-first{margin-top:-180px}
 .eb-sub{font-size:28px}
-.eb-herotekst{position:relative;display:flex;flex-direction:column;align-items:center;gap:12px;max-width:760px;text-align:center}
-.eb-herokop{position:relative;margin:0;color:var(--c-donker);font-size:44px;text-align:center}
 .eb-sec{padding:128px 0 308px}
 .eb-grid2{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:72px}
 .eb-grid3{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:24px}
@@ -163,8 +161,6 @@ body{margin:0;background:var(--c-donker);color:var(--c-donker)}
  .eb-panel+.eb-panel{margin-top:-56px}
  .eb-first{margin-top:-56px}
  .eb-sub{font-size:clamp(19px,5.85vw,23px)}
- .eb-herokop{font-size:clamp(26px,8vw,34px)}
- .eb-herotekst{gap:8px}
  .eb-grid2,.eb-grid3{grid-template-columns:minmax(0,1fr);gap:32px}
  .eb-arrows{display:none}
  .eb-agenda-item{grid-template-columns:64px minmax(0,1fr);gap:20px}
@@ -181,7 +177,7 @@ body{margin:0;background:var(--c-donker);color:var(--c-donker)}
 /* ===== Huisstijl-typografie: sierlijke kopletter + Montserrat (tekst) ===== */
 .eb{font-synthesis:none;font-variant-numeric:lining-nums}
 /* Koppen: grote koppen gewoon geschreven, kleinere koppen in hoofdletters */
-.eb .eb-h2,.eb .zv-name,.eb h3.eb-serif,.eb .eb-sub,.eb .eb-herokop,.eb .eb-cname{font-weight:400;letter-spacing:0;line-height:1.2;text-transform:none}
+.eb .eb-h2,.eb .zv-name,.eb h3.eb-serif,.eb .eb-sub,.eb .eb-cname{font-weight:400;letter-spacing:0;line-height:1.2;text-transform:none}
 .eb h3.eb-serif,.eb .eb-cname{text-transform:uppercase;letter-spacing:.06em}
 /* De uitgelichte basisbehoefte blijft in Montserrat */
 .eb .zp-side .zv-name{font-family:var(--font-tekst)!important;font-weight:500;text-transform:uppercase;letter-spacing:.12em;line-height:1.35}
@@ -276,10 +272,7 @@ body{margin:0;background:var(--c-donker);color:var(--c-donker)}
 </div>
 
 <img class="eb-logo" data-img="logo" src="/logo-badge.webp?v=3" alt="Logo Centrum voor Emotionele Basisbehoeften: een boom met wortels in een ovaal kader, met daaronder CEBB">
-<div class="eb-herotekst">
-<h1 data-k="hero-0" class="eb-serif eb-herokop">Wat heeft een kind van jou nodig?</h1>
-<p data-k="hero-1" class="eb-serif eb-sub" style="position: relative; margin: 0; color: var(--c-donker); text-align: center; line-height: 1.3">Ontdek de emotionele basisbehoeften van een kind en leer ze herkennen en vervullen.</p>
-</div>
+<p data-k="hero-1" class="eb-serif eb-sub" style="position: relative; margin: 0; color: var(--c-donker); text-align: center; line-height: 1.3">Ontdek de emotionele basisbehoeften van een kind</p>
 <div style="position: relative; display: flex; gap: 12px; flex-wrap: wrap; justify-content: center">
 <a data-k="hero-2" href="#behoeften" class="eb-btn" style="background: var(--c-donker); color: var(--c-creme)">Ontdek de zeven</a>
 <a data-k="hero-3" href="#agenda" class="eb-btn" style="border: 1px solid var(--c-donker); color: var(--c-donker); background: color-mix(in srgb, var(--c-creme) 80%, transparent)">Agenda</a>
