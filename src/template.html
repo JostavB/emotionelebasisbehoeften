@@ -217,7 +217,9 @@ body{margin:0;background:var(--c-donker);color:var(--c-donker)}
 @media (prefers-reduced-motion: reduce){.zp-chev{transition:none}}
 
 /* Driehoekjes in de kleuren van het logo; de gekozen basisbehoefte vol, de rest gedempt */
-.zp-tris path{opacity:.42}
+.zp-tris{overflow:visible}
+.zp-tris path{opacity:.4;transform-box:fill-box;transform-origin:center;transition:opacity .3s,transform .3s}
+.zp-tris.f1 path:nth-child(1){transform:scale(1.45)}.zp-tris.f2 path:nth-child(2){transform:scale(1.45)}.zp-tris.f3 path:nth-child(3){transform:scale(1.45)}.zp-tris.f4 path:nth-child(4){transform:scale(1.45)}.zp-tris.f5 path:nth-child(5){transform:scale(1.45)}.zp-tris.f6 path:nth-child(6){transform:scale(1.45)}.zp-tris.f7 path:nth-child(7){transform:scale(1.45)}
 :root{--c-d1:#C2A072;--c-d2:#807D56;--c-d3:#797852;--c-d4:#384236;--c-d5:#9D9F8C;--c-d6:#BEA075;--c-d7:#946A3F}
 .zp-tris path:nth-child(1){fill:var(--c-d1)}.zp-tris path:nth-child(2){fill:var(--c-d2)}.zp-tris path:nth-child(3){fill:var(--c-d3)}.zp-tris path:nth-child(4){fill:var(--c-d4)}.zp-tris path:nth-child(5){fill:var(--c-d5)}.zp-tris path:nth-child(6){fill:var(--c-d6)}.zp-tris path:nth-child(7){fill:var(--c-d7)}
 
