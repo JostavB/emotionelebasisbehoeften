@@ -67,7 +67,6 @@ body{margin:0;background:var(--c-donker);color:var(--c-donker)}
 .eb-topnav{position:absolute;top:0;left:0;right:0;z-index:3;display:flex;align-items:center;justify-content:space-between;gap:24px;padding:28px 48px}
 .eb-topnav nav{display:flex;gap:32px;align-items:center;flex-wrap:wrap}
 .eb-topnav nav a{text-decoration:none;font-size:15px;letter-spacing:.05em}
-.eb-topnav nav a:hover{text-decoration:underline;text-underline-offset:6px}
 .eb-hero{position:relative;background:var(--c-salie) url(/hero-aquarel.jpg) center/cover no-repeat;height:980px;overflow:hidden;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:28px;padding:96px 20px 220px}
 .eb-logo{height:520px;width:auto;display:block;position:relative;filter:drop-shadow(0 10px 30px rgba(60,70,55,.22))}
 .eb-btn{display:inline-flex;align-items:center;justify-content:center;min-height:52px;padding:0 28px;border-radius:999px;font-size:16px;font-weight:700;text-decoration:none;letter-spacing:.02em}
@@ -120,9 +119,7 @@ body{margin:0;background:var(--c-donker);color:var(--c-donker)}
 .eb-sticky{position:fixed;top:0;left:0;right:0;z-index:20;display:flex;justify-content:space-between;align-items:center;gap:24px;padding:12px 48px;background:color-mix(in srgb, var(--c-creme) 55%, transparent);-webkit-backdrop-filter:blur(14px) saturate(1.1);backdrop-filter:blur(14px) saturate(1.1);color:var(--c-donker);transform:translateY(-110%);transition:transform .3s}
 .eb-sticky.is-in{transform:none}
 .eb-sticky nav{display:flex;gap:28px;align-items:center}
-.eb-sticky nav a{text-decoration:none;font-size:15px;padding:10px 0;border-bottom:2px solid transparent}
-.eb-sticky nav a:hover{border-bottom-color:#A9AE9F}
-.eb-sticky nav a.is-act{border-bottom-color:var(--c-bosgroen);font-weight:700}
+.eb-sticky nav a{text-decoration:none;font-size:15px;padding:10px 0}
 .eb-sticky nav a.eb-btn{border:1px solid var(--c-donker);padding:0 20px;min-height:42px}
 @media (prefers-reduced-motion: reduce){.eb-sticky{transition:none}}
 @container eb (max-width: 1100px){
@@ -218,6 +215,17 @@ body{margin:0;background:var(--c-donker);color:var(--c-donker)}
  .eb .zp-v{letter-spacing:.14em}
 }
 @media (prefers-reduced-motion: reduce){.zp-chev{transition:none}}
+
+/* Driehoekjes in de kleuren van het logo; de gekozen basisbehoefte vol, de rest gedempt */
+.zp-tris path{opacity:.42}
+:root{--c-d1:#C2A072;--c-d2:#807D56;--c-d3:#797852;--c-d4:#384236;--c-d5:#9D9F8C;--c-d6:#BEA075;--c-d7:#946A3F}
+.zp-tris path:nth-child(1){fill:var(--c-d1)}.zp-tris path:nth-child(2){fill:var(--c-d2)}.zp-tris path:nth-child(3){fill:var(--c-d3)}.zp-tris path:nth-child(4){fill:var(--c-d4)}.zp-tris path:nth-child(5){fill:var(--c-d5)}.zp-tris path:nth-child(6){fill:var(--c-d6)}.zp-tris path:nth-child(7){fill:var(--c-d7)}
+
+/* Menu: vetgedrukt bij aanwijzen en bij het onderdeel waar je bent, zonder streep.
+   De onzichtbare vette kopie houdt de breedte gelijk, zodat het menu niet verspringt. */
+.eb-topnav nav a:not(.eb-btn),.eb-sticky nav a:not(.eb-btn){display:inline-flex;flex-direction:column;align-items:center;text-decoration:none}
+.eb-topnav nav a:not(.eb-btn)::after,.eb-sticky nav a:not(.eb-btn)::after{content:attr(data-label);font-weight:700;height:0;overflow:hidden;visibility:hidden;pointer-events:none}
+.eb-topnav nav a:not(.eb-btn):hover,.eb-sticky nav a:not(.eb-btn):hover,.eb-sticky nav a.is-act,.eb-topnav nav a.is-act{font-weight:700}
 </style>
 </head>
 <body>
@@ -487,10 +495,13 @@ function klik(i){
   select(i); open=true; plaats();
   window.scrollBy(0, b.getBoundingClientRect().top - voor);
   if(!rustig.matches){ var h2=side.offsetHeight; side.animate([{height:'0px',opacity:0},{height:h2+'px',opacity:1}],{duration:300,easing:'ease-out'}); }
+  /* schuif de gekozen regel naar boven, zodat de uitleg er meteen onder staat om te lezen */
+  window.scrollTo({top: Math.max(0, b.getBoundingClientRect().top + window.scrollY - 12), behavior: rustig.matches ? 'auto' : 'smooth'});
 }
 items.forEach(function(b){b.addEventListener('click',function(){klik(+b.getAttribute('data-need'));});});
 (smal.addEventListener?smal.addEventListener('change',plaats):smal.addListener(plaats));
 labels(); select(0); plaats();
+document.querySelectorAll('.eb-topnav nav a, .eb-sticky nav a').forEach(function(a){a.setAttribute('data-label',a.textContent.trim());});
 document.addEventListener('input',function(e){if(e.target.closest&&e.target.closest('.zv-name')) labels();});
 /* menu: naar het kopje van een onderdeel, met ruimte voor de menubalk */
 document.addEventListener('click',function(e){

@@ -39,8 +39,8 @@ export function fontLink(names) {
 export const KLEURVELDEN = [
   { key: 'donker', label: 'Donker', uitleg: 'Knoppen, koppen, voettekst, menubalk op de telefoon', standaard: '#1F2622' },
   { key: 'creme', label: 'Crème', uitleg: 'Lichte vlakken, kaarten en tekst op donker', standaard: '#F1EEE6' },
-  { key: 'accent', label: 'Accent', uitleg: 'Labels, cijfers, links en driehoekjes', standaard: '#6E5232' },
-  { key: 'accent-licht', label: 'Accent licht', uitleg: 'Tweede kleur van de driehoekjes', standaard: '#A88B67' },
+  { key: 'accent', label: 'Accent', uitleg: 'Labels, cijfers en links', standaard: '#6E5232' },
+  { key: 'accent-licht', label: 'Accent licht', uitleg: 'Reservekleur (nu niet in gebruik)', standaard: '#A88B67' },
   { key: 'goud', label: 'Goud', uitleg: 'Labels en lijntjes op donkere vlakken', standaard: '#D2BE97' },
   { key: 'agenda', label: 'Achtergrond agenda', uitleg: 'Het donkere blok met de agenda', standaard: '#2C3530' },
   { key: 'bosgroen', label: 'Bosgroen', uitleg: 'Actief menu-onderdeel', standaard: '#2A3F2E' },
@@ -50,6 +50,13 @@ export const KLEURVELDEN = [
   { key: 'lijn', label: 'Lijnen', uitleg: 'Dubbele lijnen rond de vlakken bij Aanbod', standaard: '#8C7A5E' },
   { key: 'tekst-zacht', label: 'Tekst', uitleg: 'Lopende tekst op lichte vlakken', standaard: '#3A4536' },
   { key: 'tekst-licht', label: 'Tekst op donker (zacht)', uitleg: 'Kleine tekst op donkere vlakken', standaard: '#B9BDB1' },
+  { key: 'd1', label: 'Driehoekje 1', uitleg: 'Driehoekje 1 bij de zeven basisbehoeften (kleur uit het logo)', standaard: '#C2A072' },
+  { key: 'd2', label: 'Driehoekje 2', uitleg: 'Driehoekje 2 bij de zeven basisbehoeften (kleur uit het logo)', standaard: '#807D56' },
+  { key: 'd3', label: 'Driehoekje 3', uitleg: 'Driehoekje 3 bij de zeven basisbehoeften (kleur uit het logo)', standaard: '#797852' },
+  { key: 'd4', label: 'Driehoekje 4', uitleg: 'Driehoekje 4 bij de zeven basisbehoeften (kleur uit het logo)', standaard: '#384236' },
+  { key: 'd5', label: 'Driehoekje 5', uitleg: 'Driehoekje 5 bij de zeven basisbehoeften (kleur uit het logo)', standaard: '#9D9F8C' },
+  { key: 'd6', label: 'Driehoekje 6', uitleg: 'Driehoekje 6 bij de zeven basisbehoeften (kleur uit het logo)', standaard: '#BEA075' },
+  { key: 'd7', label: 'Driehoekje 7', uitleg: 'Driehoekje 7 bij de zeven basisbehoeften (kleur uit het logo)', standaard: '#946A3F' },
   { key: 'tekst-licht-sterk', label: 'Tekst op donker', uitleg: 'Lopende tekst op donkere vlakken', standaard: '#E1DED5' },
 ];
 
