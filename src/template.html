@@ -67,8 +67,8 @@ body{margin:0;background:var(--c-donker);color:var(--c-donker)}
 .eb-topnav{position:absolute;top:0;left:0;right:0;z-index:3;display:flex;align-items:center;justify-content:space-between;gap:24px;padding:28px 48px}
 .eb-topnav nav{display:flex;gap:32px;align-items:center;flex-wrap:wrap}
 .eb-topnav nav a{text-decoration:none;font-size:15px;letter-spacing:.05em}
-.eb-hero{position:relative;background:var(--c-salie) url(/hero-aquarel.jpg) center/cover no-repeat;height:980px;overflow:hidden;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:28px;padding:96px 20px 220px}
-.eb-logo{height:520px;width:auto;display:block;position:relative;filter:drop-shadow(0 10px 30px rgba(60,70,55,.22))}
+.eb-hero{position:relative;background:var(--c-salie) url(/hero-aquarel.jpg) center/cover no-repeat;height:calc(100svh + 186px);min-height:786px;overflow:hidden;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:28px;padding:110px 20px 220px}
+.eb-logo{height:min(520px,calc(100svh - 310px));min-height:260px;width:auto;display:block;position:relative;filter:drop-shadow(0 10px 30px rgba(60,70,55,.22))}
 .eb-btn{display:inline-flex;align-items:center;justify-content:center;min-height:52px;padding:0 28px;border-radius:999px;font-size:16px;font-weight:700;text-decoration:none;letter-spacing:.02em}
 .eb-btn:hover{filter:brightness(1.08)}
 .eb-panel{position:relative;z-index:2}
@@ -147,14 +147,14 @@ body{margin:0;background:var(--c-donker);color:var(--c-donker)}
 .eb-bottomnav{display:none}
 @media (prefers-reduced-motion: reduce){.eb-card{transition:none}.eb-card:hover{transform:none}}
 .eb{overflow-x:clip}
-@container eb (max-width: 760px){
+@container eb (max-width: 1024px){
  .eb-sticky{display:none}
  .eb-wrap{padding:0 20px}
  .eb-topnav{display:none}
  .eb-hero{height:calc(100svh + 6px);min-height:600px;padding:28px 16px 80px;gap:18px;background-image:url(/hero-aquarel-mobiel.jpg)}
  .eb-hero>div:last-child{flex-wrap:nowrap!important;gap:10px!important}
  .eb-hero .eb-btn{white-space:nowrap;padding:0 clamp(14px,4.5vw,28px);font-size:clamp(11px,3.4vw,13px);letter-spacing:clamp(.06em,.6vw,.15em)}
- .eb-logo{height:min(390px,calc(100svh - 330px));min-height:220px;filter:none}
+ .eb-logo{height:min(520px,calc(100svh - 330px));min-height:220px;filter:none}
  .eb-h2{font-size:40px}
  .eb-lead{font-size:17px}
  .eb-sec{padding:80px 0 136px}
@@ -198,7 +198,7 @@ body{margin:0;background:var(--c-donker);color:var(--c-donker)}
 .eb .eb-foot p[style*="font-size"]{line-height:1.7!important}
 .eb .eb-btn{font-family:var(--font-tekst);font-size:13px;font-weight:500;letter-spacing:.15em;text-transform:uppercase}
 .eb .eb-topnav nav a,.eb .eb-sticky nav a{font-size:14px}
-@container eb (max-width: 760px){
+@container eb (max-width: 1024px){
  .eb .eb-h2{font-size:32px}
  .eb .eb-name{font-size:18px!important}
  .eb .zp-side .zv-name{font-size:18px}
@@ -207,6 +207,11 @@ body{margin:0;background:var(--c-donker);color:var(--c-donker)}
  .zp-head .eb-h2{font-size:32px}
  .zp-a.is-on .zp-v{font-family:var(--font-tekst);font-size:12px;font-weight:600;letter-spacing:.2em;text-transform:uppercase}
 }
+
+/* Contact-knop in de menubalk: doorzichtig crème en vet bij hover, zonder verspringen */
+.eb-topnav nav a.eb-btn,.eb-sticky nav a.eb-btn{flex-direction:column;transition:background-color .2s}
+.eb-topnav nav a.eb-btn::after,.eb-sticky nav a.eb-btn::after{content:attr(data-label);font-weight:700;height:0;overflow:hidden;visibility:hidden;pointer-events:none}
+.eb-topnav nav a.eb-btn:hover,.eb-sticky nav a.eb-btn:hover{background:color-mix(in srgb, var(--c-creme) 60%, transparent);font-weight:700!important;filter:none}
 
 /* Telefoon: de uitleg klapt open onder de gekozen basisbehoefte */
 .zp-chev{display:none}
@@ -245,7 +250,7 @@ body{margin:0;background:var(--c-donker);color:var(--c-donker)}
 <a href="#aanbod" class="" data-nav="aanbod">Aanbod</a>
 <a href="#agenda" class="" data-nav="agenda">Agenda</a>
 <a href="#over" class="" data-nav="over">Over</a>
-<a href="#contact" class="eb-btn">Contact</a>
+<a href="#contact" class="eb-btn" data-label="Contact">Contact</a>
 </nav>
 </div>
 
@@ -259,7 +264,7 @@ body{margin:0;background:var(--c-donker);color:var(--c-donker)}
 <a href="#aanbod">Aanbod</a>
 <a href="#agenda">Agenda</a>
 <a href="#over">Over</a>
-<a href="#contact" class="eb-btn" style="min-height: 44px; padding: 0 22px; border: 1px solid var(--c-donker); font-weight: 600">Contact</a>
+<a href="#contact" class="eb-btn" data-label="Contact" style="min-height: 44px; padding: 0 22px; border: 1px solid var(--c-donker); font-weight: 600">Contact</a>
 </nav>
 </div>
 
