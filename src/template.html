@@ -48,9 +48,7 @@ html[data-admin] .eb-bottomnav{display:none}
  .zp-row{flex-direction:column;height:auto;gap:8px}
  .zp-a{gap:16px;height:56px;padding:0 22px}
  .zp-row{padding:0}
- .zp-a.is-on{height:76px;justify-content:flex-start}
  .zp-n{font-size:24px;width:22px}
- .zp-a.is-on .zp-n{font-size:34px}
  .zp-a.is-on .zp-v{font-family:var(--font-kop);font-size:22px;font-weight:600;letter-spacing:0;text-transform:none}
 }
 </style>
@@ -206,8 +204,20 @@ body{margin:0;background:var(--c-donker);color:var(--c-donker)}
 }
 @container eb (max-width: 900px){
  .zp-head .eb-h2{font-size:32px}
- .zp-a.is-on .zp-v{font-family:var(--font-tekst);font-size:14px;font-weight:600;letter-spacing:.14em;text-transform:uppercase}
+ .zp-a.is-on .zp-v{font-family:var(--font-tekst);font-size:12px;font-weight:600;letter-spacing:.2em;text-transform:uppercase}
 }
+
+/* Telefoon: de uitleg klapt open onder de gekozen basisbehoefte */
+.zp-chev{display:none}
+.zp-side[hidden]{display:none!important}
+@container eb (max-width: 900px){
+ .zp-chev{display:block;margin-left:auto;width:9px;height:9px;border-right:1.5px solid currentColor;border-bottom:1.5px solid currentColor;transform:translateY(-3px) rotate(45deg);transition:transform .25s;opacity:.7}
+ .zp-a[aria-expanded="true"] .zp-chev{transform:translateY(2px) rotate(-135deg)}
+ .zp-row .zp-side{margin:0 0 6px;overflow:hidden;padding-top:30px}
+ .zp-row .zp-side .zv-name{display:none}
+ .eb .zp-v{letter-spacing:.14em}
+}
+@media (prefers-reduced-motion: reduce){.zp-chev{transition:none}}
 </style>
 </head>
 <body>
@@ -239,7 +249,7 @@ body{margin:0;background:var(--c-donker);color:var(--c-donker)}
 </nav>
 </div>
 
-<img class="eb-logo" data-img="logo" src="/logo-badge.webp" alt="Logo Centrum voor Emotionele Basisbehoeften: een boom met wortels in een ovaal kader, met daaronder CEBB">
+<img class="eb-logo" data-img="logo" src="/logo-badge.webp?v=2" alt="Logo Centrum voor Emotionele Basisbehoeften: een boom met wortels in een ovaal kader, met daaronder CEBB">
 <p data-k="hero-1" class="eb-serif eb-sub" style="position: relative; margin: 0; font-style: italic; color: var(--c-donker); text-align: center; line-height: 1.3">Wat elk kind emotioneel nodig heeft</p>
 <div style="position: relative; display: flex; gap: 12px; flex-wrap: wrap; justify-content: center">
 <a data-k="hero-2" href="#behoeften" class="eb-btn" style="background: var(--c-donker); color: var(--c-creme)">Ontdek de zeven</a>
@@ -320,19 +330,19 @@ body{margin:0;background:var(--c-donker);color:var(--c-donker)}
 </div>
 <div class="zp-row" role="group" aria-label="Kies een basisbehoefte">
 <button type="button" class="zp-a is-on" data-need="0" aria-pressed="true">
-<span class="zp-n">1</span><span class="zp-v">Veiligheid en verbinding</span>
+<span class="zp-n">1</span><span class="zp-v">Veiligheid en verbinding</span><span class="zp-chev" aria-hidden="true"></span>
 </button><button type="button" class="zp-a" data-need="1" aria-pressed="false">
-<span class="zp-n">2</span><span class="zp-v">Autonomie en competentie</span>
+<span class="zp-n">2</span><span class="zp-v">Autonomie en competentie</span><span class="zp-chev" aria-hidden="true"></span>
 </button><button type="button" class="zp-a" data-need="2" aria-pressed="false">
-<span class="zp-n">3</span><span class="zp-v">Realistische grenzen</span>
+<span class="zp-n">3</span><span class="zp-v">Realistische grenzen</span><span class="zp-chev" aria-hidden="true"></span>
 </button><button type="button" class="zp-a" data-need="3" aria-pressed="false">
-<span class="zp-n">4</span><span class="zp-v">Vrijheid van expressie</span>
+<span class="zp-n">4</span><span class="zp-v">Vrijheid van expressie</span><span class="zp-chev" aria-hidden="true"></span>
 </button><button type="button" class="zp-a" data-need="4" aria-pressed="false">
-<span class="zp-n">5</span><span class="zp-v">Spontaniteit en spel</span>
+<span class="zp-n">5</span><span class="zp-v">Spontaniteit en spel</span><span class="zp-chev" aria-hidden="true"></span>
 </button><button type="button" class="zp-a" data-need="5" aria-pressed="false">
-<span class="zp-n">6</span><span class="zp-v">Rechtvaardigheid</span>
+<span class="zp-n">6</span><span class="zp-v">Rechtvaardigheid</span><span class="zp-chev" aria-hidden="true"></span>
 </button><button type="button" class="zp-a" data-need="6" aria-pressed="false">
-<span class="zp-n">7</span><span class="zp-v">Zelfcoherentie</span>
+<span class="zp-n">7</span><span class="zp-v">Zelfcoherentie</span><span class="zp-chev" aria-hidden="true"></span>
 </button>
 </div>
 </div>
@@ -453,8 +463,34 @@ function select(i){
   details.forEach(function(d){d.hidden=+d.getAttribute('data-detail')!==sel+1;});
   var t=document.getElementById('zp-tris'); if(t){t.setAttribute('class','zp-tris f'+(sel+1)); t.setAttribute('aria-label','Behoefte '+(sel+1)+' van 7');}
 }
-items.forEach(function(b){b.addEventListener('click',function(){select(+b.getAttribute('data-need'));});});
-labels(); select(0);
+/* Op de telefoon klapt de uitleg open onder de gekozen regel; op de laptop staat hij links */
+var side=document.querySelector('.zp-side'), row=document.querySelector('.zp-row'), home=document.createComment('zp-side');
+side.parentNode.insertBefore(home, side);
+var smal=window.matchMedia('(max-width: 900px)'), open=false, rustig=window.matchMedia('(prefers-reduced-motion: reduce)');
+function plaats(){
+  if(smal.matches){
+    var b=items[sel]; if(open){ b.after(side); side.hidden=false; } else { side.hidden=true; }
+    items.forEach(function(x,k){var on=open&&k===sel; x.setAttribute('aria-expanded', on?'true':'false'); x.classList.toggle('is-on',on);});
+  } else {
+    if(side.parentNode!==home.parentNode || side.previousSibling!==home) home.after(side);
+    side.hidden=false; items.forEach(function(x,k){x.removeAttribute('aria-expanded'); x.classList.toggle('is-on',k===sel);});
+  }
+}
+function klik(i){
+  if(!smal.matches){ select(i); return; }
+  var b=items[i], voor=b.getBoundingClientRect().top;
+  if(open && sel===i){
+    if(rustig.matches){ open=false; plaats(); return; }
+    var h=side.offsetHeight; side.animate([{height:h+'px',opacity:1},{height:'0px',opacity:0}],{duration:220,easing:'ease-in'}).onfinish=function(){ open=false; plaats(); };
+    b.setAttribute('aria-expanded','false'); return;
+  }
+  select(i); open=true; plaats();
+  window.scrollBy(0, b.getBoundingClientRect().top - voor);
+  if(!rustig.matches){ var h2=side.offsetHeight; side.animate([{height:'0px',opacity:0},{height:h2+'px',opacity:1}],{duration:300,easing:'ease-out'}); }
+}
+items.forEach(function(b){b.addEventListener('click',function(){klik(+b.getAttribute('data-need'));});});
+(smal.addEventListener?smal.addEventListener('change',plaats):smal.addListener(plaats));
+labels(); select(0); plaats();
 document.addEventListener('input',function(e){if(e.target.closest&&e.target.closest('.zv-name')) labels();});
 /* menu: naar het kopje van een onderdeel, met ruimte voor de menubalk */
 document.addEventListener('click',function(e){
