@@ -113,7 +113,7 @@ export function agendaHTML(items, vandaag, admin) {
 ${it.waar ? `<p style="margin: 0 0 6px; font-size: 15px; color: var(--c-tekst-licht)">${esc(it.waar)}</p>` : ''}
 ${it.tekst ? `<p style="margin: 0; font-size: 16px; line-height: 1.6; color: var(--c-tekst-licht-sterk)">${esc(it.tekst)}</p>` : ''}
 </div>
-${it.label ? `<span class="eb-agenda-tag" style="justify-self: start; font-size: 12px; font-weight: 700; letter-spacing: .1em; text-transform: uppercase; border: 1px solid ${k.kleur}; color: ${k.kleur}; padding: 8px 14px; border-radius: 999px">${esc(it.label)}</span>` : '<span></span>'}
+${it.label ? `<span class="eb-agenda-tag" style="justify-self: start; font-size: 12px; font-weight: 700; letter-spacing: .1em; text-transform: uppercase; color: ${k.kleur}; padding: 0">${esc(it.label)}</span>` : '<span></span>'}
 </article>`;
     })
     .join('\n');

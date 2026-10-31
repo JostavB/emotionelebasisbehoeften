@@ -245,6 +245,15 @@ body{margin:0;background:var(--c-donker);color:var(--c-donker)}
 .eb-btn-fund-2::after{content:attr(data-label);font-weight:700;height:0;overflow:hidden;visibility:hidden;pointer-events:none}
 .eb-btn-fund-2:hover{background:color-mix(in srgb, var(--c-donker) 9%, transparent);font-weight:700!important;filter:none}
 
+/* Delen onder een tekst: label met drie ronde iconen; "meer" opent het deelmenu van het toestel */
+.eb-share{display:flex;align-items:center;gap:10px;flex-wrap:wrap;margin-top:2px;padding-top:18px;border-top:1px solid color-mix(in srgb,var(--c-lijn) 40%,transparent);font-size:14px;color:var(--c-tekst-zacht)}
+.eb-share-l{margin-right:2px}
+.eb-share-i{width:40px;height:40px;border-radius:50%;border:1px solid var(--c-lijn);display:inline-flex;align-items:center;justify-content:center;color:var(--c-bosgroen);background:transparent;padding:0;cursor:pointer;transition:background-color .2s,color .2s,border-color .2s}
+.eb-share-i[hidden]{display:none}
+.eb-share-i:hover,.eb-share-i:focus-visible{background:var(--c-bosgroen);color:var(--c-creme);border-color:var(--c-bosgroen)}
+.eb-share-i svg{width:18px;height:18px;stroke:currentColor;fill:none;stroke-width:1.6;stroke-linecap:round;stroke-linejoin:round}
+.eb-share-m{font-size:13px;color:var(--c-accent);min-height:18px}
+
 /* Telefoon: de uitleg klapt open onder de gekozen basisbehoefte */
 .zp-chev{display:none}
 .zp-side[hidden]{display:none!important}
@@ -309,7 +318,7 @@ body{margin:0;background:var(--c-donker);color:var(--c-donker)}
 </header>
 
 <!-- ============ KERNBOODSCHAP ============ -->
-<section class="eb-panel eb-sec eb-round-l eb-first eb-paper" aria-labelledby="kern-titel" style="background-color: var(--c-creme); border-top-left-radius: 180px">
+<section id="fundament" class="eb-panel eb-sec eb-round-l eb-first eb-paper" aria-labelledby="kern-titel" style="background-color: var(--c-creme); border-top-left-radius: 180px">
 <div class="eb-wrap eb-grid2" style="align-items: start">
 <div>
 <p data-k="fundament-1" class="eb-label" style="color: var(--c-accent)">Het fundament</p>
@@ -321,6 +330,14 @@ body{margin:0;background:var(--c-donker);color:var(--c-donker)}
 <div style="display: flex; gap: 12px; flex-wrap: wrap">
 <a data-k="fundament-6" href="#contact" class="eb-btn eb-btn-fund eb-btn-fund-1" style="background: var(--c-donker); color: var(--c-creme)">Boek een lezing</a>
 <a data-k="fundament-7" href="#aanbod" class="eb-btn eb-btn-fund eb-btn-fund-2" data-label="Bekijk de cursussen" style="border: 1px solid var(--c-donker); color: var(--c-donker)">Bekijk de cursussen</a>
+</div>
+<div class="eb-share" data-share-url="/#fundament">
+<span class="eb-share-l">Deel deze tekst</span>
+<a class="eb-share-i" data-via="whatsapp" href="https://wa.me/" target="_blank" rel="noopener" aria-label="Deel via WhatsApp"><svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M3 21l1.65-3.8A9 9 0 1 1 8 19.4L3 21"/><path d="M9 10a.5.5 0 001 0V9a.5.5 0 00-1 0v1a5 5 0 005 5h1a.5.5 0 000-1h-1a.5.5 0 000 1"/></svg></a>
+<a class="eb-share-i" data-via="linkedin" href="https://www.linkedin.com/" target="_blank" rel="noopener" aria-label="Deel via LinkedIn"><svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><rect x="4" y="4" width="16" height="16" rx="2"/><path d="M8 11v5M8 8v.01M12 16v-5M16 16v-3a2 2 0 00-4 0"/></svg></a>
+<button type="button" class="eb-share-i" data-via="kopieer" aria-label="Kopieer link"><svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M9 15l6-6M11 6l.5-.5a4.2 4.2 0 016 6l-.5.5M13 18l-.5.5a4.2 4.2 0 01-6-6l.5-.5"/></svg></button>
+<button type="button" class="eb-share-i" data-via="meer" hidden aria-label="Meer opties om te delen"><svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><circle cx="6" cy="12" r="1"/><circle cx="12" cy="12" r="1"/><circle cx="18" cy="12" r="1"/></svg></button>
+<span class="eb-share-m" role="status" aria-live="polite"></span>
 </div>
 </div>
 </div>
@@ -567,6 +584,31 @@ function onWin(){
   links.forEach(function(l){l.classList.toggle('is-act',l.getAttribute('data-nav')===act);});
 }
 window.addEventListener('scroll',onWin,{passive:true}); onWin();
+})();
+</script>
+<script>
+(function(){
+document.querySelectorAll('.eb-share').forEach(function(box){
+  var pad=box.getAttribute('data-share-url')||'/';
+  var url=location.origin+pad;
+  var kop=document.getElementById('kern-titel');
+  var titel=kop?kop.textContent.trim():document.title;
+  var m=box.querySelector('.eb-share-m'), t=0;
+  function meld(x){m.textContent=x;clearTimeout(t);t=setTimeout(function(){m.textContent='';},2500);}
+  var wa=box.querySelector('[data-via="whatsapp"]'); if(wa) wa.href='https://wa.me/?text='+encodeURIComponent(titel+' '+url);
+  var li=box.querySelector('[data-via="linkedin"]'); if(li) li.href='https://www.linkedin.com/sharing/share-offsite/?url='+encodeURIComponent(url);
+  var kp=box.querySelector('[data-via="kopieer"]');
+  if(kp) kp.addEventListener('click',function(){
+    function klaar(){meld('Link gekopieerd');}
+    function nood(){var a=document.createElement('textarea');a.value=url;a.setAttribute('readonly','');a.style.position='absolute';a.style.left='-9999px';document.body.appendChild(a);a.select();try{document.execCommand('copy');klaar();}catch(e){meld(url);}document.body.removeChild(a);}
+    if(navigator.clipboard&&navigator.clipboard.writeText){navigator.clipboard.writeText(url).then(klaar,nood);}else{nood();}
+  });
+  var mr=box.querySelector('[data-via="meer"]');
+  if(mr&&navigator.share){
+    mr.hidden=false;
+    mr.addEventListener('click',function(){navigator.share({title:titel,text:titel,url:url}).catch(function(){});});
+  }
+});
 })();
 </script>
 </body>
