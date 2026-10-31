@@ -64,6 +64,7 @@ async function route(request, env, ctx) {
     return r;
   }
   if (path === '/robots.txt') return robots(url);
+  if (path === '/sitemap.xml') return sitemap(url);
 
   if (path.startsWith('/media/') && method === 'GET') return media(env, path.slice(7));
 
@@ -184,8 +185,15 @@ function withSecurity(res, url, admin = false) {
 function robots(url) {
   const body = url.hostname.endsWith('.workers.dev')
     ? 'User-agent: *\nDisallow: /\n'
-    : 'User-agent: *\nDisallow: /admin\nDisallow: /api/\n';
+    : 'User-agent: *\nDisallow: /admin\nDisallow: /api/\n\nSitemap: https://emotionelebasisbehoeften.nl/sitemap.xml\n';
   return new Response(body, { headers: { 'content-type': 'text/plain; charset=utf-8' } });
+}
+
+// Eén pagina nu; voeg hier elke nieuwe pagina toe als die erbij komt.
+function sitemap(url) {
+  if (url.hostname.endsWith('.workers.dev')) return new Response('Niet gevonden', { status: 404 });
+  const body = '<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n  <url><loc>https://emotionelebasisbehoeften.nl/</loc></url>\n</urlset>\n';
+  return new Response(body, { headers: { 'content-type': 'application/xml; charset=utf-8', 'cache-control': 'public, max-age=3600' } });
 }
 
 async function notFound(env, request) {
