@@ -235,6 +235,13 @@ body{margin:0;background:var(--c-donker);color:var(--c-donker)}
 .eb-topnav nav a.eb-btn::after,.eb-sticky nav a.eb-btn::after{content:attr(data-label);font-weight:700;height:0;overflow:hidden;visibility:hidden;pointer-events:none}
 .eb-topnav nav a.eb-btn:hover,.eb-sticky nav a.eb-btn:hover{background:color-mix(in srgb, var(--c-creme) 60%, transparent);font-weight:700!important;filter:none}
 
+/* Knoppen onder Het fundament: links lichter en omhoog bij hover, rechts vet en met lichte vulling zoals Contact, zonder verspringen */
+.eb-btn-fund{transition:background-color .2s,transform .2s,box-shadow .2s}
+.eb-btn-fund-1:hover{background:var(--c-tekst-zacht)!important;transform:translateY(-2px);box-shadow:0 6px 18px color-mix(in srgb, var(--c-donker) 28%, transparent);filter:none}
+.eb-btn-fund-2{flex-direction:column}
+.eb-btn-fund-2::after{content:attr(data-label);font-weight:700;height:0;overflow:hidden;visibility:hidden;pointer-events:none}
+.eb-btn-fund-2:hover{background:color-mix(in srgb, var(--c-donker) 9%, transparent);font-weight:700!important;filter:none}
+
 /* Telefoon: de uitleg klapt open onder de gekozen basisbehoefte */
 .zp-chev{display:none}
 .zp-side[hidden]{display:none!important}
@@ -302,15 +309,15 @@ body{margin:0;background:var(--c-donker);color:var(--c-donker)}
 <section class="eb-panel eb-sec eb-round-l eb-first eb-paper" aria-labelledby="kern-titel" style="background-color: var(--c-creme); border-top-left-radius: 180px">
 <div class="eb-wrap eb-grid2" style="align-items: start">
 <div>
-<p data-k="fundament-1" class="eb-label" style="color: var(--c-accent)">Het fundament</p>
+<p data-k="fundament-1" class="eb-label" style="color: var(--c-accent)">Emotionele basisbehoeften als fundament</p>
 <h2 data-k="fundament-2" id="kern-titel" class="eb-h2">Kinderen hebben volwassenen nodig die het weten en ernaar handelen.</h2>
 </div>
 <div style="display: flex; flex-direction: column; gap: 22px; padding-top: 8px">
-<p data-k="fundament-3" class="eb-lead" style="color: var(--c-tekst-zacht)">We kunnen kinderen veel mentaal leed besparen als we structureel voorzien in wat ze emotioneel nodig hebben. Want hoe je later naar jezelf, anderen en de wereld kijkt, begint bij de ervaringen in je jeugd. Maar wat zijn die emotionele basisbehoeften precies? En hoe maak je ze onderdeel van de opvoeding of van je werk met kinderen?</p>
-<p data-k="fundament-4" class="eb-lead" style="color: var(--c-tekst-zacht)">Het Centrum voor Emotionele Basisbehoeften maakt de kennis uit de schematherapie bereikbaar voor iedereen rond een kind: preventief, onderbouwd en in gewone taal. Wat ons betreft kent iedereen in de omgeving van een kind de basisbehoeften en handelt daarnaar, van ouder tot volksvertegenwoordiger. Het mentale welzijn van kinderen is te belangrijk om aan toeval over te laten.</p>
+<p data-k="fundament-3" class="eb-lead" style="color: var(--c-tekst-zacht)">We kunnen kinderen veel mentaal leed besparen als we structureel voorzien in wat ze emotioneel nodig hebben. Want hoe je later naar jezelf, anderen en de wereld kijkt, begint bij de ervaringen in je jeugd. Ruim een kwart van de leerlingen in het voortgezet onderwijs heeft nu een laag emotioneel welbevinden, en dat is sinds 2021 nauwelijks verbeterd (HBSC 2025). Maar wat zijn die emotionele basisbehoeften precies? Wat moet je dan wél of juist níét doen? En hoe maak je ze onderdeel van de opvoeding of van je werk met kinderen?</p>
+<p data-k="fundament-4" class="eb-lead" style="color: var(--c-tekst-zacht)">Het Centrum voor Emotionele Basisbehoeften werkt met kennis uit de schematherapie en maakt deze bereikbaar voor iedereen rond een kind: preventief, in het hier en nu, onderbouwd en in gewone taal. Want emotionele basisbehoeften leggen voor ieder kind de basis voor een stabiel volwassen leven, of het nu goed of minder goed gaat. Wat ons betreft kent iedereen in de omgeving van een kind de emotionele basisbehoeften en handelt daarnaar, van ouder tot volksvertegenwoordiger. Het mentale welzijn van kinderen is te belangrijk om aan toeval over te laten. Je hebt meer grip op hun mentale welzijn dan je denkt, en wij helpen je om die te gebruiken.</p>
 <div style="display: flex; gap: 12px; flex-wrap: wrap">
-<a data-k="fundament-6" href="#contact" class="eb-btn" style="background: var(--c-donker); color: var(--c-creme)">Boek een lezing</a>
-<a data-k="fundament-7" href="#aanbod" class="eb-btn" style="border: 1px solid var(--c-donker); color: var(--c-donker)">Bekijk de cursussen</a>
+<a data-k="fundament-6" href="#contact" class="eb-btn eb-btn-fund eb-btn-fund-1" style="background: var(--c-donker); color: var(--c-creme)">Boek een lezing</a>
+<a data-k="fundament-7" href="#aanbod" class="eb-btn eb-btn-fund eb-btn-fund-2" data-label="Bekijk de cursussen" style="border: 1px solid var(--c-donker); color: var(--c-donker)">Bekijk de cursussen</a>
 </div>
 </div>
 </div>
