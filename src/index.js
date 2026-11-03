@@ -526,12 +526,9 @@ async function signup(request, env, url) {
     body: JSON.stringify({ email, groups: [String(env.MAILERLITE_GROUP_ID)] }),
   });
   if (!res.ok) {
-    const txt = await res.text();
-    console.error('MailerLite', res.status, txt);
-    // TIJDELIJK: toon de reden van MailerLite om het probleem te vinden.
-    let reden = '';
-    try { const j = JSON.parse(txt); reden = [j.message, ...Object.values(j.errors || {}).flat()].filter(Boolean).join(' / '); } catch { reden = txt.slice(0, 200); }
-    throw new HttpError(res.status === 422 ? 400 : 502, 'Aanmelden lukt niet (' + res.status + '): ' + reden);
+    console.error('MailerLite', res.status, await res.text());
+    if (res.status === 422) throw new HttpError(400, 'Dit e-mailadres wordt niet geaccepteerd. Controleer het adres.');
+    throw new HttpError(502, 'Aanmelden lukt nu niet. Probeer het later opnieuw.');
   }
   return json({ ok: true });
 }
