@@ -20,5 +20,7 @@
     "MAILERLITE_GROUP_ID": "203104379596703455",
     "GOOGLE_CLIENT_ID": "542018349659-q5pioera0pmlsr23d7l0fkndm3vmj5dg.apps.googleusercontent.com"
   },
+  // Houd variabelen en geheimen die in het Cloudflare-dashboard zijn ingesteld (zoals MAILERLITE_API_KEY) bewaard bij elke nieuwe uitrol.
+  "keep_vars": true,
   "observability": { "enabled": true }
 }
