@@ -73,6 +73,7 @@ async function route(request, env, ctx) {
     return json(c.agenda ?? DEFAULT_AGENDA, 200, { 'cache-control': 'public, max-age=60', 'access-control-allow-origin': '*' });
   }
   if (path === '/api/signup' && method === 'POST') return signup(request, env, url);
+  if (path === '/api/unsubscribe' && method === 'POST') return unsubscribe(request, env, url);
   if (path === '/api/sync/agenda' && method === 'PUT') return syncAgenda(request, env);
 
   if (path.startsWith('/api/admin/')) {
@@ -509,6 +510,41 @@ async function signup(request, env, url) {
     throw new HttpError(502, 'Aanmelden lukt nu niet. Probeer het later opnieuw.');
   }
   if (res.status === 422) throw new HttpError(400, 'Dit e-mailadres wordt niet geaccepteerd. Controleer het adres.');
+  return json({ ok: true });
+}
+
+// Afmelden via de site: zoek het adres op en zet de status op "unsubscribed". Het antwoord is altijd
+// hetzelfde, ook als het adres niet op de lijst staat, zodat niemand kan nagaan wie er op de lijst staat.
+async function unsubscribe(request, env, url) {
+  if (!sameOrigin(request, url)) throw new HttpError(403, 'Ongeldig verzoek.');
+  const body = await readJson(request, 2000);
+  if (body.website) return json({ ok: true }); // honeypot
+  const email = String(body.email || '').trim().toLowerCase();
+  if (!/^[^\s@<>]{1,64}@[^\s@<>]{1,190}\.[a-z]{2,}$/i.test(email)) throw new HttpError(400, 'Vul een geldig e-mailadres in.');
+  if (!env.MAILERLITE_API_KEY) throw new HttpError(503, 'Afmelden is nog niet beschikbaar.');
+
+  const ip = request.headers.get('cf-connecting-ip') || 'onbekend';
+  const rlKey = 'ru:' + (await sha(ip)).slice(0, 24);
+  const used = Number(await env.CONTENT.get(rlKey)) || 0;
+  if (used >= SIGNUP_LIMIT) throw new HttpError(429, 'Te veel pogingen. Probeer het later opnieuw.');
+  await env.CONTENT.put(rlKey, String(used + 1), { expirationTtl: 3600 });
+
+  const headers = { 'content-type': 'application/json', accept: 'application/json', authorization: 'Bearer ' + env.MAILERLITE_API_KEY };
+  const found = await fetch('https://connect.mailerlite.com/api/subscribers/' + encodeURIComponent(email), { headers });
+  if (found.status === 404) return json({ ok: true });
+  if (!found.ok) {
+    console.error('MailerLite zoeken', found.status, await found.text());
+    throw new HttpError(502, 'Afmelden lukt nu niet. Probeer het later opnieuw.');
+  }
+  const id = (await found.json())?.data?.id;
+  if (!id) return json({ ok: true });
+  const res = await fetch('https://connect.mailerlite.com/api/subscribers/' + encodeURIComponent(id), {
+    method: 'PUT', headers, body: JSON.stringify({ status: 'unsubscribed' }),
+  });
+  if (!res.ok) {
+    console.error('MailerLite afmelden', res.status, await res.text());
+    throw new HttpError(502, 'Afmelden lukt nu niet. Probeer het later opnieuw.');
+  }
   return json({ ok: true });
 }
 

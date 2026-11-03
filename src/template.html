@@ -185,7 +185,12 @@ body{margin:0;background:var(--c-donker);color:var(--c-donker)}
 .eb-icoon:hover{background:var(--c-tekst-zacht)}
 .eb-icoon svg{width:22px;height:22px}
 html:not([data-admin]) .eb-icoon[href^="#"]{display:none}
-.eb-foot-klein{margin:36px 0 0;font-size:13px;line-height:1.7;color:var(--c-tekst-zacht)}
+.eb-afmeld{margin:30px auto 0;max-width:360px;font-size:14px}
+.eb-afmeld summary{cursor:pointer;color:var(--c-tekst-zacht);text-decoration:underline;text-underline-offset:3px;list-style:none;display:inline-block}
+.eb-afmeld summary::-webkit-details-marker{display:none}
+.eb-afmeld-f{display:flex;flex-direction:column;gap:12px;align-items:center;margin-top:16px}
+.eb-afmeld-m{margin:0;font-size:14px;line-height:1.5;color:var(--c-accent);min-height:1.5em}
+.eb-foot-klein{margin:24px 0 0;font-size:13px;line-height:1.7;color:var(--c-tekst-zacht)}
 .eb-foot-klein a{color:var(--c-tekst-zacht)}
 .eb-foot{display:grid;grid-template-columns:1.4fr 1fr 1fr 1.3fr;gap:48px}
 .eb-bottomnav{display:none}
@@ -553,9 +558,9 @@ html:not([data-admin]) .eb-icoon[href^="#"]{display:none}
 <!-- ============ FOOTER ============ -->
 <footer id="contact" class="eb-panel eb-foot-wrap">
 <div class="eb-foot-kaart eb-paper">
-<p data-k="contact-17" class="eb-label" style="color: var(--c-accent); margin: 0 0 14px">Wachtlijst en nieuwsbrief</p>
-<h2 data-k="contact-24" class="eb-h2" style="margin: 0 0 14px">Als eerste weten wanneer het boek er is</h2>
-<p data-k="contact-18" class="eb-foot-tekst">Het boek, de cursussen en de lezingen. Af en toe een kort stuk over wat kinderen emotioneel nodig hebben.</p>
+<p data-k="contact-17" class="eb-label" style="color: var(--c-accent); margin: 0 0 14px">Nieuwsbrief</p>
+<h2 data-k="contact-24" class="eb-h2" style="margin: 0 0 14px">Meer leren over emotionele basisbehoeften?</h2>
+<p data-k="contact-18" class="eb-foot-tekst">Schrijf je in op mijn nieuwsbrief en ontvang een bericht wanneer ik een lezing geef, er een nieuwe cursus is of een stuk heb geschreven.</p>
 <form class="eb-aanmeld" action="/api/signup" method="post" novalidate>
 <label for="aanmeld-email" class="eb-vh">E-mailadres</label>
 <input id="aanmeld-email" name="email" type="email" inputmode="email" autocomplete="email" placeholder="Je e-mailadres" required maxlength="254" class="eb-veld">
@@ -564,7 +569,7 @@ html:not([data-admin]) .eb-icoon[href^="#"]{display:none}
 <input name="akkoord" type="checkbox" required>
 <span><span data-k="contact-19">Ik ga akkoord met de</span> <a data-k="contact-20" data-l="link-privacy" href="#privacy-link-volgt">privacyverklaring</a>.</span>
 </label>
-<button type="submit" data-k="contact-21" class="eb-btn eb-foot-btn">Zet me op de lijst</button>
+<button type="submit" data-k="contact-21" class="eb-btn eb-foot-btn">Schrijf me in</button>
 <p class="eb-aanmeld-m" role="status" aria-live="polite"></p>
 </form>
 <div class="eb-foot-lijn"></div>
@@ -577,7 +582,17 @@ html:not([data-admin]) .eb-icoon[href^="#"]{display:none}
 <a class="eb-icoon" data-l="link-linkedin" href="#linkedin-link-volgt" aria-label="LinkedIn"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M5.2 8.9h3v9.9h-3zM6.7 4.2a1.75 1.75 0 1 1 0 3.5 1.75 1.75 0 0 1 0-3.5zM10.2 8.9h2.9v1.4c.5-.9 1.6-1.7 3.2-1.7 3.1 0 3.7 2 3.7 4.7v5.5h-3v-4.9c0-1.2 0-2.700-1.700-2.700s-1.900 1.300-1.900 2.600v5h-3z"></path></svg></a>
 <a class="eb-icoon" data-l="link-substack" href="#substack-link-volgt" aria-label="Substack"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M22.539 8.242H1.46V5.406h21.08v2.836zM1.46 10.812V24L12 18.11 22.54 24V10.812H1.46zM22.54 0H1.46v2.836h21.08V0z"></path></svg></a>
 </div>
-<p class="eb-foot-klein"><span data-k="contact-1">Centrum voor</span> <span data-k="contact-2">Emotionele Basisbehoeften</span> · <span data-k="contact-3">Amersfoort</span><br><span data-k="contact-15">© 2026 · KvK [nummer]</span> · <a data-k="contact-16" data-l="link-privacy" href="#privacy-link-volgt">Privacyverklaring</a></p>
+<details class="eb-afmeld">
+<summary data-k="contact-26">Afmelden voor de nieuwsbrief</summary>
+<form class="eb-afmeld-f" action="/api/unsubscribe" method="post" novalidate>
+<label for="afmeld-email" class="eb-vh">E-mailadres</label>
+<input id="afmeld-email" name="email" type="email" inputmode="email" autocomplete="email" placeholder="Je e-mailadres" required maxlength="254" class="eb-veld">
+<div aria-hidden="true" style="position: absolute; left: -9999px"><label>Laat dit leeg <input name="website" type="text" tabindex="-1" autocomplete="off"></label></div>
+<button type="submit" data-k="contact-27" class="eb-btn eb-foot-btn">Afmelden</button>
+<p class="eb-afmeld-m" role="status" aria-live="polite"></p>
+</form>
+</details>
+<p class="eb-foot-klein"><span data-k="contact-1">Centrum voor</span> <span data-k="contact-2">Emotionele Basisbehoeften</span> · <span data-k="contact-3">Amersfoort</span><br><span data-k="contact-15">© 2026 · KvK [nummer]</span><br><a data-k="contact-16" data-l="link-privacy" href="#privacy-link-volgt">Privacyverklaring</a> · <a data-k="contact-28" data-l="link-disclaimer" href="#disclaimer-link-volgt">Disclaimer</a></p>
 </div>
 </footer>
 
@@ -720,6 +735,26 @@ a.addEventListener('click',function(e){
   navigator.clipboard.writeText(adres).then(function(){
     m.textContent='Gekopieerd: '+adres; clearTimeout(t);
   },function(){ location.href='mailto:'+adres; });
+});
+})();
+</script>
+<script>
+(function(){
+var f=document.querySelector('.eb-afmeld-f'); if(!f) return;
+var m=f.querySelector('.eb-afmeld-m'), b=f.querySelector('button');
+f.addEventListener('submit',function(e){
+  e.preventDefault();
+  var email=f.elements.email.value.trim();
+  if(!/^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/.test(email)){m.textContent='Vul een geldig e-mailadres in.';f.elements.email.focus();return;}
+  b.disabled=true; m.textContent='Even geduld…';
+  fetch('/api/unsubscribe',{method:'POST',headers:{'content-type':'application/json','x-gk':'1'},body:JSON.stringify({email:email,website:f.elements.website.value})})
+    .then(function(r){return r.json().then(function(d){return {ok:r.ok,d:d};});})
+    .then(function(x){
+      if(x.ok){f.reset();m.textContent='Gedaan. Als dit adres op de lijst stond, ontvang je geen nieuwsbrieven meer.';}
+      else{m.textContent=(x.d&&x.d.error)||'Afmelden lukt nu niet.';}
+      b.disabled=false;
+    })
+    .catch(function(){m.textContent='Afmelden lukt nu niet. Probeer het later opnieuw.';b.disabled=false;});
 });
 })();
 </script>
