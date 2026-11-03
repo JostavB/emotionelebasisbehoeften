@@ -5,6 +5,8 @@
 
 import TEMPLATE from './template.html';
 import LOGIN_PAGE from './login.html';
+import PAGINA from './pagina.html';
+import { PAGINAS } from './paginas.js';
 import { FONTS_KOP, FONTS_TEKST, STANDAARD_KOP, STANDAARD_TEKST, fontLink, agendaHTML, DEFAULT_AGENDA, esc, KLEURVELDEN, kleurCSS } from '../public/admin/shared.js';
 
 const CONTENT_KEY = 'content';
@@ -63,6 +65,7 @@ async function route(request, env, ctx) {
     r.headers.set('cache-control', 'private, no-store');
     return r;
   }
+  if (PAGINAS[path] && method === 'GET') return tekstPagina(env, url, path);
   if (path === '/robots.txt') return robots(url);
   if (path === '/sitemap.xml') return sitemap(url);
 
@@ -168,6 +171,23 @@ async function renderPage(env, url, admin, user = null) {
   return withSecurity(new Response(res.body, { status: 200, headers }), url, admin);
 }
 
+async function tekstPagina(env, url, path) {
+  const pg = PAGINAS[path];
+  const c = await getContent(env);
+  const fonts = c.fonts || {};
+  const kop = FONTS_KOP[fonts.kop] ? fonts.kop : STANDAARD_KOP;
+  const tekst = FONTS_TEKST[fonts.tekst] ? fonts.tekst : STANDAARD_TEKST;
+  const css = `:root{--font-kop:${FONTS_KOP[kop]};--font-tekst:${FONTS_TEKST[tekst]}}` + kleurCSS(c.colors);
+  const html = PAGINA
+    .replaceAll('__TITEL__', esc(pg.titel))
+    .replaceAll('__BESCHRIJVING__', esc(pg.beschrijving))
+    .replaceAll('__PAD__', path)
+    .replaceAll('__DATUM__', esc(pg.datum))
+    .replace('__CSS__', () => css)
+    .replace('__INHOUD__', () => pg.inhoud);
+  return withSecurity(new Response(html, { headers: { 'content-type': 'text/html; charset=utf-8', 'cache-control': 'public, max-age=0, must-revalidate' } }), url);
+}
+
 function withSecurity(res, url, admin = false) {
   const r = new Response(res.body, res);
   r.headers.set('x-content-type-options', 'nosniff');
@@ -193,7 +213,7 @@ function robots(url) {
 // Eén pagina nu; voeg hier elke nieuwe pagina toe als die erbij komt.
 function sitemap(url) {
   if (url.hostname.endsWith('.workers.dev')) return new Response('Niet gevonden', { status: 404 });
-  const body = '<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n  <url><loc>https://emotionelebasisbehoeften.nl/</loc></url>\n</urlset>\n';
+  const body = '<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n  <url><loc>https://emotionelebasisbehoeften.nl/</loc></url>\n  <url><loc>https://emotionelebasisbehoeften.nl/privacy</loc></url>\n  <url><loc>https://emotionelebasisbehoeften.nl/disclaimer</loc></url>\n</urlset>\n';
   return new Response(body, { headers: { 'content-type': 'application/xml; charset=utf-8', 'cache-control': 'public, max-age=3600' } });
 }
 

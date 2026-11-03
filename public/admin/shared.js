@@ -23,16 +23,10 @@ export const FONTS_TEKST = {
 export const STANDAARD_KOP = 'Playfair Display';
 export const STANDAARD_TEKST = 'Montserrat';
 
-// Al geladen door het sjabloon zelf.
-const PRELOADED = new Set(['Playfair Display', 'Montserrat', 'Cormorant Garamond', 'Mulish', 'Avenir']);
-
-export function fontLink(names) {
-  const fams = names.filter((n) => n && !PRELOADED.has(n));
-  if (!fams.length) return '';
-  const q = fams
-    .map((n) => 'family=' + n.replace(/ /g, '+') + ':ital,wght@0,400;0,500;0,600;0,700;1,400;1,500')
-    .join('&');
-  return `<link rel="stylesheet" href="https://fonts.googleapis.com/css2?${q}&display=swap">`;
+// Alle lettertypen staan lokaal in /fonts (public/fonts/fonts.css) en worden door het sjabloon geladen.
+// Zo gaat er geen IP-adres naar Google. Nieuwe lettertypen toevoegen = bestanden en @font-face daar erbij zetten.
+export function fontLink() {
+  return '';
 }
 
 // Instelbare kleuren van de site. Sleutel = CSS-variabele --c-<sleutel>.

@@ -69,8 +69,9 @@ html[data-admin] .eb-bottomnav{display:none}
  .zp-a.is-on .zp-v{font-family:var(--font-kop);font-size:22px;font-weight:600;letter-spacing:0;text-transform:none}
 }
 </style>
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,500;0,600;1,500&amp;family=Mulish:wght@400;600;700&amp;family=Montserrat:wght@400;500;600;700&amp;family=Playfair+Display:ital,wght@0,400;0,500;0,600;1,400&amp;display=swap">
+<link rel="preload" href="/fonts/playfair-display-latin-400-normal.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="/fonts/montserrat-latin-400-normal.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="stylesheet" href="/fonts/fonts.css">
 <style>
 body{margin:0;background:var(--c-donker);color:var(--c-donker)}
 .eb{container-type:inline-size;container-name:eb;position:relative}
@@ -567,7 +568,7 @@ html:not([data-admin]) .eb-icoon[href^="#"]{display:none}
 <div aria-hidden="true" style="position: absolute; left: -9999px"><label>Laat dit leeg <input name="website" type="text" tabindex="-1" autocomplete="off"></label></div>
 <label class="eb-akkoord">
 <input name="akkoord" type="checkbox" required>
-<span><span data-k="contact-19">Ik ga akkoord met de</span> <a data-k="contact-20" data-l="link-privacy" href="#privacy-link-volgt">privacyverklaring</a>.</span>
+<span><span data-k="contact-19">Ik ga akkoord met de</span> <a data-k="contact-20" data-l="link-privacy" href="/privacy" target="_blank" rel="noopener">privacyverklaring</a>.</span>
 </label>
 <button type="submit" data-k="contact-21" class="eb-btn eb-foot-btn">Schrijf me in</button>
 <p class="eb-aanmeld-m" role="status" aria-live="polite"></p>
@@ -592,7 +593,7 @@ html:not([data-admin]) .eb-icoon[href^="#"]{display:none}
 <p class="eb-afmeld-m" role="status" aria-live="polite"></p>
 </form>
 </details>
-<p class="eb-foot-klein"><span data-k="contact-1">Centrum voor</span> <span data-k="contact-2">Emotionele Basisbehoeften</span> · <span data-k="contact-3">Amersfoort</span><br><span data-k="contact-15">© 2026 · KvK [nummer]</span><br><a data-k="contact-16" data-l="link-privacy" href="#privacy-link-volgt">Privacyverklaring</a> · <a data-k="contact-28" data-l="link-disclaimer" href="#disclaimer-link-volgt">Disclaimer</a></p>
+<p class="eb-foot-klein"><span data-k="contact-1">Centrum voor</span> <span data-k="contact-2">Emotionele Basisbehoeften</span> · <span data-k="contact-3">Amersfoort</span><br><span data-k="contact-15">© 2026 · KvK [nummer]</span><br><a data-k="contact-16" data-l="link-privacy" href="/privacy">Privacyverklaring</a> · <a data-k="contact-28" data-l="link-disclaimer" href="/disclaimer">Disclaimer</a></p>
 </div>
 </footer>
 
