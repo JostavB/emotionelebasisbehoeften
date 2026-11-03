@@ -280,10 +280,10 @@ html:not([data-admin]) .eb-icoon[href^="#"]{display:none}
 /* Delen onder een tekst: label met drie ronde iconen; "meer" opent het deelmenu van het toestel */
 .eb-share{display:flex;align-items:center;gap:10px;flex-wrap:wrap;margin-top:2px;padding-top:18px;border-top:1px solid color-mix(in srgb,var(--c-lijn) 40%,transparent);font-size:14px;color:var(--c-tekst-zacht)}
 .eb-share-l{margin-right:2px}
-.eb-share-i{width:40px;height:40px;border-radius:50%;border:0;display:inline-flex;align-items:center;justify-content:center;color:var(--c-creme);background:var(--c-donker);padding:0;cursor:pointer;transition:background-color .2s}
+.eb-share-i{width:44px;height:44px;border-radius:50%;border:0;display:inline-flex;align-items:center;justify-content:center;color:var(--c-creme)!important;background:var(--c-donker);padding:0;cursor:pointer;transition:background-color .2s}
 .eb-share-i[hidden]{display:none}
-.eb-share-i:hover,.eb-share-i:focus-visible{background:var(--c-tekst-zacht);color:var(--c-creme)}
-.eb-share-i svg{width:18px;height:18px;stroke:currentColor;fill:none;stroke-width:1.6;stroke-linecap:round;stroke-linejoin:round}
+.eb-share-i:hover,.eb-share-i:focus-visible{background:var(--c-tekst-zacht);color:var(--c-creme)!important}
+.eb-share-i svg{width:22px;height:22px;stroke:currentColor;fill:none;stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round}
 .eb-share-m{font-size:13px;color:var(--c-accent);min-height:18px}
 .zp-side .eb-share{margin-top:18px}
 @media (max-width:520px){.zp-side .eb-share-l{flex-basis:100%}}
@@ -370,7 +370,7 @@ html:not([data-admin]) .eb-icoon[href^="#"]{display:none}
 <div class="eb-share" data-share-url="/#fundament">
 <span class="eb-share-l">Deel deze tekst</span>
 <a class="eb-share-i" data-via="whatsapp" href="https://wa.me/" target="_blank" rel="noopener" aria-label="Deel via WhatsApp"><svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M3 21l1.65-3.8A9 9 0 1 1 8 19.4L3 21"/><path d="M9 10a.5.5 0 001 0V9a.5.5 0 00-1 0v1a5 5 0 005 5h1a.5.5 0 000-1h-1a.5.5 0 000 1"/></svg></a>
-<a class="eb-share-i" data-via="linkedin" href="https://www.linkedin.com/" target="_blank" rel="noopener" aria-label="Deel via LinkedIn"><svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><rect x="4" y="4" width="16" height="16" rx="2"/><path d="M8 11v5M8 8v.01M12 16v-5M16 16v-3a2 2 0 00-4 0"/></svg></a>
+<a class="eb-share-i" data-via="linkedin" href="https://www.linkedin.com/" target="_blank" rel="noopener" aria-label="Deel via LinkedIn"><svg viewBox="0 0 24 24" aria-hidden="true" focusable="false" style="fill:currentColor;stroke:none"><path d="M5.2 8.9h3v9.9h-3zM6.7 4.2a1.75 1.75 0 1 1 0 3.5 1.75 1.75 0 0 1 0-3.5zM10.2 8.9h2.9v1.4c.5-.9 1.6-1.7 3.2-1.7 3.1 0 3.7 2 3.7 4.7v5.5h-3v-4.9c0-1.2 0-2.700-1.700-2.700s-1.900 1.300-1.900 2.600v5h-3z"/></svg></a>
 <button type="button" class="eb-share-i" data-via="kopieer" aria-label="Kopieer link"><svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M9 15l6-6M11 6l.5-.5a4.2 4.2 0 016 6l-.5.5M13 18l-.5.5a4.2 4.2 0 01-6-6l.5-.5"/></svg></button>
 <button type="button" class="eb-share-i" data-via="meer" hidden aria-label="Meer opties om te delen"><svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><circle cx="6" cy="12" r="1"/><circle cx="12" cy="12" r="1"/><circle cx="18" cy="12" r="1"/></svg></button>
 <span class="eb-share-m" role="status" aria-live="polite"></span>
@@ -395,7 +395,7 @@ html:not([data-admin]) .eb-icoon[href^="#"]{display:none}
 <div class="eb-share" data-share-url="/#veiligheid-en-verbinding">
 <span class="eb-share-l">Deel deze behoefte</span>
 <a class="eb-share-i" data-via="whatsapp" href="https://wa.me/" target="_blank" rel="noopener" aria-label="Deel via WhatsApp"><svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M3 21l1.65-3.8A9 9 0 1 1 8 19.4L3 21"/><path d="M9 10a.5.5 0 001 0V9a.5.5 0 00-1 0v1a5 5 0 005 5h1a.5.5 0 000-1h-1a.5.5 0 000 1"/></svg></a>
-<a class="eb-share-i" data-via="linkedin" href="https://www.linkedin.com/" target="_blank" rel="noopener" aria-label="Deel via LinkedIn"><svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><rect x="4" y="4" width="16" height="16" rx="2"/><path d="M8 11v5M8 8v.01M12 16v-5M16 16v-3a2 2 0 00-4 0"/></svg></a>
+<a class="eb-share-i" data-via="linkedin" href="https://www.linkedin.com/" target="_blank" rel="noopener" aria-label="Deel via LinkedIn"><svg viewBox="0 0 24 24" aria-hidden="true" focusable="false" style="fill:currentColor;stroke:none"><path d="M5.2 8.9h3v9.9h-3zM6.7 4.2a1.75 1.75 0 1 1 0 3.5 1.75 1.75 0 0 1 0-3.5zM10.2 8.9h2.9v1.4c.5-.9 1.6-1.7 3.2-1.7 3.1 0 3.7 2 3.7 4.7v5.5h-3v-4.9c0-1.2 0-2.700-1.700-2.700s-1.900 1.300-1.900 2.600v5h-3z"/></svg></a>
 <button type="button" class="eb-share-i" data-via="kopieer" aria-label="Kopieer link"><svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M9 15l6-6M11 6l.5-.5a4.2 4.2 0 016 6l-.5.5M13 18l-.5.5a4.2 4.2 0 01-6-6l.5-.5"/></svg></button>
 <button type="button" class="eb-share-i" data-via="meer" hidden aria-label="Meer opties om te delen"><svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><circle cx="6" cy="12" r="1"/><circle cx="12" cy="12" r="1"/><circle cx="18" cy="12" r="1"/></svg></button>
 <span class="eb-share-m" role="status" aria-live="polite"></span>
@@ -407,7 +407,7 @@ html:not([data-admin]) .eb-icoon[href^="#"]{display:none}
 <div class="eb-share" data-share-url="/#autonomie-en-competentie">
 <span class="eb-share-l">Deel deze behoefte</span>
 <a class="eb-share-i" data-via="whatsapp" href="https://wa.me/" target="_blank" rel="noopener" aria-label="Deel via WhatsApp"><svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M3 21l1.65-3.8A9 9 0 1 1 8 19.4L3 21"/><path d="M9 10a.5.5 0 001 0V9a.5.5 0 00-1 0v1a5 5 0 005 5h1a.5.5 0 000-1h-1a.5.5 0 000 1"/></svg></a>
-<a class="eb-share-i" data-via="linkedin" href="https://www.linkedin.com/" target="_blank" rel="noopener" aria-label="Deel via LinkedIn"><svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><rect x="4" y="4" width="16" height="16" rx="2"/><path d="M8 11v5M8 8v.01M12 16v-5M16 16v-3a2 2 0 00-4 0"/></svg></a>
+<a class="eb-share-i" data-via="linkedin" href="https://www.linkedin.com/" target="_blank" rel="noopener" aria-label="Deel via LinkedIn"><svg viewBox="0 0 24 24" aria-hidden="true" focusable="false" style="fill:currentColor;stroke:none"><path d="M5.2 8.9h3v9.9h-3zM6.7 4.2a1.75 1.75 0 1 1 0 3.5 1.75 1.75 0 0 1 0-3.5zM10.2 8.9h2.9v1.4c.5-.9 1.6-1.7 3.2-1.7 3.1 0 3.7 2 3.7 4.7v5.5h-3v-4.9c0-1.2 0-2.700-1.700-2.700s-1.900 1.300-1.900 2.600v5h-3z"/></svg></a>
 <button type="button" class="eb-share-i" data-via="kopieer" aria-label="Kopieer link"><svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M9 15l6-6M11 6l.5-.5a4.2 4.2 0 016 6l-.5.5M13 18l-.5.5a4.2 4.2 0 01-6-6l.5-.5"/></svg></button>
 <button type="button" class="eb-share-i" data-via="meer" hidden aria-label="Meer opties om te delen"><svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><circle cx="6" cy="12" r="1"/><circle cx="12" cy="12" r="1"/><circle cx="18" cy="12" r="1"/></svg></button>
 <span class="eb-share-m" role="status" aria-live="polite"></span>
@@ -419,7 +419,7 @@ html:not([data-admin]) .eb-icoon[href^="#"]{display:none}
 <div class="eb-share" data-share-url="/#realistische-grenzen">
 <span class="eb-share-l">Deel deze behoefte</span>
 <a class="eb-share-i" data-via="whatsapp" href="https://wa.me/" target="_blank" rel="noopener" aria-label="Deel via WhatsApp"><svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M3 21l1.65-3.8A9 9 0 1 1 8 19.4L3 21"/><path d="M9 10a.5.5 0 001 0V9a.5.5 0 00-1 0v1a5 5 0 005 5h1a.5.5 0 000-1h-1a.5.5 0 000 1"/></svg></a>
-<a class="eb-share-i" data-via="linkedin" href="https://www.linkedin.com/" target="_blank" rel="noopener" aria-label="Deel via LinkedIn"><svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><rect x="4" y="4" width="16" height="16" rx="2"/><path d="M8 11v5M8 8v.01M12 16v-5M16 16v-3a2 2 0 00-4 0"/></svg></a>
+<a class="eb-share-i" data-via="linkedin" href="https://www.linkedin.com/" target="_blank" rel="noopener" aria-label="Deel via LinkedIn"><svg viewBox="0 0 24 24" aria-hidden="true" focusable="false" style="fill:currentColor;stroke:none"><path d="M5.2 8.9h3v9.9h-3zM6.7 4.2a1.75 1.75 0 1 1 0 3.5 1.75 1.75 0 0 1 0-3.5zM10.2 8.9h2.9v1.4c.5-.9 1.6-1.7 3.2-1.7 3.1 0 3.7 2 3.7 4.7v5.5h-3v-4.9c0-1.2 0-2.700-1.700-2.700s-1.900 1.300-1.900 2.600v5h-3z"/></svg></a>
 <button type="button" class="eb-share-i" data-via="kopieer" aria-label="Kopieer link"><svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M9 15l6-6M11 6l.5-.5a4.2 4.2 0 016 6l-.5.5M13 18l-.5.5a4.2 4.2 0 01-6-6l.5-.5"/></svg></button>
 <button type="button" class="eb-share-i" data-via="meer" hidden aria-label="Meer opties om te delen"><svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><circle cx="6" cy="12" r="1"/><circle cx="12" cy="12" r="1"/><circle cx="18" cy="12" r="1"/></svg></button>
 <span class="eb-share-m" role="status" aria-live="polite"></span>
@@ -431,7 +431,7 @@ html:not([data-admin]) .eb-icoon[href^="#"]{display:none}
 <div class="eb-share" data-share-url="/#vrijheid-van-expressie">
 <span class="eb-share-l">Deel deze behoefte</span>
 <a class="eb-share-i" data-via="whatsapp" href="https://wa.me/" target="_blank" rel="noopener" aria-label="Deel via WhatsApp"><svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M3 21l1.65-3.8A9 9 0 1 1 8 19.4L3 21"/><path d="M9 10a.5.5 0 001 0V9a.5.5 0 00-1 0v1a5 5 0 005 5h1a.5.5 0 000-1h-1a.5.5 0 000 1"/></svg></a>
-<a class="eb-share-i" data-via="linkedin" href="https://www.linkedin.com/" target="_blank" rel="noopener" aria-label="Deel via LinkedIn"><svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><rect x="4" y="4" width="16" height="16" rx="2"/><path d="M8 11v5M8 8v.01M12 16v-5M16 16v-3a2 2 0 00-4 0"/></svg></a>
+<a class="eb-share-i" data-via="linkedin" href="https://www.linkedin.com/" target="_blank" rel="noopener" aria-label="Deel via LinkedIn"><svg viewBox="0 0 24 24" aria-hidden="true" focusable="false" style="fill:currentColor;stroke:none"><path d="M5.2 8.9h3v9.9h-3zM6.7 4.2a1.75 1.75 0 1 1 0 3.5 1.75 1.75 0 0 1 0-3.5zM10.2 8.9h2.9v1.4c.5-.9 1.6-1.7 3.2-1.7 3.1 0 3.7 2 3.7 4.7v5.5h-3v-4.9c0-1.2 0-2.700-1.700-2.700s-1.900 1.300-1.900 2.600v5h-3z"/></svg></a>
 <button type="button" class="eb-share-i" data-via="kopieer" aria-label="Kopieer link"><svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M9 15l6-6M11 6l.5-.5a4.2 4.2 0 016 6l-.5.5M13 18l-.5.5a4.2 4.2 0 01-6-6l.5-.5"/></svg></button>
 <button type="button" class="eb-share-i" data-via="meer" hidden aria-label="Meer opties om te delen"><svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><circle cx="6" cy="12" r="1"/><circle cx="12" cy="12" r="1"/><circle cx="18" cy="12" r="1"/></svg></button>
 <span class="eb-share-m" role="status" aria-live="polite"></span>
@@ -443,7 +443,7 @@ html:not([data-admin]) .eb-icoon[href^="#"]{display:none}
 <div class="eb-share" data-share-url="/#spontaniteit-en-spel">
 <span class="eb-share-l">Deel deze behoefte</span>
 <a class="eb-share-i" data-via="whatsapp" href="https://wa.me/" target="_blank" rel="noopener" aria-label="Deel via WhatsApp"><svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M3 21l1.65-3.8A9 9 0 1 1 8 19.4L3 21"/><path d="M9 10a.5.5 0 001 0V9a.5.5 0 00-1 0v1a5 5 0 005 5h1a.5.5 0 000-1h-1a.5.5 0 000 1"/></svg></a>
-<a class="eb-share-i" data-via="linkedin" href="https://www.linkedin.com/" target="_blank" rel="noopener" aria-label="Deel via LinkedIn"><svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><rect x="4" y="4" width="16" height="16" rx="2"/><path d="M8 11v5M8 8v.01M12 16v-5M16 16v-3a2 2 0 00-4 0"/></svg></a>
+<a class="eb-share-i" data-via="linkedin" href="https://www.linkedin.com/" target="_blank" rel="noopener" aria-label="Deel via LinkedIn"><svg viewBox="0 0 24 24" aria-hidden="true" focusable="false" style="fill:currentColor;stroke:none"><path d="M5.2 8.9h3v9.9h-3zM6.7 4.2a1.75 1.75 0 1 1 0 3.5 1.75 1.75 0 0 1 0-3.5zM10.2 8.9h2.9v1.4c.5-.9 1.6-1.7 3.2-1.7 3.1 0 3.7 2 3.7 4.7v5.5h-3v-4.9c0-1.2 0-2.700-1.700-2.700s-1.900 1.300-1.900 2.600v5h-3z"/></svg></a>
 <button type="button" class="eb-share-i" data-via="kopieer" aria-label="Kopieer link"><svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M9 15l6-6M11 6l.5-.5a4.2 4.2 0 016 6l-.5.5M13 18l-.5.5a4.2 4.2 0 01-6-6l.5-.5"/></svg></button>
 <button type="button" class="eb-share-i" data-via="meer" hidden aria-label="Meer opties om te delen"><svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><circle cx="6" cy="12" r="1"/><circle cx="12" cy="12" r="1"/><circle cx="18" cy="12" r="1"/></svg></button>
 <span class="eb-share-m" role="status" aria-live="polite"></span>
@@ -456,7 +456,7 @@ html:not([data-admin]) .eb-icoon[href^="#"]{display:none}
 <div class="eb-share" data-share-url="/#rechtvaardigheid">
 <span class="eb-share-l">Deel deze behoefte</span>
 <a class="eb-share-i" data-via="whatsapp" href="https://wa.me/" target="_blank" rel="noopener" aria-label="Deel via WhatsApp"><svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M3 21l1.65-3.8A9 9 0 1 1 8 19.4L3 21"/><path d="M9 10a.5.5 0 001 0V9a.5.5 0 00-1 0v1a5 5 0 005 5h1a.5.5 0 000-1h-1a.5.5 0 000 1"/></svg></a>
-<a class="eb-share-i" data-via="linkedin" href="https://www.linkedin.com/" target="_blank" rel="noopener" aria-label="Deel via LinkedIn"><svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><rect x="4" y="4" width="16" height="16" rx="2"/><path d="M8 11v5M8 8v.01M12 16v-5M16 16v-3a2 2 0 00-4 0"/></svg></a>
+<a class="eb-share-i" data-via="linkedin" href="https://www.linkedin.com/" target="_blank" rel="noopener" aria-label="Deel via LinkedIn"><svg viewBox="0 0 24 24" aria-hidden="true" focusable="false" style="fill:currentColor;stroke:none"><path d="M5.2 8.9h3v9.9h-3zM6.7 4.2a1.75 1.75 0 1 1 0 3.5 1.75 1.75 0 0 1 0-3.5zM10.2 8.9h2.9v1.4c.5-.9 1.6-1.7 3.2-1.7 3.1 0 3.7 2 3.7 4.7v5.5h-3v-4.9c0-1.2 0-2.700-1.700-2.700s-1.900 1.300-1.900 2.600v5h-3z"/></svg></a>
 <button type="button" class="eb-share-i" data-via="kopieer" aria-label="Kopieer link"><svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M9 15l6-6M11 6l.5-.5a4.2 4.2 0 016 6l-.5.5M13 18l-.5.5a4.2 4.2 0 01-6-6l.5-.5"/></svg></button>
 <button type="button" class="eb-share-i" data-via="meer" hidden aria-label="Meer opties om te delen"><svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><circle cx="6" cy="12" r="1"/><circle cx="12" cy="12" r="1"/><circle cx="18" cy="12" r="1"/></svg></button>
 <span class="eb-share-m" role="status" aria-live="polite"></span>
@@ -469,7 +469,7 @@ html:not([data-admin]) .eb-icoon[href^="#"]{display:none}
 <div class="eb-share" data-share-url="/#zelfcoherentie">
 <span class="eb-share-l">Deel deze behoefte</span>
 <a class="eb-share-i" data-via="whatsapp" href="https://wa.me/" target="_blank" rel="noopener" aria-label="Deel via WhatsApp"><svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M3 21l1.65-3.8A9 9 0 1 1 8 19.4L3 21"/><path d="M9 10a.5.5 0 001 0V9a.5.5 0 00-1 0v1a5 5 0 005 5h1a.5.5 0 000-1h-1a.5.5 0 000 1"/></svg></a>
-<a class="eb-share-i" data-via="linkedin" href="https://www.linkedin.com/" target="_blank" rel="noopener" aria-label="Deel via LinkedIn"><svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><rect x="4" y="4" width="16" height="16" rx="2"/><path d="M8 11v5M8 8v.01M12 16v-5M16 16v-3a2 2 0 00-4 0"/></svg></a>
+<a class="eb-share-i" data-via="linkedin" href="https://www.linkedin.com/" target="_blank" rel="noopener" aria-label="Deel via LinkedIn"><svg viewBox="0 0 24 24" aria-hidden="true" focusable="false" style="fill:currentColor;stroke:none"><path d="M5.2 8.9h3v9.9h-3zM6.7 4.2a1.75 1.75 0 1 1 0 3.5 1.75 1.75 0 0 1 0-3.5zM10.2 8.9h2.9v1.4c.5-.9 1.6-1.7 3.2-1.7 3.1 0 3.7 2 3.7 4.7v5.5h-3v-4.9c0-1.2 0-2.700-1.700-2.700s-1.900 1.300-1.900 2.600v5h-3z"/></svg></a>
 <button type="button" class="eb-share-i" data-via="kopieer" aria-label="Kopieer link"><svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M9 15l6-6M11 6l.5-.5a4.2 4.2 0 016 6l-.5.5M13 18l-.5.5a4.2 4.2 0 01-6-6l.5-.5"/></svg></button>
 <button type="button" class="eb-share-i" data-via="meer" hidden aria-label="Meer opties om te delen"><svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><circle cx="6" cy="12" r="1"/><circle cx="12" cy="12" r="1"/><circle cx="18" cy="12" r="1"/></svg></button>
 <span class="eb-share-m" role="status" aria-live="polite"></span>
