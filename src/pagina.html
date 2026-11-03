@@ -33,7 +33,7 @@ __CSS__
 </style>
 </head>
 <body>
-<div class="top"><a class="naam" href="/"><span>Centrum voor</span><span>Emotionele Basisbehoeften</span></a><a class="terug" id="terug" href="/#contact">Terug naar de website</a></div>
+<div class="top"><a class="naam" href="/"><span>Centrum voor</span><span>Emotionele Basisbehoeften</span></a><a class="terug" id="terug" href="/">Terug naar de website</a></div>
 <main class="kaart">
 <h1>__TITEL__</h1>
 <p class="datum">Laatst bijgewerkt: __DATUM__</p>
@@ -43,7 +43,9 @@ __INHOUD__
 <script>
 document.getElementById('terug').addEventListener('click',function(e){
   try{
-    if(history.length>1&&document.referrer&&new URL(document.referrer).origin===location.origin){e.preventDefault();history.back();}
+    var v=document.referrer?new URL(document.referrer):null;
+    // Kom je vanaf de hoofdpagina (bijvoorbeeld via het formulier), dan ga je terug naar waar je was. Anders ga je naar de hoofdpagina.
+    if(history.length>1&&v&&v.origin===location.origin&&v.pathname==='/'){e.preventDefault();history.back();}
   }catch(x){}
 });
 </script>
