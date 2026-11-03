@@ -15,6 +15,9 @@
     "ADMIN_EMAILS": "jd.vanbrouwershaven@gmail.com,emotionelebasisbehoeften@gmail.com",
     // Client-ID uit Google Cloud Console (OAuth, type Webapplicatie). Niet geheim.
     // Project "Basisbehoeften website" onder jd.vanbrouwershaven@gmail.com.
+    // MailerLite-groep waar nieuwe aanmeldingen in komen. Niet geheim. De API-sleutel staat als
+    // geheim MAILERLITE_API_KEY in Cloudflare (Workers > Instellingen > Variabelen en geheimen).
+    "MAILERLITE_GROUP_ID": "203104379596703455",
     "GOOGLE_CLIENT_ID": "542018349659-q5pioera0pmlsr23d7l0fkndm3vmj5dg.apps.googleusercontent.com"
   },
   "observability": { "enabled": true }

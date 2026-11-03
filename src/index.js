@@ -72,7 +72,7 @@ async function route(request, env, ctx) {
     const c = await getContent(env);
     return json(c.agenda ?? DEFAULT_AGENDA, 200, { 'cache-control': 'public, max-age=60', 'access-control-allow-origin': '*' });
   }
-  if (path === '/api/signup' && method === 'POST') return signup(request, env);
+  if (path === '/api/signup' && method === 'POST') return signup(request, env, url);
   if (path === '/api/sync/agenda' && method === 'PUT') return syncAgenda(request, env);
 
   if (path.startsWith('/api/admin/')) {
@@ -478,14 +478,37 @@ function cleanAgenda(list) {
 
 // ---------- aanmelden nieuwsbrief ----------
 
-async function signup(request, env) {
+// Adressen worden niet op de site bewaard maar direct naar MailerLite gestuurd.
+// Met "Double opt-in for API and integrations" aan in MailerLite krijgt iedereen eerst een bevestigingsmail.
+// Vereist: variabele MAILERLITE_GROUP_ID (wrangler.jsonc) en geheim MAILERLITE_API_KEY (Cloudflare).
+const SIGNUP_LIMIT = 5; // per IP per uur
+
+async function signup(request, env, url) {
+  if (!sameOrigin(request, url)) throw new HttpError(403, 'Ongeldig verzoek.');
   const body = await readJson(request, 2000);
   if (body.website) return json({ ok: true }); // honeypot
   const email = String(body.email || '').trim().toLowerCase();
   if (!/^[^\s@<>]{1,64}@[^\s@<>]{1,190}\.[a-z]{2,}$/i.test(email)) throw new HttpError(400, 'Vul een geldig e-mailadres in.');
-  const key = SIGNUP_PREFIX + (await sha(email)).slice(0, 24);
-  const exists = await env.CONTENT.get(key);
-  if (!exists) await env.CONTENT.put(key, '1', { metadata: { email, at: new Date().toISOString() } });
+  if (body.akkoord !== true) throw new HttpError(400, 'Vink aan dat je akkoord gaat met de privacyverklaring.');
+  if (!env.MAILERLITE_API_KEY || !env.MAILERLITE_GROUP_ID) throw new HttpError(503, 'Aanmelden is nog niet beschikbaar.');
+
+  // Eenvoudige begrenzing per IP-adres, zonder het adres zelf te bewaren.
+  const ip = request.headers.get('cf-connecting-ip') || 'onbekend';
+  const rlKey = 'rl:' + (await sha(ip)).slice(0, 24);
+  const used = Number(await env.CONTENT.get(rlKey)) || 0;
+  if (used >= SIGNUP_LIMIT) throw new HttpError(429, 'Te veel pogingen. Probeer het later opnieuw.');
+  await env.CONTENT.put(rlKey, String(used + 1), { expirationTtl: 3600 });
+
+  const res = await fetch('https://connect.mailerlite.com/api/subscribers', {
+    method: 'POST',
+    headers: { 'content-type': 'application/json', accept: 'application/json', authorization: 'Bearer ' + env.MAILERLITE_API_KEY },
+    body: JSON.stringify({ email, groups: [String(env.MAILERLITE_GROUP_ID)] }),
+  });
+  if (!res.ok && res.status !== 422) {
+    console.error('MailerLite', res.status, await res.text());
+    throw new HttpError(502, 'Aanmelden lukt nu niet. Probeer het later opnieuw.');
+  }
+  if (res.status === 422) throw new HttpError(400, 'Dit e-mailadres wordt niet geaccepteerd. Controleer het adres.');
   return json({ ok: true });
 }
 

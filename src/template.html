@@ -547,9 +547,20 @@ body{margin:0;background:var(--c-donker);color:var(--c-donker)}
 <p data-k="contact-11" style="margin: 0; font-size: 14px; color: var(--c-tekst-licht)">@emotionelebasisbehoeften</p>
 </div>
 <div style="display: flex; flex-direction: column; gap: 16px; background: var(--c-agenda); border-radius: 24px; padding: 28px">
-<p data-k="contact-12" class="eb-label" style="color: var(--c-goud); margin: 0">Substack</p>
-<p data-k="contact-13" style="margin: 0; font-size: 16px; line-height: 1.6; color: var(--c-tekst-licht-sterk)">Korte stukken over wat kinderen emotioneel nodig hebben, rechtstreeks in je inbox.</p>
-<div><a data-k="contact-14" data-l="link-substack" href="#substack-link-volgt" class="eb-btn" style="background: var(--c-creme); color: var(--c-donker)">Abonneer gratis</a></div>
+<p data-k="contact-17" class="eb-label" style="color: var(--c-goud); margin: 0">Wachtlijst en nieuwsbrief</p>
+<p data-k="contact-18" style="margin: 0; font-size: 16px; line-height: 1.6; color: var(--c-tekst-licht-sterk)">Als eerste weten wanneer het boek, de cursussen en de lezingen er zijn. Af en toe een kort stuk over wat kinderen emotioneel nodig hebben.</p>
+<form class="eb-aanmeld" action="/api/signup" method="post" novalidate style="display: flex; flex-direction: column; gap: 12px">
+<label for="aanmeld-email" style="position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0)">E-mailadres</label>
+<input id="aanmeld-email" name="email" type="email" inputmode="email" autocomplete="email" placeholder="Je e-mailadres" required maxlength="254" style="min-height: 52px; padding: 0 20px; border-radius: 999px; border: 1px solid var(--c-lijn); background: var(--c-creme); color: var(--c-donker); font: inherit; font-size: 16px; width: 100%; box-sizing: border-box">
+<div aria-hidden="true" style="position: absolute; left: -9999px"><label>Laat dit leeg <input name="website" type="text" tabindex="-1" autocomplete="off"></label></div>
+<label style="display: flex; gap: 10px; align-items: flex-start; font-size: 14px; line-height: 1.5; color: var(--c-tekst-licht-sterk)">
+<input name="akkoord" type="checkbox" required style="margin-top: 3px; width: 18px; height: 18px; flex: none; accent-color: var(--c-goud)">
+<span><span data-k="contact-19">Ik ga akkoord met de</span> <a data-k="contact-20" data-l="link-privacy" href="#privacy-link-volgt" style="text-underline-offset: 3px">privacyverklaring</a>.</span>
+</label>
+<button type="submit" data-k="contact-21" class="eb-btn" style="background: var(--c-creme); color: var(--c-donker); border: 0; cursor: pointer">Zet me op de lijst</button>
+<p class="eb-aanmeld-m" role="status" aria-live="polite" style="margin: 0; font-size: 14px; line-height: 1.5; color: var(--c-goud); min-height: 1.5em"></p>
+</form>
+<a data-k="contact-14" data-l="link-substack" href="#substack-link-volgt" style="font-size: 14px; color: var(--c-tekst-licht); text-underline-offset: 4px">Lees ook op Substack</a>
 </div>
 </div>
 <div style="margin-top: 72px; padding-top: 24px; border-top: 1px solid var(--c-tekst-zacht); display: flex; flex-wrap: wrap; gap: 8px 24px; justify-content: space-between; font-size: 13px; color: var(--c-tekst-licht)">
@@ -663,6 +674,26 @@ document.querySelectorAll('.eb-share').forEach(function(box){
     mr.hidden=false;
     mr.addEventListener('click',function(){navigator.share({title:titel,text:titel,url:url}).catch(function(){});});
   }
+});
+})();
+</script>
+<script>
+(function(){
+var f=document.querySelector('.eb-aanmeld'); if(!f) return;
+var m=f.querySelector('.eb-aanmeld-m'), b=f.querySelector('button');
+f.addEventListener('submit',function(e){
+  e.preventDefault();
+  var email=f.elements.email.value.trim();
+  if(!/^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/.test(email)){m.textContent='Vul een geldig e-mailadres in.';f.elements.email.focus();return;}
+  if(!f.elements.akkoord.checked){m.textContent='Vink aan dat je akkoord gaat met de privacyverklaring.';return;}
+  b.disabled=true; m.textContent='Even geduld…';
+  fetch('/api/signup',{method:'POST',headers:{'content-type':'application/json','x-gk':'1'},body:JSON.stringify({email:email,akkoord:true,website:f.elements.website.value})})
+    .then(function(r){return r.json().then(function(d){return {ok:r.ok,d:d};});})
+    .then(function(x){
+      if(x.ok){f.reset();m.textContent='Bijna klaar. Je krijgt een mail om je aanmelding te bevestigen. Check ook je spam.';}
+      else{m.textContent=(x.d&&x.d.error)||'Aanmelden lukt nu niet.';b.disabled=false;}
+    })
+    .catch(function(){m.textContent='Aanmelden lukt nu niet. Probeer het later opnieuw.';b.disabled=false;});
 });
 })();
 </script>
