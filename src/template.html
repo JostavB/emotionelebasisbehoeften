@@ -568,7 +568,7 @@ html:not([data-admin]) .eb-icoon[href^="#"]{display:none}
 <div aria-hidden="true" style="position: absolute; left: -9999px"><label>Laat dit leeg <input name="website" type="text" tabindex="-1" autocomplete="off"></label></div>
 <label class="eb-akkoord">
 <input name="akkoord" type="checkbox" required>
-<span><span data-k="contact-19">Ik ga akkoord met de</span> <a data-k="contact-20" data-l="link-privacy" href="/privacy" target="_blank" rel="noopener">privacyverklaring</a>.</span>
+<span><span data-k="contact-19">Ik ga akkoord met de</span> <a data-k="contact-20" data-l="link-privacy" href="/privacy">privacyverklaring</a>.</span>
 </label>
 <button type="submit" data-k="contact-21" class="eb-btn eb-foot-btn">Schrijf me in</button>
 <p class="eb-aanmeld-m" role="status" aria-live="polite"></p>
@@ -708,6 +708,10 @@ document.querySelectorAll('.eb-share').forEach(function(box){
 (function(){
 var f=document.querySelector('.eb-aanmeld'); if(!f) return;
 var m=f.querySelector('.eb-aanmeld-m'), b=f.querySelector('button');
+// Het ingevulde adres blijft in dit tabblad bewaard (alleen in je browser, niet verstuurd), zodat je na het lezen van de privacyverklaring niet opnieuw hoeft te typen.
+var em=f.elements.email;
+try{var bewaard=sessionStorage.getItem('eb-email'); if(bewaard&&!em.value) em.value=bewaard;}catch(x){}
+em.addEventListener('input',function(){try{sessionStorage.setItem('eb-email',em.value);}catch(x){}});
 f.addEventListener('submit',function(e){
   e.preventDefault();
   var email=f.elements.email.value.trim();
@@ -717,7 +721,7 @@ f.addEventListener('submit',function(e){
   fetch('/api/signup',{method:'POST',headers:{'content-type':'application/json','x-gk':'1'},body:JSON.stringify({email:email,akkoord:true,website:f.elements.website.value})})
     .then(function(r){return r.json().then(function(d){return {ok:r.ok,d:d};});})
     .then(function(x){
-      if(x.ok){f.reset();m.textContent='Bijna klaar. Je krijgt een mail om je aanmelding te bevestigen. Check ook je spam.';}
+      if(x.ok){f.reset();try{sessionStorage.removeItem('eb-email');}catch(y){}m.textContent='Bijna klaar. Je krijgt een mail om je aanmelding te bevestigen. Check ook je spam.';}
       else{m.textContent=(x.d&&x.d.error)||'Aanmelden lukt nu niet.';b.disabled=false;}
     })
     .catch(function(){m.textContent='Aanmelden lukt nu niet. Probeer het later opnieuw.';b.disabled=false;});

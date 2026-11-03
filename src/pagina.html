@@ -33,12 +33,19 @@ __CSS__
 </style>
 </head>
 <body>
-<div class="top"><a class="naam" href="/"><span>Centrum voor</span><span>Emotionele Basisbehoeften</span></a><a class="terug" href="/">Terug naar de website</a></div>
+<div class="top"><a class="naam" href="/"><span>Centrum voor</span><span>Emotionele Basisbehoeften</span></a><a class="terug" id="terug" href="/#contact">Terug naar de website</a></div>
 <main class="kaart">
 <h1>__TITEL__</h1>
 <p class="datum">Laatst bijgewerkt: __DATUM__</p>
 __INHOUD__
 </main>
 <div class="voet"><p>© 2026 Centrum voor Emotionele Basisbehoeften · <a href="/privacy">Privacyverklaring</a> · <a href="/disclaimer">Disclaimer</a></p></div>
+<script>
+document.getElementById('terug').addEventListener('click',function(e){
+  try{
+    if(history.length>1&&document.referrer&&new URL(document.referrer).origin===location.origin){e.preventDefault();history.back();}
+  }catch(x){}
+});
+</script>
 </body>
 </html>
