@@ -45,6 +45,7 @@ bar.append(
   h('div', { class: 'gk-actions' },
     h('button', { class: 'gk-btn', type: 'button', onclick: () => openPanel('fonts') }, 'Instellingen'),
     h('button', { class: 'gk-btn', type: 'button', onclick: () => openPanel('agenda') }, 'Agenda'),
+    h('button', { class: 'gk-btn', type: 'button', onclick: () => openPanel('lezingen') }, 'Lezingaanvragen'),
     h('button', { class: 'gk-btn', type: 'button', onclick: () => openPanel('history') }, 'Versies'),
   ),
   h('div', { class: 'gk-right' },
@@ -342,9 +343,9 @@ function openPanel(kind) {
   panel.hidden = false;
   const close = h('button', { class: 'gk-btn gk-ghost gk-close', type: 'button', onclick: () => { panel.hidden = true; } }, 'Sluiten');
   const body = h('div', { class: 'gk-panel-body' });
-  const titles = { fonts: 'Instellingen', agenda: 'Agenda', signups: 'Aanmeldingen', history: 'Versies' };
+  const titles = { fonts: 'Instellingen', agenda: 'Agenda', signups: 'Aanmeldingen', lezingen: 'Lezingaanvragen', history: 'Versies' };
   panel.append(h('div', { class: 'gk-panel-head' }, h('h2', {}, titles[kind]), close), body);
-  ({ fonts: fontsPanel, agenda: agendaPanel, signups: signupsPanel, history: historyPanel })[kind](body);
+  ({ fonts: fontsPanel, agenda: agendaPanel, signups: signupsPanel, lezingen: lezingenPanel, history: historyPanel })[kind](body);
 }
 
 function fontsPanel(body) {
@@ -514,6 +515,23 @@ async function signupsPanel(body) {
       h('thead', {}, h('tr', {}, h('th', {}, 'E-mail'), h('th', {}, 'Aangemeld'))),
       h('tbody', {}, ...list.map((s) => h('tr', {}, h('td', {}, s.email), h('td', {}, fmtDate(s.at))))),
     ));
+  } catch (e) { box.textContent = e.message; }
+}
+
+async function lezingenPanel(body) {
+  body.append(h('p', { class: 'gk-help' }, 'Aanvragen via het formulier bij Lezingen en voorlichting, nieuwste bovenaan.'));
+  const box = h('div', {}, 'Laden…');
+  body.append(box);
+  try {
+    const list = await api('/api/admin/lezingen');
+    box.textContent = '';
+    if (!list.length) { box.append(h('p', {}, 'Nog geen aanvragen.')); return; }
+    box.append(...list.map((a) => h('div', { class: 'gk-item' },
+      h('p', {}, h('strong', {}, `${a.naam} (${a.organisatie})`), ` · ${fmtDate(a.at)}`),
+      h('p', {}, `${a.email}${a.telefoon ? ' · ' + a.telefoon : ''}`),
+      h('p', {}, `Periode: ${a.periode || '-'} · Aantal: ${a.aantal || '-'}`),
+      h('p', {}, a.bericht),
+    )));
   } catch (e) { box.textContent = e.message; }
 }
 

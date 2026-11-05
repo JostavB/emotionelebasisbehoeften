@@ -14,6 +14,7 @@ const HIST_PREFIX = 'hist:';
 const HIST_KEEP = 30;
 const MEDIA_PREFIX = 'media:';
 const SIGNUP_PREFIX = 'signup:';
+const LEZING_PREFIX = 'lezing:';
 const SESSION_PREFIX = 'sess:';
 const SESSION_COOKIE = '__Host-cebb_sessie';
 const SESSION_TTL = 12 * 60 * 60; // 12 uur
@@ -76,6 +77,7 @@ async function route(request, env, ctx) {
     return json(c.agenda ?? DEFAULT_AGENDA, 200, { 'cache-control': 'public, max-age=60', 'access-control-allow-origin': '*' });
   }
   if (path === '/api/signup' && method === 'POST') return signup(request, env, url);
+  if (path === '/api/lezing' && method === 'POST') return lezingAanvraag(request, env, url);
   if (path === '/api/unsubscribe' && method === 'POST') return unsubscribe(request, env, url);
   if (path === '/api/sync/agenda' && method === 'PUT') return syncAgenda(request, env);
 
@@ -455,6 +457,20 @@ async function adminApi(request, env, sub, method, user) {
     return json(out.reverse());
   }
 
+  if (sub === 'lezingen' && method === 'GET') {
+    const out = [];
+    let cursor;
+    do {
+      const l = await env.CONTENT.list({ prefix: LEZING_PREFIX, cursor });
+      for (const k of l.keys) {
+        const v = await env.CONTENT.get(k.name, 'json');
+        if (v) out.push(v);
+      }
+      cursor = l.list_complete ? null : l.cursor;
+    } while (cursor);
+    return json(out.reverse());
+  }
+
   throw new HttpError(404, 'Onbekende actie.');
 }
 
@@ -495,6 +511,42 @@ function cleanAgenda(list) {
     kleur: ['donker', 'zand', 'salie'].includes(it?.kleur) ? it.kleur : 'donker',
     ...(it?.bron ? { bron: str(it.bron, 40) } : {}),
   }));
+}
+
+// ---------- aanvraag lezing ----------
+
+// Aanvragen worden in KV bewaard en staan in /admin onder "Lezingaanvragen".
+const LEZING_LIMIT = 3; // per IP per uur
+
+async function lezingAanvraag(request, env, url) {
+  if (!sameOrigin(request, url)) throw new HttpError(403, 'Ongeldig verzoek.');
+  const body = await readJson(request, 8000);
+  if (body.website) return json({ ok: true }); // honeypot
+  const clean = (v, max) => String(v || '').replace(/[\u0000-\u0008\u000b\u000c\u000e-\u001f]/g, '').trim().slice(0, max);
+  const a = {
+    naam: clean(body.naam, 100),
+    organisatie: clean(body.organisatie, 150),
+    email: clean(body.email, 254).toLowerCase(),
+    telefoon: clean(body.telefoon, 40),
+    periode: clean(body.periode, 120),
+    aantal: clean(body.aantal, 20),
+    bericht: clean(body.bericht, 2000),
+  };
+  if (!a.naam || !a.organisatie) throw new HttpError(400, 'Vul je naam en organisatie in.');
+  if (!/^[^\s@<>]{1,64}@[^\s@<>]{1,190}\.[a-z]{2,}$/i.test(a.email)) throw new HttpError(400, 'Vul een geldig e-mailadres in.');
+  if (!a.bericht) throw new HttpError(400, 'Vertel kort waar je aan denkt.');
+  if (body.akkoord !== true) throw new HttpError(400, 'Vink aan dat je akkoord gaat met de privacyverklaring.');
+
+  const ip = request.headers.get('cf-connecting-ip') || 'onbekend';
+  const rlKey = 'rl:lz:' + (await sha(ip)).slice(0, 24);
+  const used = Number(await env.CONTENT.get(rlKey)) || 0;
+  if (used >= LEZING_LIMIT) throw new HttpError(429, 'Te veel pogingen. Probeer het later opnieuw.');
+  await env.CONTENT.put(rlKey, String(used + 1), { expirationTtl: 3600 });
+
+  const at = new Date().toISOString();
+  const id = LEZING_PREFIX + String(Date.now()).padStart(15, '0') + '-' + (await sha(a.email + at)).slice(0, 6);
+  await env.CONTENT.put(id, JSON.stringify({ ...a, at }));
+  return json({ ok: true });
 }
 
 // ---------- aanmelden nieuwsbrief ----------
