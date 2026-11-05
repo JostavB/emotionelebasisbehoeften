@@ -530,6 +530,7 @@ async function lezingenPanel(body) {
       h('p', {}, h('strong', {}, `${a.naam} (${a.organisatie})`), ` · ${fmtDate(a.at)}`),
       h('p', {}, `${a.email}${a.telefoon ? ' · ' + a.telefoon : ''}`),
       h('p', {}, `Periode: ${a.periode || '-'} · Aantal: ${a.aantal || '-'}`),
+      h('p', {}, `Locatie: ${a.locatie || '-'} · Doelgroep: ${a.doelgroep || '-'}`),
       h('p', {}, a.bericht),
     )));
   } catch (e) { box.textContent = e.message; }

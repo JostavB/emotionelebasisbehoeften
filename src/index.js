@@ -530,11 +530,13 @@ async function lezingAanvraag(request, env, url) {
     telefoon: clean(body.telefoon, 40),
     periode: clean(body.periode, 120),
     aantal: clean(body.aantal, 20),
+    locatie: clean(body.locatie, 150),
+    doelgroep: clean(body.doelgroep, 200),
     bericht: clean(body.bericht, 2000),
   };
   if (!a.naam || !a.organisatie) throw new HttpError(400, 'Vul je naam en organisatie in.');
   if (!/^[^\s@<>]{1,64}@[^\s@<>]{1,190}\.[a-z]{2,}$/i.test(a.email)) throw new HttpError(400, 'Vul een geldig e-mailadres in.');
-  if (!a.bericht) throw new HttpError(400, 'Vertel kort waar je aan denkt.');
+  if (!a.bericht) throw new HttpError(400, 'Vul in wat ik voor jullie kan betekenen.');
   if (body.akkoord !== true) throw new HttpError(400, 'Vink aan dat je akkoord gaat met de privacyverklaring.');
 
   const ip = request.headers.get('cf-connecting-ip') || 'onbekend';
