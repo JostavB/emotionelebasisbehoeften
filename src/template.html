@@ -285,11 +285,12 @@ html:not([data-admin]) .eb-icoon[href^="#"]{display:none}
 .eb-btn-fund-2:hover{background:color-mix(in srgb, var(--c-donker) 9%, transparent);font-weight:700!important;filter:none}
 
 /* Delen onder een tekst: label met drie ronde iconen; "meer" opent het deelmenu van het toestel */
-.eb-share{display:flex;align-items:center;gap:10px;flex-wrap:wrap;margin-top:2px;padding-top:18px;border-top:1px solid color-mix(in srgb,var(--c-lijn) 40%,transparent);font-size:14px;color:var(--c-tekst-zacht)}
+.eb-share{display:flex;align-items:center;gap:10px;flex-wrap:wrap;margin-top:2px;padding-top:18px;border-top:1px solid color-mix(in srgb,var(--c-lijn) 40%,transparent);font-size:14px;color:var(--c-donker)}
 .eb-share-l{margin-right:2px}
-.eb-share-i{width:44px;height:44px;border-radius:50%;border:0;display:inline-flex;align-items:center;justify-content:center;color:var(--c-creme)!important;background:var(--c-donker);padding:0;cursor:pointer;transition:background-color .2s}
+.eb-share-i{width:44px;height:44px;border-radius:50%;border:0;display:inline-flex;align-items:center;justify-content:center;color:var(--c-creme)!important;background:var(--c-donker);padding:0;cursor:pointer;transition:transform .12s,background-color .12s}
 .eb-share-i[hidden]{display:none}
-.eb-share-i:hover,.eb-share-i:focus-visible{background:var(--c-tekst-zacht);color:var(--c-creme)!important}
+.eb-share-i:active{transform:scale(.92);background:var(--c-tekst-zacht)}
+.eb-share-i:focus-visible{outline:2px solid var(--c-accent);outline-offset:3px}
 .eb-share-i svg{width:22px;height:22px;stroke:currentColor;fill:none;stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round}
 .eb-share-m{font-size:13px;color:var(--c-accent);min-height:18px}
 .zp-side .eb-share{margin-top:18px}
