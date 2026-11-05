@@ -354,6 +354,8 @@ html:not([data-admin]) .eb-icoon[href^="#"]{display:none}
 textarea.lz-veld{resize:vertical;min-height:120px}
 .lz-veld:focus-visible{outline:2px solid var(--c-donker);outline-offset:2px}
 .lz-verstuur{align-self:flex-start}
+.lz-ts{min-height:0}
+.lz-form.is-ok .lz-ts{display:none}
 .lz-m{margin:0;font-size:14px;line-height:1.5;color:var(--c-accent);min-height:1.5em}
 @media (max-width:560px){.lz-velden{grid-template-columns:minmax(0,1fr)}.lz-form{padding:32px 20px 24px}}
 </style>
@@ -599,6 +601,7 @@ textarea.lz-veld{resize:vertical;min-height:120px}
 </div>
 <div aria-hidden="true" style="position: absolute; left: -9999px"><label>Laat dit leeg <input name="website" type="text" tabindex="-1" autocomplete="off"></label></div>
 <label class="eb-akkoord"><input name="akkoord" type="checkbox" required><span>Ik ga akkoord met de <a href="/privacy">privacyverklaring</a>.</span></label>
+<div id="lz-ts" class="lz-ts"></div>
 <button type="submit" class="eb-btn eb-aanbod-b lz-verstuur">Verstuur aanvraag</button>
 <p class="lz-m" role="status" aria-live="polite"></p>
 <div class="lz-ok" role="status" hidden>Bedankt voor je aanvraag! Het formulier is succesvol verzonden. Je ontvangt zo snel mogelijk bericht van mij.</div>
@@ -843,8 +846,13 @@ f.addEventListener('submit',function(e){
 (function(){
 var d=document.getElementById('lz-dialog'), o=document.getElementById('lz-open'), f=document.getElementById('lz-form');
 if(!d||!o||!f||typeof d.showModal!=='function') return;
-var m=f.querySelector('.lz-m'), b=f.querySelector('.lz-verstuur'), geopend=0;
-o.addEventListener('click',function(){ if(document.documentElement.hasAttribute('data-admin')) return; m.textContent=''; b.disabled=false; geopend=Date.now(); f.classList.remove('is-ok'); f.querySelector('.lz-ok').hidden=true; d.showModal(); });
+var m=f.querySelector('.lz-m'), b=f.querySelector('.lz-verstuur'), geopend=0, tsId=null, tsToken='', tsLaadt=false;
+var TS_KEY='0x4AAAAAAF1eW0l4x9h7_FB2';
+function tsRender(){ if(tsId!==null){try{turnstile.reset(tsId);}catch(x){} tsToken=''; return;}
+  try{tsId=turnstile.render('#lz-ts',{sitekey:TS_KEY,language:'nl',callback:function(k){tsToken=k;},'expired-callback':function(){tsToken='';},'error-callback':function(){tsToken='';}});}catch(x){} }
+function tsLaad(){ if(window.turnstile){tsRender();return;} if(tsLaadt) return; tsLaadt=true;
+  var s=document.createElement('script'); s.src='https://challenges.cloudflare.com/turnstile/v0/api.js?render=explicit'; s.async=true; s.onload=tsRender; document.head.appendChild(s); }
+o.addEventListener('click',function(){ if(document.documentElement.hasAttribute('data-admin')) return; m.textContent=''; b.disabled=false; geopend=Date.now(); tsLaad(); f.classList.remove('is-ok'); f.querySelector('.lz-ok').hidden=true; d.showModal(); });
 document.getElementById('lz-sluit').addEventListener('click',function(){d.close();});
 d.addEventListener('click',function(e){ if(e.target===d) d.close(); });
 f.addEventListener('submit',function(e){
@@ -854,12 +862,13 @@ f.addEventListener('submit',function(e){
   if(!/^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/.test(v('email'))){m.textContent='Vul een geldig e-mailadres in.';f.elements.email.focus();return;}
   if(!v('bericht')){m.textContent='Vul in wat ik voor jullie kan betekenen.';f.elements.bericht.focus();return;}
   if(!f.elements.akkoord.checked){m.textContent='Vink aan dat je akkoord gaat met de privacyverklaring.';return;}
+  if(!tsToken){m.textContent='Wacht even tot de robotcontrole klaar is en probeer het dan opnieuw.';return;}
   b.disabled=true; m.textContent='Even geduld…';
-  fetch('/api/lezing',{method:'POST',headers:{'content-type':'application/json','x-gk':'1'},body:JSON.stringify({naam:v('naam'),organisatie:v('organisatie'),email:v('email'),telefoon:v('telefoon'),periode:v('periode'),aantal:v('aantal'),locatie:v('locatie'),doelgroep:v('doelgroep'),bericht:v('bericht'),akkoord:true,t:geopend,website:f.elements.website.value})})
+  fetch('/api/lezing',{method:'POST',headers:{'content-type':'application/json','x-gk':'1'},body:JSON.stringify({naam:v('naam'),organisatie:v('organisatie'),email:v('email'),telefoon:v('telefoon'),periode:v('periode'),aantal:v('aantal'),locatie:v('locatie'),doelgroep:v('doelgroep'),bericht:v('bericht'),akkoord:true,t:geopend,token:tsToken,website:f.elements.website.value})})
     .then(function(r){return r.json().then(function(x){return {ok:r.ok,d:x};});})
     .then(function(x){
-      if(x.ok){f.reset();m.textContent='';f.classList.add('is-ok');f.querySelector('.lz-ok').hidden=false;}
-      else{m.textContent=(x.d&&x.d.error)||'Versturen lukt nu niet.';b.disabled=false;}
+      if(x.ok){f.reset();m.textContent='';tsRender();f.classList.add('is-ok');f.querySelector('.lz-ok').hidden=false;}
+      else{m.textContent=(x.d&&x.d.error)||'Versturen lukt nu niet.';b.disabled=false;tsRender();}
     })
     .catch(function(){m.textContent='Versturen lukt nu niet. Probeer het later opnieuw.';b.disabled=false;});
 });

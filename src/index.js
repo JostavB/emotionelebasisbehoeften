@@ -536,6 +536,22 @@ async function lezingAanvraag(request, env, url) {
   const sinds = Date.now() - Number(body.t || 0);
   if (!body.t || sinds < 5000) return json({ ok: true });
   if (sinds > 6 * 60 * 60 * 1000) throw new HttpError(400, 'Dit formulier staat al lang open. Laad de pagina opnieuw en probeer het nog eens.');
+  // Robotcontrole van Cloudflare Turnstile. Zonder geheim (TURNSTILE_SECRET) wordt deze stap overgeslagen.
+  if (env.TURNSTILE_SECRET) {
+    const token = String(body.token || '');
+    if (!token || token.length > 2048) throw new HttpError(400, 'De robotcontrole is niet gelukt. Probeer het nog eens.');
+    const form = new FormData();
+    form.append('secret', env.TURNSTILE_SECRET);
+    form.append('response', token);
+    const ip0 = request.headers.get('cf-connecting-ip');
+    if (ip0) form.append('remoteip', ip0);
+    let ok = false;
+    try {
+      const r = await fetch('https://challenges.cloudflare.com/turnstile/v0/siteverify', { method: 'POST', body: form });
+      ok = !!(await r.json()).success;
+    } catch (e) { console.error('Turnstile', String(e && e.message || e)); throw new HttpError(502, 'De robotcontrole is nu niet bereikbaar. Probeer het later opnieuw.'); }
+    if (!ok) throw new HttpError(400, 'De robotcontrole is niet gelukt. Probeer het nog eens.');
+  }
   const clean = (v, max) => String(v || '').replace(/[\u0000-\u0008\u000b\u000c\u000e-\u001f]/g, '').trim().slice(0, max);
   const a = {
     naam: clean(body.naam, 100),
