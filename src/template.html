@@ -46,6 +46,9 @@ html[data-admin] .eb-bottomnav{display:none}
 .zp-side .zv-sub{margin:12px 0 0;font-size:12px;font-weight:700;letter-spacing:.18em;text-transform:uppercase;color:var(--c-accent)}
 .zp-side .zv-adult{margin:0;font-size:17px;line-height:1.65;max-width:44ch}
 .zp-side .zv-note{margin:4px 0 0;font-size:13px;line-height:1.55;color:#4F574B}
+.zp-side .zv-melding{display:flex;flex-direction:column;align-items:flex-start;gap:14px;margin-top:18px}
+.zp-side .zv-melding-t{margin:0;font-size:15px;line-height:1.6;color:var(--c-tekst-zacht);max-width:44ch}
+.zp-side .zv-melding-b{min-height:46px;padding:0 24px}
 .zp-side .zv-src{margin:auto 0 0;padding-top:20px;font-size:12px;line-height:1.55;color:#5F665A}
 .zp-row{display:flex;flex-direction:column;gap:12px;align-self:start;padding:0}
 .zp-a{position:relative;display:flex;align-items:center;gap:22px;height:66px;padding:0 30px;border:1px solid color-mix(in srgb, var(--c-creme) 85%, transparent);border-radius:999px;background:color-mix(in srgb, var(--c-creme) 22%, transparent);-webkit-backdrop-filter:blur(6px);backdrop-filter:blur(6px);color:var(--c-donker);font:inherit;text-align:left;cursor:pointer;transition:background .45s,border-color .45s}
@@ -394,7 +397,7 @@ html:not([data-admin]) .eb-icoon[href^="#"]{display:none}
 <svg class="zp-tris f1" id="zp-tris" role="img" aria-label="Behoefte 1 van 7" width="110" height="10" viewBox="0 0 100 9"><path d="M0 9L5 0L10 9Z"></path><path d="M15 0L20 9L25 0Z"></path><path d="M30 9L35 0L40 9Z"></path><path d="M45 0L50 9L55 0Z"></path><path d="M60 9L65 0L70 9Z"></path><path d="M75 0L80 9L85 0Z"></path><path d="M90 9L95 0L100 9Z"></path></svg>
 <div class="zp-detail" data-detail="1" data-slug="veiligheid-en-verbinding">
 <h3 class="zv-name" data-k="behoefte-1-naam">Veiligheid en verbinding</h3>
-<p class="zv-text" data-k="behoefte-1-tekst">Een kind heeft minstens één volwassene nodig op wie het kan bouwen: voorspelbaar, beschikbaar en warm. Vanuit die veilige plek ervaart het dat het erbij hoort en gewaardeerd wordt. Dit is de basis onder alle andere behoeften.</p>
+<p class="zv-text" data-k="behoefte-1-tekst">Een kind heeft nodig dat het weet dat het goed is zoals het is en dat het veilig is bij de mensen van wie het afhankelijk is. Leren zich op een veilige manier te verbinden met anderen is de belangrijkste emotionele basisbehoefte van mensen. Kinderen hebben volwassenen nodig die hen laten zien hoe gezonde relaties eruitzien, zodat ze deze herkennen en zelf ook kiezen voor wederkerige en liefdevolle relaties. Wat leert een kind als het structureel niet weet waar het aan toe is bij jou?</p>
 <div class="eb-share" data-share-url="/#veiligheid-en-verbinding">
 <span class="eb-share-l">Deel deze behoefte</span>
 <a class="eb-share-i" data-via="whatsapp" href="https://wa.me/" target="_blank" rel="noopener" aria-label="Deel via WhatsApp"><svg viewBox="0 0 24 24" aria-hidden="true" focusable="false" style="fill:currentColor;stroke:none"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413Z"/></svg></a>
@@ -403,10 +406,14 @@ html:not([data-admin]) .eb-icoon[href^="#"]{display:none}
 <button type="button" class="eb-share-i" data-via="meer" hidden aria-label="Meer opties om te delen"><svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><circle cx="6" cy="12" r="1"/><circle cx="12" cy="12" r="1"/><circle cx="18" cy="12" r="1"/></svg></button>
 <span class="eb-share-m" role="status" aria-live="polite"></span>
 </div>
+<div class="zv-melding">
+<p class="zv-melding-t" data-k="behoefte-1-melding">Deze website is nog in ontwikkeling. Wil je weten wanneer er meer is? Druk dan op de knop hieronder.</p>
+<a class="eb-btn eb-btn-groen zv-melding-b" data-l="link-houd-mij-op-de-hoogte" href="#contact" style="color: var(--c-creme)"><span data-k="behoefte-1-melding-knop">Houd mij op de hoogte</span></a>
+</div>
 </div>
 <div class="zp-detail" data-detail="2" data-slug="autonomie-en-competentie" hidden>
 <h3 class="zv-name" data-k="behoefte-2-naam">Autonomie en competentie</h3>
-<p class="zv-text" data-k="behoefte-2-tekst">Een kind wil de wereld verkennen, zelf kiezen en ervaren wat het kan. Zelfvertrouwen groeit uit eigen ervaring, binnen een omgeving die veilig genoeg is om iets te proberen.</p>
+<p class="zv-text" data-k="behoefte-2-tekst">Om later als volwassene te kiezen voor een leven dat bij zichzelf past, moet een kind in passende stappen ervaren dat het oké is om dingen op een eigen manier te doen. In een veilige omgeving kan een kind leren wat wel en niet werkt en mag het om hulp vragen wanneer dat nodig is. Zo groeit het zelfvertrouwen van een kind en leert het te vertrouwen op eigen keuzes, grenzen en kunnen. Deze emotionele basisbehoefte draagt bij aan het worden van een onafhankelijke volwassene. Hoeveel tijd en ruimte geef jij kinderen om dingen zelf uit te zoeken?</p>
 <div class="eb-share" data-share-url="/#autonomie-en-competentie">
 <span class="eb-share-l">Deel deze behoefte</span>
 <a class="eb-share-i" data-via="whatsapp" href="https://wa.me/" target="_blank" rel="noopener" aria-label="Deel via WhatsApp"><svg viewBox="0 0 24 24" aria-hidden="true" focusable="false" style="fill:currentColor;stroke:none"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413Z"/></svg></a>
@@ -415,10 +422,14 @@ html:not([data-admin]) .eb-icoon[href^="#"]{display:none}
 <button type="button" class="eb-share-i" data-via="meer" hidden aria-label="Meer opties om te delen"><svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><circle cx="6" cy="12" r="1"/><circle cx="12" cy="12" r="1"/><circle cx="18" cy="12" r="1"/></svg></button>
 <span class="eb-share-m" role="status" aria-live="polite"></span>
 </div>
+<div class="zv-melding">
+<p class="zv-melding-t" data-k="behoefte-2-melding">Deze website is nog in ontwikkeling. Wil je weten wanneer er meer is? Druk dan op de knop hieronder.</p>
+<a class="eb-btn eb-btn-groen zv-melding-b" data-l="link-houd-mij-op-de-hoogte" href="#contact" style="color: var(--c-creme)"><span data-k="behoefte-2-melding-knop">Houd mij op de hoogte</span></a>
+</div>
 </div>
 <div class="zp-detail" data-detail="3" data-slug="realistische-grenzen" hidden>
 <h3 class="zv-name" data-k="behoefte-3-naam">Realistische grenzen</h3>
-<p class="zv-text" data-k="behoefte-3-tekst">Grenzen maken de wereld voorspelbaar. Een kind leert er rekening te houden met anderen, frustratie te verdragen en zijn emoties te reguleren. Warmte en stevigheid gaan hier samen.</p>
+<p class="zv-text" data-k="behoefte-3-tekst">Wat zijn grenzen? Hoe kan je zien dat je over de grens van een ander gaat en hoe voorkom je dit? Hoe reageer je als je merkt dat je over een grens bent gegaan? Als kind is het belangrijk om te leren hoe gezond sociaal gedrag eruitziet met betrekking tot grenzen. Daarvoor is het onder andere belangrijk om als kind te ervaren dat volwassenen goed omgaan met jouw grenzen. Ook moet een kind op een liefdevolle manier leren omgaan met sociale situaties. Zo leert een kind bijvoorbeeld de grenzen van anderen te respecteren, emoties te reguleren en afspraken na te komen. Daarnaast leert een kind zichzelf te disciplineren en om te gaan met frustratie wanneer iets niet meteen kan of mag.</p>
 <div class="eb-share" data-share-url="/#realistische-grenzen">
 <span class="eb-share-l">Deel deze behoefte</span>
 <a class="eb-share-i" data-via="whatsapp" href="https://wa.me/" target="_blank" rel="noopener" aria-label="Deel via WhatsApp"><svg viewBox="0 0 24 24" aria-hidden="true" focusable="false" style="fill:currentColor;stroke:none"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413Z"/></svg></a>
@@ -427,10 +438,14 @@ html:not([data-admin]) .eb-icoon[href^="#"]{display:none}
 <button type="button" class="eb-share-i" data-via="meer" hidden aria-label="Meer opties om te delen"><svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><circle cx="6" cy="12" r="1"/><circle cx="12" cy="12" r="1"/><circle cx="18" cy="12" r="1"/></svg></button>
 <span class="eb-share-m" role="status" aria-live="polite"></span>
 </div>
+<div class="zv-melding">
+<p class="zv-melding-t" data-k="behoefte-3-melding">Deze website is nog in ontwikkeling. Wil je weten wanneer er meer is? Druk dan op de knop hieronder.</p>
+<a class="eb-btn eb-btn-groen zv-melding-b" data-l="link-houd-mij-op-de-hoogte" href="#contact" style="color: var(--c-creme)"><span data-k="behoefte-3-melding-knop">Houd mij op de hoogte</span></a>
+</div>
 </div>
 <div class="zp-detail" data-detail="4" data-slug="vrijheid-van-expressie" hidden>
 <h3 class="zv-name" data-k="behoefte-4-naam">Vrijheid van expressie</h3>
-<p class="zv-text" data-k="behoefte-4-tekst">Een kind mag voelen wat het voelt en zeggen wat het denkt, zonder angst voor afwijzing of straf. Wie zich mag uiten, leert dat hij mag zijn wie hij is.</p>
+<p class="zv-text" data-k="behoefte-4-tekst">Om later een leven te leiden dat echt bij zichzelf past, moet een kind op een liefdevolle en veilige manier leren dat de eigen behoeften ertoe doen. De boodschap die een kind daarvoor nodig heeft: je mag voelen wat je voelt en zeggen wat je denkt, zonder angst voor een oordeel, afwijzing of straf. Je mag en kan jezelf zijn en tegelijk veilig verbonden blijven met de mensen van wie je als kind afhankelijk bent. Hoeveel ruimte is er voor het kind om te zijn wie het is, en weet je wat het nodig heeft?</p>
 <div class="eb-share" data-share-url="/#vrijheid-van-expressie">
 <span class="eb-share-l">Deel deze behoefte</span>
 <a class="eb-share-i" data-via="whatsapp" href="https://wa.me/" target="_blank" rel="noopener" aria-label="Deel via WhatsApp"><svg viewBox="0 0 24 24" aria-hidden="true" focusable="false" style="fill:currentColor;stroke:none"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413Z"/></svg></a>
@@ -439,10 +454,14 @@ html:not([data-admin]) .eb-icoon[href^="#"]{display:none}
 <button type="button" class="eb-share-i" data-via="meer" hidden aria-label="Meer opties om te delen"><svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><circle cx="6" cy="12" r="1"/><circle cx="12" cy="12" r="1"/><circle cx="18" cy="12" r="1"/></svg></button>
 <span class="eb-share-m" role="status" aria-live="polite"></span>
 </div>
+<div class="zv-melding">
+<p class="zv-melding-t" data-k="behoefte-4-melding">Deze website is nog in ontwikkeling. Wil je weten wanneer er meer is? Druk dan op de knop hieronder.</p>
+<a class="eb-btn eb-btn-groen zv-melding-b" data-l="link-houd-mij-op-de-hoogte" href="#contact" style="color: var(--c-creme)"><span data-k="behoefte-4-melding-knop">Houd mij op de hoogte</span></a>
+</div>
 </div>
 <div class="zp-detail" data-detail="5" data-slug="spontaniteit-en-spel" hidden>
 <h3 class="zv-name" data-k="behoefte-5-naam">Spontaniteit en spel</h3>
-<p class="zv-text" data-k="behoefte-5-tekst">In spel ontdekt, oefent en verwondert een kind zich, en leert het genieten. Spelen is een manier van leren, en blijft een leven lang belangrijk.</p>
+<p class="zv-text" data-k="behoefte-5-tekst">Van nature zijn kinderen op hun eigen manier speels en willen ze op een leuke en creatieve manier de wereld ontdekken. Plezier hebben, spelen, bewegen en enthousiast mogen reageren zijn onder andere belangrijk voor deze emotionele basisbehoefte. Van jongs af aan een goede balans leren vinden tussen het geplande, serieuze leven en een spontaan en ontspannen leven is een vaardigheid die belangrijk is om mentaal en fysiek gezond het leven vol te houden. Hoeveel ruimte is er, als jullie samen zijn, om te spelen zonder doel of planning?</p>
 <div class="eb-share" data-share-url="/#spontaniteit-en-spel">
 <span class="eb-share-l">Deel deze behoefte</span>
 <a class="eb-share-i" data-via="whatsapp" href="https://wa.me/" target="_blank" rel="noopener" aria-label="Deel via WhatsApp"><svg viewBox="0 0 24 24" aria-hidden="true" focusable="false" style="fill:currentColor;stroke:none"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413Z"/></svg></a>
@@ -451,10 +470,14 @@ html:not([data-admin]) .eb-icoon[href^="#"]{display:none}
 <button type="button" class="eb-share-i" data-via="meer" hidden aria-label="Meer opties om te delen"><svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><circle cx="6" cy="12" r="1"/><circle cx="12" cy="12" r="1"/><circle cx="18" cy="12" r="1"/></svg></button>
 <span class="eb-share-m" role="status" aria-live="polite"></span>
 </div>
+<div class="zv-melding">
+<p class="zv-melding-t" data-k="behoefte-5-melding">Deze website is nog in ontwikkeling. Wil je weten wanneer er meer is? Druk dan op de knop hieronder.</p>
+<a class="eb-btn eb-btn-groen zv-melding-b" data-l="link-houd-mij-op-de-hoogte" href="#contact" style="color: var(--c-creme)"><span data-k="behoefte-5-melding-knop">Houd mij op de hoogte</span></a>
+</div>
 </div>
 <div class="zp-detail" data-detail="6" data-slug="rechtvaardigheid" hidden>
 <h3 class="zv-name" data-k="behoefte-6-naam">Rechtvaardigheid</h3>
-<p class="zv-text" data-k="behoefte-6-tekst">Een kind wil de wereld leren kennen in een eerlijke sfeer: regels worden uitgelegd en onrecht wordt waar het kan rechtgezet. Dat geeft vertrouwen in anderen en in de wereld.</p>
+<p class="zv-text" data-k="behoefte-6-tekst">Het is voor kinderen belangrijk te ervaren dat mensen hen op een eerlijke manier behandelen en dat ze zien dat anderen elkaar eerlijk behandelen. Als dit niet gebeurt, is het belangrijk dat kinderen ervaren dat iemand voor hen opkomt. We leven in een wereld waarin oneerlijkheid bestaat. Een kind mag voelen dat dat niet klopt. Door te leren wat het zelf kan doen, en hoe het ermee om kan gaan, went het er niet aan.</p>
 <p class="zv-note" data-k="behoefte-6-noot">Deze behoefte is theoretisch voorgesteld (Arntz e.a., 2021) en nog niet empirisch getoetst.</p>
 <div class="eb-share" data-share-url="/#rechtvaardigheid">
 <span class="eb-share-l">Deel deze behoefte</span>
@@ -464,10 +487,14 @@ html:not([data-admin]) .eb-icoon[href^="#"]{display:none}
 <button type="button" class="eb-share-i" data-via="meer" hidden aria-label="Meer opties om te delen"><svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><circle cx="6" cy="12" r="1"/><circle cx="12" cy="12" r="1"/><circle cx="18" cy="12" r="1"/></svg></button>
 <span class="eb-share-m" role="status" aria-live="polite"></span>
 </div>
+<div class="zv-melding">
+<p class="zv-melding-t" data-k="behoefte-6-melding">Deze website is nog in ontwikkeling. Wil je weten wanneer er meer is? Druk dan op de knop hieronder.</p>
+<a class="eb-btn eb-btn-groen zv-melding-b" data-l="link-houd-mij-op-de-hoogte" href="#contact" style="color: var(--c-creme)"><span data-k="behoefte-6-melding-knop">Houd mij op de hoogte</span></a>
+</div>
 </div>
 <div class="zp-detail" data-detail="7" data-slug="zelfcoherentie" hidden>
 <h3 class="zv-name" data-k="behoefte-7-naam">Zelfcoherentie</h3>
-<p class="zv-text" data-k="behoefte-7-tekst">Het verlangen jezelf als samenhangend geheel te zien, je psychisch gezond te voelen en een zinvol leven te leiden. Deze behoefte wordt vervuld als de andere zes goed in elkaar grijpen.</p>
+<p class="zv-text" data-k="behoefte-7-tekst">Zelfcoherentie is het sluitstuk van de emotionele basisbehoeften. Een kind met zelfcoherentie weet wie het is, wat het voelt en waar het voor staat, ook als het even tegenzit. Zelfcoherentie ontwikkelt zich als het kind voldoende krijgt van de zes andere behoeften. Alles bij elkaar leert een kind zich goed te wortelen en staat het stevig in verbinding met zichzelf en anderen. Op deze manier kan een kind leren om op een gezonde manier met tegenslagen om te gaan en ontstaat er een basis voor een psychologisch gezond en zinvol leven.</p>
 <p class="zv-note" data-k="behoefte-7-noot">Deze behoefte is theoretisch voorgesteld (Arntz e.a., 2021) en nog niet empirisch getoetst.</p>
 <div class="eb-share" data-share-url="/#zelfcoherentie">
 <span class="eb-share-l">Deel deze behoefte</span>
@@ -477,8 +504,12 @@ html:not([data-admin]) .eb-icoon[href^="#"]{display:none}
 <button type="button" class="eb-share-i" data-via="meer" hidden aria-label="Meer opties om te delen"><svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><circle cx="6" cy="12" r="1"/><circle cx="12" cy="12" r="1"/><circle cx="18" cy="12" r="1"/></svg></button>
 <span class="eb-share-m" role="status" aria-live="polite"></span>
 </div>
+<div class="zv-melding">
+<p class="zv-melding-t" data-k="behoefte-7-melding">Deze website is nog in ontwikkeling. Wil je weten wanneer er meer is? Druk dan op de knop hieronder.</p>
+<a class="eb-btn eb-btn-groen zv-melding-b" data-l="link-houd-mij-op-de-hoogte" href="#contact" style="color: var(--c-creme)"><span data-k="behoefte-7-melding-knop">Houd mij op de hoogte</span></a>
 </div>
-<p class="zv-src" data-k="behoeften-bron">De zeven basisbehoeften zoals de Vereniging voor Schematherapie die hanteert, gebaseerd op Young e.a. (2003) en Arntz e.a. (2021).</p>
+</div>
+<p class="zv-src" data-k="behoeften-bron">Ik werk met de zeven basisbehoeften zoals de Vereniging voor Schematherapie die hanteert: de vijf behoeften van Young e.a. (2003), aangevuld met zelfcoherentie en rechtvaardigheid door Arntz e.a. (2021).</p>
 </div>
 <div class="zp-row" role="group" aria-label="Kies een basisbehoefte">
 <button type="button" class="zp-a is-on" data-need="0" aria-pressed="true">
