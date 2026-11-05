@@ -9,6 +9,8 @@
     "run_worker_first": true
   },
   "rules": [{ "type": "Text", "globs": ["**/*.html"], "fallthrough": true }],
+  // Mail versturen naar het geverifieerde doeladres (Cloudflare E-mailroutering).
+  "send_email": [{ "name": "MAIL", "destination_address": "emotionelebasisbehoeften@gmail.com" }],
   "kv_namespaces": [{ "binding": "CONTENT", "id": "994c01f3b3874991bdf2c8e7406c8ba6" }],
   "vars": {
     // Wie mag inloggen op /admin (komma-gescheiden Google-accounts).
@@ -17,6 +19,8 @@
     // Project "Basisbehoeften website" onder jd.vanbrouwershaven@gmail.com.
     // MailerLite-groep waar nieuwe aanmeldingen in komen. Niet geheim. De API-sleutel staat als
     // geheim MAILERLITE_API_KEY in Cloudflare (Workers > Instellingen > Variabelen en geheimen).
+    // Meldingen van het lezingformulier gaan hiernaartoe. Moet een geverifieerd doeladres zijn bij Cloudflare E-mailroutering.
+    "MAIL_NAAR": "emotionelebasisbehoeften@gmail.com",
     "MAILERLITE_GROUP_ID": "203104379596703455",
     "GOOGLE_CLIENT_ID": "542018349659-q5pioera0pmlsr23d7l0fkndm3vmj5dg.apps.googleusercontent.com"
   },

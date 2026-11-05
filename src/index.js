@@ -3,6 +3,7 @@
 // /admin is een apart inlogscherm (Google). Na inloggen krijg je een sessie-cookie en kom je
 // op /admin/editor: dezelfde pagina met de editor erbovenop. Alleen accounts in ADMIN_EMAILS.
 
+import { EmailMessage } from 'cloudflare:email';
 import TEMPLATE from './template.html';
 import LOGIN_PAGE from './login.html';
 import PAGINA from './pagina.html';
@@ -548,7 +549,49 @@ async function lezingAanvraag(request, env, url) {
   const at = new Date().toISOString();
   const id = LEZING_PREFIX + String(Date.now()).padStart(15, '0') + '-' + (await sha(a.email + at)).slice(0, 6);
   await env.CONTENT.put(id, JSON.stringify({ ...a, at }));
+  // Melding per mail; lukt dat niet, dan staat de aanvraag nog steeds in /admin.
+  try { await mailLezing(env, a, id); } catch (e) { console.error('Melding lezing', String(e && e.message || e)); }
   return json({ ok: true });
+}
+
+// Melding naar het geverifieerde doeladres van Cloudflare E-mailroutering (binding MAIL).
+const MAIL_VAN = 'info@emotionelebasisbehoeften.nl';
+const b64 = (str) => {
+  const bytes = new TextEncoder().encode(str);
+  let bin = '';
+  for (const x of bytes) bin += String.fromCharCode(x);
+  return btoa(bin).replace(/.{1,76}/g, '$&\r\n').trimEnd();
+};
+async function mailLezing(env, a, id) {
+  if (!env.MAIL) return;
+  const lijn = (k, v) => `${k}: ${v || '-'}`;
+  const tekst = [
+    'Er is een nieuwe aanvraag voor een lezing binnengekomen.',
+    '',
+    lijn('Naam', a.naam), lijn('Organisatie', a.organisatie), lijn('E-mailadres', a.email), lijn('Telefoon', a.telefoon),
+    lijn('Gewenste datum of periode', a.periode), lijn('Aantal aanwezigen', a.aantal), lijn('Locatie', a.locatie),
+    lijn('Doelgroep tijdens de lezing', a.doelgroep),
+    '',
+    'Wat kan ik voor jullie betekenen?',
+    a.bericht,
+    '',
+    'Je kunt op deze mail antwoorden: het antwoord gaat naar ' + a.email + '.',
+  ].join('\r\n');
+  const onderwerp = '=?UTF-8?B?' + btoa(String.fromCharCode(...new TextEncoder().encode('Nieuwe lezingaanvraag: ' + a.organisatie.replace(/[\r\n]+/g, ' ').slice(0, 80)))) + '?=';
+  const raw = [
+    `From: =?UTF-8?B?${btoa('Website Centrum voor Emotionele Basisbehoeften')}?= <${MAIL_VAN}>`,
+    `To: ${env.MAIL_NAAR}`,
+    `Reply-To: ${a.email}`,
+    `Subject: ${onderwerp}`,
+    `Message-ID: <${id.replace(/[^a-z0-9]/gi, '')}@emotionelebasisbehoeften.nl>`,
+    `Date: ${new Date().toUTCString()}`,
+    'MIME-Version: 1.0',
+    'Content-Type: text/plain; charset=UTF-8',
+    'Content-Transfer-Encoding: base64',
+    '',
+    b64(tekst),
+  ].join('\r\n');
+  await env.MAIL.send(new EmailMessage(MAIL_VAN, env.MAIL_NAAR, raw));
 }
 
 // ---------- aanmelden nieuwsbrief ----------
