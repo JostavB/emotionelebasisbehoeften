@@ -843,8 +843,8 @@ f.addEventListener('submit',function(e){
 (function(){
 var d=document.getElementById('lz-dialog'), o=document.getElementById('lz-open'), f=document.getElementById('lz-form');
 if(!d||!o||!f||typeof d.showModal!=='function') return;
-var m=f.querySelector('.lz-m'), b=f.querySelector('.lz-verstuur');
-o.addEventListener('click',function(){ if(document.documentElement.hasAttribute('data-admin')) return; m.textContent=''; b.disabled=false; f.classList.remove('is-ok'); f.querySelector('.lz-ok').hidden=true; d.showModal(); });
+var m=f.querySelector('.lz-m'), b=f.querySelector('.lz-verstuur'), geopend=0;
+o.addEventListener('click',function(){ if(document.documentElement.hasAttribute('data-admin')) return; m.textContent=''; b.disabled=false; geopend=Date.now(); f.classList.remove('is-ok'); f.querySelector('.lz-ok').hidden=true; d.showModal(); });
 document.getElementById('lz-sluit').addEventListener('click',function(){d.close();});
 d.addEventListener('click',function(e){ if(e.target===d) d.close(); });
 f.addEventListener('submit',function(e){
@@ -855,7 +855,7 @@ f.addEventListener('submit',function(e){
   if(!v('bericht')){m.textContent='Vul in wat ik voor jullie kan betekenen.';f.elements.bericht.focus();return;}
   if(!f.elements.akkoord.checked){m.textContent='Vink aan dat je akkoord gaat met de privacyverklaring.';return;}
   b.disabled=true; m.textContent='Even geduld…';
-  fetch('/api/lezing',{method:'POST',headers:{'content-type':'application/json','x-gk':'1'},body:JSON.stringify({naam:v('naam'),organisatie:v('organisatie'),email:v('email'),telefoon:v('telefoon'),periode:v('periode'),aantal:v('aantal'),locatie:v('locatie'),doelgroep:v('doelgroep'),bericht:v('bericht'),akkoord:true,website:f.elements.website.value})})
+  fetch('/api/lezing',{method:'POST',headers:{'content-type':'application/json','x-gk':'1'},body:JSON.stringify({naam:v('naam'),organisatie:v('organisatie'),email:v('email'),telefoon:v('telefoon'),periode:v('periode'),aantal:v('aantal'),locatie:v('locatie'),doelgroep:v('doelgroep'),bericht:v('bericht'),akkoord:true,t:geopend,website:f.elements.website.value})})
     .then(function(r){return r.json().then(function(x){return {ok:r.ok,d:x};});})
     .then(function(x){
       if(x.ok){f.reset();m.textContent='';f.classList.add('is-ok');f.querySelector('.lz-ok').hidden=false;}

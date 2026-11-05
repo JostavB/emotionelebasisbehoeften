@@ -518,11 +518,16 @@ function cleanAgenda(list) {
 
 // Aanvragen worden in KV bewaard en staan in /admin onder "Lezingaanvragen".
 const LEZING_LIMIT = 3; // per IP per uur
+const LEZING_DAGMAX = 20; // in totaal per dag
 
 async function lezingAanvraag(request, env, url) {
   if (!sameOrigin(request, url)) throw new HttpError(403, 'Ongeldig verzoek.');
   const body = await readJson(request, 8000);
   if (body.website) return json({ ok: true }); // honeypot
+  // Een mens doet er minstens een paar seconden over om het formulier in te vullen; robots sturen direct.
+  const sinds = Date.now() - Number(body.t || 0);
+  if (!body.t || sinds < 5000) return json({ ok: true });
+  if (sinds > 6 * 60 * 60 * 1000) throw new HttpError(400, 'Dit formulier staat al lang open. Laad de pagina opnieuw en probeer het nog eens.');
   const clean = (v, max) => String(v || '').replace(/[\u0000-\u0008\u000b\u000c\u000e-\u001f]/g, '').trim().slice(0, max);
   const a = {
     naam: clean(body.naam, 100),
@@ -545,6 +550,12 @@ async function lezingAanvraag(request, env, url) {
   const used = Number(await env.CONTENT.get(rlKey)) || 0;
   if (used >= LEZING_LIMIT) throw new HttpError(429, 'Te veel pogingen. Probeer het later opnieuw.');
   await env.CONTENT.put(rlKey, String(used + 1), { expirationTtl: 3600 });
+
+  // Noodrem: nooit meer dan LEZING_DAGMAX aanvragen per dag, wat er ook gebeurt.
+  const dagKey = 'rl:lz-dag:' + new Date().toISOString().slice(0, 10);
+  const dag = Number(await env.CONTENT.get(dagKey)) || 0;
+  if (dag >= LEZING_DAGMAX) throw new HttpError(429, 'Er zijn vandaag veel aanvragen binnengekomen. Probeer het morgen opnieuw of stuur een mail naar info@emotionelebasisbehoeften.nl.');
+  await env.CONTENT.put(dagKey, String(dag + 1), { expirationTtl: 2 * 24 * 3600 });
 
   const at = new Date().toISOString();
   const id = LEZING_PREFIX + String(Date.now()).padStart(15, '0') + '-' + (await sha(a.email + at)).slice(0, 6);
