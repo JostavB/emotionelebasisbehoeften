@@ -849,7 +849,7 @@ if(!d||!o||!f||typeof d.showModal!=='function') return;
 var m=f.querySelector('.lz-m'), b=f.querySelector('.lz-verstuur'), geopend=0, tsId=null, tsToken='', tsLaadt=false;
 var TS_KEY='0x4AAAAAAF1eW0l4x9h7_FB2';
 function tsRender(){ if(tsId!==null){try{turnstile.reset(tsId);}catch(x){} tsToken=''; return;}
-  try{tsId=turnstile.render('#lz-ts',{sitekey:TS_KEY,language:'nl',callback:function(k){tsToken=k;},'expired-callback':function(){tsToken='';},'error-callback':function(){tsToken='';}});}catch(x){} }
+  try{tsId=turnstile.render('#lz-ts',{sitekey:TS_KEY,language:'nl',theme:'light',callback:function(k){tsToken=k;},'expired-callback':function(){tsToken='';},'error-callback':function(){tsToken='';}});}catch(x){} }
 function tsLaad(){ if(window.turnstile){tsRender();return;} if(tsLaadt) return; tsLaadt=true;
   var s=document.createElement('script'); s.src='https://challenges.cloudflare.com/turnstile/v0/api.js?render=explicit'; s.async=true; s.onload=tsRender; document.head.appendChild(s); }
 o.addEventListener('click',function(){ if(document.documentElement.hasAttribute('data-admin')) return; m.textContent=''; b.disabled=false; geopend=Date.now(); tsLaad(); f.classList.remove('is-ok'); f.querySelector('.lz-ok').hidden=true; d.showModal(); });
