@@ -465,11 +465,19 @@ async function adminApi(request, env, sub, method, user) {
       const l = await env.CONTENT.list({ prefix: LEZING_PREFIX, cursor });
       for (const k of l.keys) {
         const v = await env.CONTENT.get(k.name, 'json');
-        if (v) out.push(v);
+        if (v) out.push({ ...v, id: k.name });
       }
       cursor = l.list_complete ? null : l.cursor;
     } while (cursor);
     return json(out.reverse());
+  }
+
+  if (sub === 'lezingen' && method === 'DELETE') {
+    const body = await readJson(request, 500);
+    const id = String(body.id || '');
+    if (!/^lezing:\d{15}-[0-9a-f]{6}$/.test(id)) throw new HttpError(400, 'Ongeldige aanvraag.');
+    await env.CONTENT.delete(id);
+    return json({ ok: true });
   }
 
   throw new HttpError(404, 'Onbekende actie.');

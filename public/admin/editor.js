@@ -526,13 +526,28 @@ async function lezingenPanel(body) {
     const list = await api('/api/admin/lezingen');
     box.textContent = '';
     if (!list.length) { box.append(h('p', {}, 'Nog geen aanvragen.')); return; }
-    box.append(...list.map((a) => h('div', { class: 'gk-item' },
-      h('p', {}, h('strong', {}, `${a.naam} (${a.organisatie})`), ` · ${fmtDate(a.at)}`),
-      h('p', {}, `${a.email}${a.telefoon ? ' · ' + a.telefoon : ''}`),
-      h('p', {}, `Periode: ${a.periode || '-'} · Aantal: ${a.aantal || '-'}`),
-      h('p', {}, `Locatie: ${a.locatie || '-'} · Doelgroep: ${a.doelgroep || '-'}`),
-      h('p', {}, a.bericht),
-    )));
+    box.append(...list.map((a) => {
+      const del = h('button', { class: 'gk-btn gk-ghost', type: 'button' }, 'Verwijderen');
+      const item = h('div', { class: 'gk-item' },
+        h('p', {}, h('strong', {}, `${a.naam} (${a.organisatie})`), ` · ${fmtDate(a.at)}`),
+        h('p', {}, `${a.email}${a.telefoon ? ' · ' + a.telefoon : ''}`),
+        h('p', {}, `Periode: ${a.periode || '-'} · Aantal: ${a.aantal || '-'}`),
+        h('p', {}, `Locatie: ${a.locatie || '-'} · Doelgroep: ${a.doelgroep || '-'}`),
+        h('p', {}, a.bericht),
+        del,
+      );
+      let sure = false;
+      del.addEventListener('click', async () => {
+        if (!sure) { sure = true; del.textContent = 'Zeker weten? Klik nogmaals'; setTimeout(() => { sure = false; del.textContent = 'Verwijderen'; }, 4000); return; }
+        del.disabled = true;
+        try {
+          await api('/api/admin/lezingen', { method: 'DELETE', headers: { 'content-type': 'application/json' }, body: JSON.stringify({ id: a.id }) });
+          item.remove();
+          if (!box.querySelector('.gk-item')) box.textContent = 'Nog geen aanvragen.';
+        } catch (err) { del.disabled = false; del.textContent = err.message; }
+      });
+      return item;
+    }));
   } catch (e) { box.textContent = e.message; }
 }
 
