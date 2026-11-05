@@ -314,6 +314,13 @@ html:not([data-admin]) .eb-icoon[href^="#"]{display:none}
 :root{--c-d1:#B07C44;--c-d2:#C6BA91;--c-d3:#888356;--c-d4:#07291C;--c-d5:#989884;--c-d6:#DCCBB1;--c-d7:#AF7F4C}
 .zp-tris path:nth-child(1){fill:var(--c-d1)}.zp-tris path:nth-child(2){fill:var(--c-d2)}.zp-tris path:nth-child(3){fill:var(--c-d3)}.zp-tris path:nth-child(4){fill:var(--c-d4)}.zp-tris path:nth-child(5){fill:var(--c-d5)}.zp-tris path:nth-child(6){fill:var(--c-d6)}.zp-tris path:nth-child(7){fill:var(--c-d7)}
 
+/* Cijfers 1 t/m 7 in de kleur van het bijbehorende driehoekje */
+.zp-row .zp-a:nth-child(1) .zp-n{color:var(--c-d1)}.zp-row .zp-a:nth-child(2) .zp-n{color:var(--c-d2)}.zp-row .zp-a:nth-child(3) .zp-n{color:var(--c-d3)}.zp-row .zp-a:nth-child(4) .zp-n{color:var(--c-d4)}.zp-row .zp-a:nth-child(5) .zp-n{color:var(--c-d5)}.zp-row .zp-a:nth-child(6) .zp-n{color:var(--c-d6)}.zp-row .zp-a:nth-child(7) .zp-n{color:var(--c-d7)}
+
+/* Donkere knoppen worden bij aanwijzen beige, zoals Houd mij op de hoogte */
+.eb-btn-fund-1,.eb-btn-donker{transition:background-color .2s,color .2s,transform .2s,box-shadow .2s}
+.eb-btn-fund-1:hover,.eb-btn-donker:hover{background:#D3D0BF!important;color:var(--c-donker)!important;filter:none}
+
 /* Menu: vetgedrukt bij aanwijzen en bij het onderdeel waar je bent, zonder streep.
    De onzichtbare vette kopie houdt de breedte gelijk, zodat het menu niet verspringt. */
 .eb-topnav nav a:not(.eb-btn),.eb-sticky nav a:not(.eb-btn){display:inline-flex;flex-direction:column;align-items:center;text-decoration:none}
@@ -571,7 +578,7 @@ html:not([data-admin]) .eb-icoon[href^="#"]{display:none}
 <h2 data-k="over-2" id="over-titel" class="eb-h2">Josta van Brouwershaven</h2>
 <p data-k="over-3" class="eb-lead" style="color: var(--c-tekst-zacht)">Schemacoach in Amersfoort en oprichter van het Centrum voor Emotionele Basisbehoeften.</p>
 <p data-k="over-4" class="eb-lead" style="color: var(--c-tekst-zacht)">[Twee of drie zinnen in je eigen woorden: waarom dit werk, en wat je wilt dat iedereen rond een kind weet.]</p>
-<div><a data-k="over-5" href="#contact" class="eb-btn" style="background: var(--c-donker); color: var(--c-creme)">Neem contact op</a></div>
+<div><a data-k="over-5" href="#contact" class="eb-btn eb-btn-donker" style="background: var(--c-donker); color: var(--c-creme)">Neem contact op</a></div>
 </div>
 </div>
 </section>
