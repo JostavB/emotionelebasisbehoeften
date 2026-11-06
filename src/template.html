@@ -86,9 +86,17 @@ body{margin:0;background:var(--c-donker);color:var(--c-donker)}
 .eb-h2{font-family:var(--font-kop);font-weight:500;font-size:60px;line-height:1.02;margin:0}
 .eb-lead{font-size:19px;line-height:1.65;margin:0}
 .eb-vraag{font-family:var(--font-kop);font-size:26px;line-height:1.3;color:var(--c-donker)}
-.eb-meer-inhoud{display:flex;flex-direction:column;gap:20px}
+.eb-meer-wrap{margin-top:56px}
+.eb-meer-inhoud{display:block;column-count:2;column-gap:72px;padding-top:40px;border-top:1px solid var(--c-goud)}
+.eb-meer-inhoud>p{margin:0 0 20px;break-inside:avoid-column}
+.eb .eb-meer-knop{background:#E4E0D3;color:var(--c-donker);border:0;gap:12px;cursor:pointer;transition:background-color .2s}
+.eb .eb-meer-knop:hover{background:#D9D3C1;filter:none}
+.eb-meer-pijl{display:block;width:8px;height:8px;border-right:1.5px solid currentColor;border-bottom:1.5px solid currentColor;transform:translateY(-2px) rotate(45deg);transition:transform .25s}
+.eb-meer-knop[aria-expanded="true"] .eb-meer-pijl{transform:translateY(2px) rotate(-135deg)}
+@media (max-width:1024px){.eb-meer-inhoud{column-count:1}.eb-meer-wrap{margin-top:32px}}
+@media (prefers-reduced-motion: reduce){.eb-meer-pijl{transition:none}}
 .eb-meer-inhoud[hidden]{display:none}
-html[data-admin] .eb-meer-inhoud[hidden]{display:flex}
+html[data-admin] .eb-meer-inhoud[hidden]{display:block}
 html[data-admin] .eb-meer-knop{display:none}
 .eb-over-acties{display:flex;flex-wrap:wrap;gap:12px}
 .eb-btn-lijn{background:transparent;border:1px solid var(--c-donker);color:var(--c-donker);cursor:pointer;font-family:inherit}
@@ -643,16 +651,18 @@ textarea.lz-veld{resize:vertical;min-height:120px}
 <p data-k="over-3" class="eb-lead" style="color: var(--c-tekst-zacht)">Ik ben Josta en als schemacoach heb ik mij gespecialiseerd in emotionele basisbehoeften. Samen met Kees vorm ik een samengesteld gezin met vier kinderen in Amersfoort. Een gezin was altijd mijn wens, en ik voel me bevoorrecht dat ik het heb. Tegelijk voelt opvoeden soms als een puzzel van duizenden stukjes, zonder dat je weet hoe het plaatje eruit moet zien.</p>
 <p data-k="over-4" class="eb-lead" style="color: var(--c-tekst-zacht)">Toen ik ging lezen over schematherapie, leerde ik dat een tekort aan emotionele basisbehoeften de kern is van veel ongezonde patronen waar volwassenen tegenaan lopen. Tijdens de cursussen leerde ik hoe je deze kan doorbreken en in de sessies met cliënten zag ik hoe mensen zelf de regie pakten over hun behoeften. Het voelt goed om volwassenen te helpen, maar toch bleef er één gedachte in mijn hoofd:</p>
 <p data-k="over-6" class="eb-lead eb-vraag">Die kennis over emotionele basisbehoeften zou iedereen toch moeten weten?</p>
+<div class="eb-over-acties">
+<button type="button" class="eb-btn eb-meer-knop" aria-expanded="false" aria-controls="over-meer" data-meer="Lees verder" data-minder="Minder tonen"><span class="eb-meer-t">Lees verder</span><i class="eb-meer-pijl" aria-hidden="true"></i></button>
+<a data-k="over-5" href="#contact" class="eb-btn eb-btn-donker" style="background: var(--c-donker); color: var(--c-creme)">Neem contact op</a>
+</div>
+</div>
+</div>
+<div class="eb-wrap eb-meer-wrap">
 <div id="over-meer" class="eb-meer-inhoud" hidden>
 <p data-k="over-7" class="eb-lead" style="color: var(--c-tekst-zacht)">Want als ongezonde patronen ontstaan in je jeugd, dan is het van grote waarde om dit te weten als je kinderen hebt of hiermee werkt. Preventief, maar ook gewoon in het hier en nu. Voor de opvoedpuzzel geeft dit een kader: je ziet sneller waar je moet zoeken, wat een kind nodig heeft en wat jij zelf anders kan doen. Als ik erover vertel, hoor ik vaak: “Daar wil ik meer over weten!” Daarom is het nu mijn missie om deze kennis verder te brengen dan de therapiekamer. Ik richt me op (aanstaande) ouders en op iedereen die met kinderen werkt of invloed heeft op hun leven. Van leerkrachten tot sportcoaches, van grootouders tot politici.</p>
 <p data-k="over-8" class="eb-lead" style="color: var(--c-tekst-zacht)">Voor mij is de cirkel weer rond. Want als kind was ik al begaan met gebeurtenissen in de wereld en kon ik mij druk maken over onrecht. Als politicoloog voel ik mij nog altijd aangetrokken tot maatschappelijke vraagstukken. Tijdens de studie merkte ik dat ik steeds meer interesse kreeg voor psychologie en het individu. Daarom koos ik voor een master waarbij ik meer leerde over hoe mensen omgaan met verandering. Ook leerde ik hier coachen. Ik leerde dus eerst over grote maatschappelijke thema's om vervolgens in te zoomen op het individu. Maar die twee staan niet los van elkaar, ze zijn onlosmakelijk verbonden. Want wat zou er gebeuren als er een generatie opgroeit waarvan de emotionele basisbehoeften voldoende zijn vervuld? Wat gebeurt er wanneer deze generatie daardoor de ongezonde overtuigingen van vorige generaties van zich afschudt? Ik denk dat de wereld er dan veel vrediger uitziet. Grote gedachten? Zeker, maar ik heb graag het grote geheel voor ogen. Wereldvrede zal ik met het Centrum voor Emotionele Basisbehoeften niet bereiken. Maar mijn stukje draagt er wel aan bij, en iedereen die leert wat een kind nodig heeft en dat toepast, maakt dat stukje groter.</p>
 <p data-k="over-9" class="eb-lead" style="color: var(--c-tekst-zacht)">Ik hoop je snel te ontmoeten!</p>
 <p class="eb-lead" style="color: var(--c-tekst-zacht)"><span data-k="over-10">Maak contact met me via</span> <a data-l="link-instagram" href="https://www.instagram.com/emotionelebasisbehoeften/" class="eb-tekstlink">Instagram</a> <span data-k="over-11">en</span> <a data-l="link-linkedin" href="#linkedin-link-volgt" class="eb-tekstlink">LinkedIn</a>.<br><span data-k="over-12">Alle nieuwe ontwikkelingen kan je volgen via de</span> <a href="#contact" class="eb-tekstlink"><span data-k="over-13">nieuwsbrief</span></a>.</p>
-</div>
-<div class="eb-over-acties">
-<button type="button" class="eb-btn eb-btn-lijn eb-meer-knop" aria-expanded="false" aria-controls="over-meer" data-meer="Lees verder" data-minder="Minder tonen">Lees verder</button>
-<a data-k="over-5" href="#contact" class="eb-btn eb-btn-donker" style="background: var(--c-donker); color: var(--c-creme)">Neem contact op</a>
-</div>
 </div>
 </div>
 </section>
@@ -717,7 +727,7 @@ knop.addEventListener('click',function(){
   var open=inh.hidden;
   inh.hidden=!open;
   knop.setAttribute('aria-expanded',open?'true':'false');
-  knop.textContent=open?knop.getAttribute('data-minder'):knop.getAttribute('data-meer');
+  knop.querySelector('.eb-meer-t').textContent=open?knop.getAttribute('data-minder'):knop.getAttribute('data-meer');
   if(!open&&vraag) vraag.scrollIntoView({block:'center',behavior:rustig.matches?'auto':'smooth'});
 });
 })();
