@@ -23,9 +23,8 @@
 <meta name="theme-color" content="#2A3F2E">
 <script type="application/ld+json">{"@context":"https://schema.org","@type":"Organization","name":"Centrum voor Emotionele Basisbehoeften","url":"https://emotionelebasisbehoeften.nl/","logo":"https://emotionelebasisbehoeften.nl/logo-badge.webp","description":"Samen bijdragen aan de mentale gezondheid van kinderen. Kennis over de zeven emotionele basisbehoeften voor ouders en iedereen rond een kind.","founder":{"@type":"Person","name":"Josta van Brouwershaven"}}</script>
 <style>
-:root{--c-donker:#1F2622;--c-creme:#F1EEE6;--c-accent:#6E5232;--c-goud:#D2BE97;--c-tekst-zacht:#3A4536;--c-tekst-licht:#B9BDB1;--c-tekst-licht-sterk:#E1DED5;--c-lijn:#8C7A5E;--c-bosgroen:#2A3F2E;--c-agenda:#2C3530;--c-zijvlak:#E7E5DC;--c-salie:#A9AE96;--c-salie-licht:#D9DACF;--c-accent-licht:#A88B67;--font-kop:'Playfair Display',Georgia,serif;--font-tekst:'Montserrat',system-ui,sans-serif}
+:root{--c-donker:#1F2622;--c-creme:#F1EEE6;--c-accent:#6E5232;--c-goud:#D2BE97;--c-tekst-zacht:#3A4536;--c-tekst-licht:#B9BDB1;--c-tekst-licht-sterk:#E1DED5;--c-lijn:#8C7A5E;--c-bosgroen:#2A3F2E;--c-agenda:#36423B;--c-zijvlak:#E7E5DC;--c-salie:#A9AE96;--c-salie-licht:#D9DACF;--c-accent-licht:#A88B67;--font-kop:'Playfair Display',Georgia,serif;--font-tekst:'Montserrat',system-ui,sans-serif}
 [data-k]{zoom:var(--fs,1)}
-.eb-agenda-item:last-child{border-bottom:1px solid var(--c-agenda-lijn,#4A554D)}
 .zp-detail[hidden]{display:none}
 html[data-admin] .eb-sticky{top:var(--gk-bar-h,56px)}
 html[data-admin] .eb-bottomnav{display:none}
@@ -189,7 +188,7 @@ html[data-admin] .eb-meer-knop{display:none}
 .eb-arrows{display:flex;gap:12px}
 .eb-arrow{width:52px;height:52px;border-radius:999px;border:1px solid var(--c-donker);background:transparent;color:var(--c-donker);display:flex;align-items:center;justify-content:center;cursor:pointer}
 .eb-arrow:hover{background:var(--c-donker);color:var(--c-creme)}
-.eb-agenda-item{display:grid;grid-template-columns:104px minmax(0,1fr) auto;gap:32px;align-items:center;padding:32px 0;border-top:1px solid #4A554D}
+.eb-agenda-item{display:grid;grid-template-columns:104px minmax(0,1fr) auto;gap:32px;align-items:center;padding:28px 32px;margin-bottom:12px;border-radius:20px;background:rgba(241,238,230,.06)}
 .eb-foot-wrap{background:var(--c-salie) url(/hero-aquarel.jpg) center/cover no-repeat;border-top-right-radius:180px;padding:140px 5% 0;color:var(--c-donker)}
 .eb-foot-kaart{background-color:var(--c-creme);text-align:center;border-top-right-radius:180px;padding:84px 48px 40px}
 .eb-foot-kaart .eb-h2{font-size:40px;line-height:1.15}
@@ -238,7 +237,7 @@ html:not([data-admin]) .eb-icoon[href^="#"]{display:none}
  .eb-sub{font-size:clamp(19px,5.85vw,23px)}
  .eb-grid2,.eb-grid3{grid-template-columns:minmax(0,1fr);gap:32px}
  .eb-arrows{display:none}
- .eb-agenda-item{grid-template-columns:64px minmax(0,1fr);gap:20px}
+ .eb-agenda-item{grid-template-columns:64px minmax(0,1fr);gap:20px;padding:22px 18px}
  .eb-agenda-tag{grid-column:2}
  .eb-foot{grid-template-columns:minmax(0,1fr);gap:36px}
  .eb-foot-wrap{border-top-right-radius:56px;padding:90px 4% 0;background-image:url(/hero-aquarel-mobiel.jpg);background-position:center top}

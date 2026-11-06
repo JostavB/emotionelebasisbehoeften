@@ -72,8 +72,6 @@ export const KLEUREN = {
 
 export const DEFAULT_AGENDA = [
   { id: 'a1', datum: '2026-11-07', groot: '7', klein: 'za', maand: 'nov', titel: 'Ruil en Deel festival', waar: 'De Verkeerstuin, Amersfoort', tekst: 'Kom langs bij de kraam van het Groeikwartier en maak kennis met de emotionele basisbehoeften.', label: 'Met het Groeikwartier', kleur: 'donker' },
-  { id: 'a2', datum: '', groot: '–', klein: '', maand: 'volgt', titel: 'Thema-avond', waar: 'Soesterkwartier, Amersfoort', tekst: 'Onderwerp en spreker volgen.', label: 'Met het Groeikwartier', kleur: 'donker' },
-  { id: 'a3', datum: '', groot: '–', klein: '', maand: 'volgt', titel: 'Start cursus Emotionele basisbehoeften', waar: 'Locatie volgt', tekst: 'Voor ouders en andere volwassenen rond een kind.', label: 'Cursus', kleur: 'salie' },
 ];
 
 export function esc(s) {
@@ -91,7 +89,7 @@ export function zichtbareAgenda(items, vandaag, admin) {
 
 export function agendaHTML(items, vandaag, admin) {
   const lijst = zichtbareAgenda(items, vandaag, admin);
-  if (!lijst.length) return '<p style="margin: 0; padding: 32px 0; border-top: 1px solid #4A554D; color: var(--c-tekst-licht)">Nieuwe data volgen binnenkort.</p>';
+  if (!lijst.length) return '<p style="margin: 0; padding: 28px 32px; border-radius: 20px; background: rgba(241,238,230,.06); color: var(--c-tekst-licht)">Nieuwe data volgen binnenkort.</p>';
   return lijst
     .map((it) => {
       const k = KLEUREN[it.kleur] || KLEUREN.donker;
