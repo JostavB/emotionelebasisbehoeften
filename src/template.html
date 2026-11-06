@@ -358,6 +358,7 @@ html:not([data-admin]) .eb-icoon[href^="#"]{display:none}
 .eb-aanbod-kaart p{margin:0;flex-grow:1;color:var(--c-donker);font-size:16px;line-height:36px}
 .eb .eb-aanbod-b{min-height:46px;padding:0 24px;background:#F1EEE6;color:var(--c-donker);border:0;cursor:pointer;transition:background-color .2s}
 .eb .eb-aanbod-b:hover{background:#F8F6F0;filter:none}
+@container eb (min-width: 1025px){.eb-aanbod{grid-template-columns:repeat(3,minmax(0,1fr))!important;gap:28px!important}.eb-aanbod-kaart{padding:36px 28px}.eb-aanbod-kol h3{padding-left:28px}}
 .eb-aanbod-b:focus-visible{outline:2px solid var(--c-donker);outline-offset:3px}
 @container eb (max-width: 1024px){.eb-aanbod-kaart{padding:32px 24px}}
 /* Aanvraagformulier lezing */
@@ -605,6 +606,12 @@ textarea.lz-veld{resize:vertical;min-height:120px}
 <article class="eb-aanbod-kaart eb-paper">
 <p data-k="aanbod-5">Verschillende cursussen voor ouders en andere volwassenen rond een kind. Je leert de zeven basisbehoeften herkennen en vertaalt dat naar wat je doet: thuis, in de klas of op het sportveld.</p>
 <a data-k="aanbod-10" class="eb-btn eb-aanbod-b" data-l="link-houd-mij-op-de-hoogte-cursussen" href="#contact">Houd mij op de hoogte</a>
+</article>
+</div>
+<div class="eb-aanbod-kol">
+<h3 data-k="aanbod-11" class="eb-serif" style="margin: 0; font-size: 30px; font-weight: 600">Het Groeikwartier</h3>
+<article class="eb-aanbod-kaart eb-paper">
+<p data-k="aanbod-12">Samen met Eva organiseer ik cursussen en bijeenkomsten over emotionele basisbehoeften in het Soesterkwartier in Amersfoort. Een eigen initiatief van ons samen, los van het Centrum.</p>
 </article>
 </div>
 </div>
