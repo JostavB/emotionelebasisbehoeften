@@ -341,10 +341,10 @@ html:not([data-admin]) .eb-icoon[href^="#"]{display:none}
 @container eb (min-width: 1025px){.eb-aanbod-kol h3{padding-left:36px;display:flex;align-items:flex-end;min-height:2.4em}}
 .eb-tri7 path:nth-child(1){fill:var(--c-d1)}.eb-tri7 path:nth-child(2){fill:var(--c-d2)}.eb-tri7 path:nth-child(3){fill:var(--c-d3)}.eb-tri7 path:nth-child(4){fill:var(--c-d4)}.eb-tri7 path:nth-child(5){fill:var(--c-d5)}.eb-tri7 path:nth-child(6){fill:var(--c-d6)}.eb-tri7 path:nth-child(7){fill:var(--c-d7)}
 .eb-aanbod-kol{display:flex;flex-direction:column;gap:16px}
-.eb-aanbod-kaart{flex:1;display:flex;flex-direction:column;align-items:flex-start;gap:20px;padding:40px 36px;border-radius:28px;background-color:#B2B6A1;color:var(--c-donker)}
+.eb-aanbod-kaart{flex:1;display:flex;flex-direction:column;align-items:flex-start;gap:20px;padding:40px 36px;border-radius:28px;background-color:#E4E0D3;color:var(--c-donker)}
 .eb-aanbod-kaart p{margin:0;flex-grow:1;color:var(--c-donker);font-size:16px;line-height:36px}
-.eb .eb-aanbod-b{min-height:46px;padding:0 24px;background:#D3D0BF;color:var(--c-donker);border:0;cursor:pointer;transition:background-color .2s}
-.eb .eb-aanbod-b:hover{background:#C6C3B0;filter:none}
+.eb .eb-aanbod-b{min-height:46px;padding:0 24px;background:#F1EEE6;color:var(--c-donker);border:0;cursor:pointer;transition:background-color .2s}
+.eb .eb-aanbod-b:hover{background:#F8F6F0;filter:none}
 .eb-aanbod-b:focus-visible{outline:2px solid var(--c-donker);outline-offset:3px}
 @container eb (max-width: 1024px){.eb-aanbod-kaart{padding:32px 24px}}
 /* Aanvraagformulier lezing */
@@ -364,6 +364,8 @@ html:not([data-admin]) .eb-icoon[href^="#"]{display:none}
 textarea.lz-veld{resize:vertical;min-height:120px}
 .lz-veld:focus-visible{outline:2px solid var(--c-donker);outline-offset:2px}
 .lz-verstuur{align-self:flex-start}
+.eb .lz-verstuur.eb-aanbod-b{background:#D3D0BF}
+.eb .lz-verstuur.eb-aanbod-b:hover{background:#C6C3B0}
 .lz-ts{min-height:0}
 .lz-form.is-ok .lz-ts{display:none}
 .lz-m{margin:0;font-size:14px;line-height:1.5;color:var(--c-accent);min-height:1.5em}
