@@ -273,8 +273,10 @@ html:not([data-admin]) .eb-icoon[href^="#"]{display:none}
 /* Lopende tekst: Montserrat 16px, regelhoogte 36px */
 .eb .eb-lead,.eb .zp-side .zv-text,.eb .zp-side .zv-adult,.eb .eb-cshort,
 .eb p[style*="font-size: 16px"],.eb p[style*="font-size: 17px"],.eb p[style*="font-size: 15px"]{font-size:16px!important;line-height:36px!important}
-.eb p.eb-vraag{font-size:22px!important;line-height:1.4!important}
-@container eb (max-width: 1024px){.eb p.eb-vraag{font-size:20px!important}}
+.eb p.eb-vraag{font-size:20px!important;line-height:1.4!important}
+.eb p.eb-vraag::before{content:"\201E"}
+.eb p.eb-vraag::after{content:"\201D"}
+@container eb (max-width: 1024px){.eb p.eb-vraag{text-align:center}}
 /* Knoppen: Montserrat Medium 13px, hoofdletters */
 .eb .eb-foot p[style*="font-size"]{line-height:1.7!important}
 .eb .eb-btn{font-family:var(--font-tekst);font-size:13px;font-weight:500;letter-spacing:.15em;text-transform:uppercase}
