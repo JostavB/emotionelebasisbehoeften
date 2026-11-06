@@ -359,7 +359,9 @@ html:not([data-admin]) .eb-icoon[href^="#"]{display:none}
 .eb .eb-aanbod-b{min-height:46px;padding:0 24px;background:#F1EEE6;color:var(--c-donker);border:0;cursor:pointer;transition:background-color .2s}
 .eb .eb-aanbod-b:hover{background:#F8F6F0;filter:none}
 @container eb (min-width: 1025px){.eb-aanbod{grid-template-columns:repeat(3,minmax(0,1fr))!important;gap:28px!important}.eb-aanbod-kaart{padding:36px 28px}.eb-aanbod-kol h3{padding-left:28px}}
-.eb-aanbod-acties{display:flex;align-items:center;gap:12px;flex-wrap:wrap}
+.eb-aanbod-acties{display:flex;align-items:center;gap:10px;flex-wrap:nowrap;max-width:100%}
+.eb .eb-aanbod-acties .eb-aanbod-b{padding:0 16px;letter-spacing:.1em;white-space:nowrap;flex:0 1 auto;min-width:0}
+.eb .eb-aanbod-ig{flex:none}
 .eb .eb-aanbod-ig{display:inline-flex;align-items:center;justify-content:center;width:46px;height:46px;border-radius:50%;background:#F1EEE6;color:var(--c-donker);transition:background-color .2s}
 .eb .eb-aanbod-ig:hover{background:#F8F6F0}
 .eb-aanbod-ig:focus-visible{outline:2px solid var(--c-donker);outline-offset:3px}
