@@ -359,6 +359,10 @@ html:not([data-admin]) .eb-icoon[href^="#"]{display:none}
 .eb .eb-aanbod-b{min-height:46px;padding:0 24px;background:#F1EEE6;color:var(--c-donker);border:0;cursor:pointer;transition:background-color .2s}
 .eb .eb-aanbod-b:hover{background:#F8F6F0;filter:none}
 @container eb (min-width: 1025px){.eb-aanbod{grid-template-columns:repeat(3,minmax(0,1fr))!important;gap:28px!important}.eb-aanbod-kaart{padding:36px 28px}.eb-aanbod-kol h3{padding-left:28px}}
+.eb-aanbod-acties{display:flex;align-items:center;gap:12px;flex-wrap:wrap}
+.eb .eb-aanbod-ig{display:inline-flex;align-items:center;justify-content:center;width:46px;height:46px;border-radius:50%;background:#F1EEE6;color:var(--c-donker);transition:background-color .2s}
+.eb .eb-aanbod-ig:hover{background:#F8F6F0}
+.eb-aanbod-ig:focus-visible{outline:2px solid var(--c-donker);outline-offset:3px}
 .eb-aanbod-b:focus-visible{outline:2px solid var(--c-donker);outline-offset:3px}
 @container eb (max-width: 1024px){.eb-aanbod-kaart{padding:32px 24px}}
 /* Aanvraagformulier lezing */
@@ -611,9 +615,9 @@ textarea.lz-veld{resize:vertical;min-height:120px}
 <div class="eb-aanbod-kol">
 <h3 data-k="aanbod-11" class="eb-serif" style="margin: 0; font-size: 30px; font-weight: 600">Het Groeikwartier</h3>
 <article class="eb-aanbod-kaart eb-paper">
-<p data-k="aanbod-12" style="flex-grow: 0">Woon je in Amersfoort? Hou dan Het Groeikwartier in de gaten. Samen met Eva van Studio Binnenwereld organiseer ik avonden waarin we maatschappelijk opvoedthema’s met andere experts bespreken.</p>
+<p style="flex-grow: 0"><span data-k="aanbod-12">Woon je in Amersfoort? Hou dan Het Groeikwartier in de gaten. Samen met Eva van</span> <a data-l="link-studio-binnenwereld" class="eb-tekstlink" href="https://coachingstudiobinnenwereld.nl" target="_blank" rel="noopener">Studio Binnenwereld</a> <span data-k="aanbod-15">organiseer ik avonden waarin we maatschappelijk opvoedthema’s met andere experts bespreken.</span></p>
 <p data-k="aanbod-14">Door emotionele basisbehoeften te koppelen aan een concreet thema, bieden we de nodige psychologische inzichten en praktische handvatten waardoor je steeds beter begrijpt hoe je ze precies kan toepassen in het dagelijkse leven.</p>
-<a data-k="aanbod-13" class="eb-btn eb-aanbod-b" data-l="link-groeikwartier" href="https://groeikwartier.com/#top" target="_blank" rel="noopener">Naar het Groeikwartier</a>
+<div class="eb-aanbod-acties"><a data-k="aanbod-13" class="eb-btn eb-aanbod-b" data-l="link-groeikwartier" href="https://groeikwartier.com/#top" target="_blank" rel="noopener">Naar het Groeikwartier</a><a class="eb-aanbod-ig" data-l="link-groeikwartier-instagram" href="https://www.instagram.com/groeikwartier" target="_blank" rel="noopener" aria-label="Het Groeikwartier op Instagram"><svg aria-hidden="true" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><rect x="3.5" y="3.5" width="17" height="17" rx="5"></rect><circle cx="12" cy="12" r="4"></circle><circle cx="17.2" cy="6.8" r=".6" fill="currentColor"></circle></svg></a></div>
 </article>
 </div>
 </div>
