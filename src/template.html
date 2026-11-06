@@ -354,7 +354,8 @@ html:not([data-admin]) .eb-icoon[href^="#"]{display:none}
 .eb-topnav nav a:not(.eb-btn):hover,.eb-sticky nav a:not(.eb-btn):hover,.eb-sticky nav a.is-act,.eb-topnav nav a.is-act{font-weight:700}
 
 /* Aanbod: titels boven de kaartjes, lichtgroene kaartjes met papier, zeven driehoekjes in het midden */
-.eb-tri7-rij{display:flex;justify-content:center;margin:8px 0 56px}
+.eb-tri7-rij{display:flex;justify-content:center;margin:0 0 14px}
+.eb-aanbod-kop{text-align:center;margin:0 0 56px}
 .eb-tri7{display:block;width:94px;max-width:100%;height:auto;overflow:visible}
 @container eb (min-width: 1025px){.eb-tri7{width:132px}}
 .eb-aanbod-kol h3{padding-left:24px}
@@ -604,8 +605,8 @@ textarea.lz-veld{resize:vertical;min-height:120px}
 <!-- ============ AANBOD ============ -->
 <section id="aanbod" class="eb-panel eb-sec eb-round-l eb-paper" aria-labelledby="aanbod-titel" style="background-color: var(--c-creme); border-top-left-radius: 180px">
 <div class="eb-wrap">
-<p data-k="aanbod-1" id="aanbod-titel" class="eb-label" data-anchor="1" style="color: var(--c-accent)">Aanbod</p>
 <div class="eb-tri7-rij"><svg class="eb-tri7" role="img" aria-label="De zeven emotionele basisbehoeften" width="94" height="9" viewBox="0 0 94 9"><path d="M0 9L5 0L10 9Z"></path><path d="M14 0L19 9L24 0Z"></path><path d="M28 9L33 0L38 9Z"></path><path d="M42 0L47 9L52 0Z"></path><path d="M56 9L61 0L66 9Z"></path><path d="M70 0L75 9L80 0Z"></path><path d="M84 9L89 0L94 9Z"></path></svg></div>
+<p data-k="aanbod-1" id="aanbod-titel" class="eb-label eb-aanbod-kop" data-anchor="1" style="color: var(--c-accent)">Aanbod</p>
 <div class="eb-grid2 eb-aanbod" style="gap: 32px">
 <div class="eb-aanbod-kol">
 <h3 data-k="aanbod-7" class="eb-serif" style="margin: 0; font-size: 30px; font-weight: 600">Lezingen en<br>voorlichting</h3>
