@@ -214,6 +214,7 @@ html:not([data-admin]) .eb-icoon[href^="#"]{display:none}
 .eb-foot-streep{height:1px;background:#C9C3B2;margin:0 -48px}
 .eb-foot-recht{display:flex;justify-content:space-between;align-items:center;gap:16px;padding:20px 8px 22px;font-size:13px;line-height:1.6;color:var(--c-tekst-zacht);text-wrap:balance}
 .eb-foot-recht p{margin:0}
+@media (max-width:520px){.eb-br-t{display:none}}
 .eb-foot-links{display:flex;gap:26px}
 .eb-foot-links a{color:var(--c-tekst-zacht);text-decoration:none}
 .eb-foot-links a:hover{text-decoration:underline;text-underline-offset:3px}
@@ -696,7 +697,7 @@ textarea.lz-veld{resize:vertical;min-height:120px}
 <footer id="contact" class="eb-panel eb-foot-wrap">
 <div class="eb-foot-kaart eb-paper">
 <p data-k="contact-17" class="eb-label" style="color: var(--c-accent); margin: 0 0 14px">Nieuwsbrief</p>
-<h2 data-k="contact-24" class="eb-h2" style="margin: 0 0 14px">Meer leren over emotionele basisbehoeften?</h2>
+<h2 data-k="contact-24" class="eb-h2" style="margin: 0 0 14px">Meer leren over <br class="eb-br-t">emotionele basisbehoeften?</h2>
 <p data-k="contact-18" class="eb-foot-tekst">Schrijf je in op mijn nieuwsbrief en ontvang een bericht wanneer ik een lezing geef, er een nieuwe cursus is, ik een stuk heb geschreven of er ander nieuws is over emotionele basisbehoeften.</p>
 <form class="eb-aanmeld" action="/api/signup" method="post" novalidate>
 <label for="aanmeld-email" class="eb-vh">E-mailadres</label>
